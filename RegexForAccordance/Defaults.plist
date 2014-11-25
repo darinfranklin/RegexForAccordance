@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>VerseRefFontSize</key>
+	<integer>11</integer>
+	<key>VerseRefFontName</key>
+	<string>ArialNarrow</string>
+	<key>VerseRefFontBold</key>
+	<true/>
+	<key>DefaultFontName</key>
+	<string>Times New Roman</string>
+	<key>DefaultFontSize</key>
+	<integer>15</integer>
+	<key>HebrewFontName</key>
+	<string>Times New Roman</string>
+	<key>HebrewFontSize</key>
+	<integer>18</integer>
+	<key>GreekFontName</key>
+	<string>Times New Roman</string>
+	<key>GreekFontSize</key>
+	<integer>15</integer>
+	<key>HitsFontBold</key>
+	<false/>
+	<key>ShowUnicodeID</key>
+	<false/>
+	<key>UseCompositeCharacters</key>
+	<true/>
+	<key>RemoveSpaces</key>
+	<false/>
+	<key>RemoveTrailingSpaces</key>
+	<true/>
+	<key>RemovePilcrows</key>
+	<true/>
+	<key>HebrewRemoveCantillation</key>
+	<true/>
+	<key>HebrewRemovePoints</key>
+	<true/>
+	<key>HebrewRemovePunctuation</key>
+	<false/>
+	<key>GreekRemoveDiacritics</key>
+	<true/>
+	<key>GreekRemovePunctuation</key>
+	<false/>
+	<key>LeftToRightOverride</key>
+	<false/>
+	<key>IgnoreCase</key>
+	<true/>
+	<key>IncludeReference</key>
+	<false/>
+</dict>
+</plist>

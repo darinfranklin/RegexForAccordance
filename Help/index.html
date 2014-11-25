@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <title>RegexForAccordance Help</title>
+        <meta name="AppleTitle" content="RegexForAccordance Help" />
+        <meta name="AppleIcon" content="icon.png" />
+        <meta name="robots" content="anchors" />
+        <link href="style.css" rel="stylesheet" media="all" />
+    </head>
+    <body>
+        <h1>RegexForAccordance</h1>
+        
+        <p>Search Accordance texts with regular expressions.</p>
+        
+        <h2>System Requirements</h2>
+        
+        <ul>
+            <li>Mac OSX 10.9 or later</li>
+            <li><a href="http://www.accordancebible.com">Accordance</a> 10.4.5 or later</li>
+        </ul>
+        
+        <h2>Getting Started</h2>
+        
+        <p>Choose an Accordance text and enter a verse Range, like "Gen-Mal". Set the search options and the filter options. In the search field, enter a regular expression, and then press return to start searching.</p>
+        
+        <p>The text is searched line-by-line, one verse per line.  Matches do not span verses. </p>
+        
+        <p>The regular expression matching is provided by Apple's <a href="https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40009708-CH1-SW53">NSRegularExpression</a> class, which implements <a href="http://userguide.icu-project.org/strings/regexp">ICU Regular Expression</a> syntax.<p>
+        
+        <h2>Combining Marks and Composite Characters</h2>
+        
+        <p>A character with combining marks, like Bet with Dagesh (בּ), or Iota with an accent (ί), can be represented two different ways in Unicode: precomposed character or composite character sequence.</p>
+        
+        <p>As a precomposed character, Bet with Dagesh is a single character: בּ. This character is different from a plain Bet (ב), and a regular expression searching for ב will not match בּ.</p>
+        
+        <p>As a composite character sequence, the Bet character (ב) is followed by a Dagesh character to form ב&#x05BC;. In this case, ב does match ב&#x05BC; because the Bet and the Dagesh are separate characters.<p>
+        
+        <p>RegexForAccordance uses composite character sequences by default.</p>
+        
+        <h2>The Search Window</h2>
+        
+        <h3>Entering a Range</h3>
+        
+        <p>For the Range, a single book name will do (Gen), or a range of books (Gen-Rev), or specific verses (Gen 1:1-2:7).</p>
+        
+        <h3>Filters</h3>
+        
+        <p>Filters modify the text before the line is searched. Use filters to remove spaces, pointing, diacritics, etc. Click the Filters… button to show the options.</p>
+        
+        <h3>Search Options</h3>
+        
+        <p>If Ignore Case is selected, the search will not be case-sensitive. If Include References is selected, then the verse reference will be part of the search string.</p>
+        
+        <p>With Include References turned off, the search string for Gen 1:1 is "¶ In the beginning God created the heaven and the earth. ".
+        <br/>With Include References turned on, the search string for Gen 1:1 is "Gen 1:1 ¶ In the beginning God created the heaven and the earth. ".</p>
+        
+        <p>In either case, the verse reference will be shown in the search results.</p>
+        
+        <h3>Left-to-Right Override</h3>
+        
+        <p>The button to the left of the search field is to toggle Left-to-Right Override.</p>
+        
+        <p>Mixing right-to-left Hebrew characters with regular expression syntax can get confusing.  Use Left-to-Right Override to show the Hebrew letters in reverse order so that you can see their logical relationship with the rest of the regular expression. Although the characters are displayed in reverse order, they will still match the text in their normal right-to-left order.</p>
+        
+        <p>Left-to-Right Override off: <code>\bאבר\w+</code> matches אברהם.</p>
+        
+        <p>Left-to-Right Override on: <code>&#x202D;\bאבר\w+&#x202C;</code> matches אברהם.  With the Hebrew characters shown in reverse order, we can see that the word boundary (\b) is followed by Aleph (א), and it will match one or more word-characters (\w+) that follow Resh (ר).</p>
+        
+        <h3>Linking Back to Accordance</h3>
+        
+        <p>Click individual verse references to open them in Accordance. Click the link button above the search results to open all verses in Accordance.  Because Accordance has a size limit for verse lists, a long verse list may be divided into sections. These will appear as a popup menu when you click the link button.</p>
+        
+        <p>The statistics table also has link buttons for each distinct hit.</p>
+        
+        <h3>Statistics Table</h3>
+        
+        <p>Right click the column headers to add or remove columns.</p>
+        
+        <p>If you select a row in the statistics table, you can use ⌘G and ⇧⌘G to highlight the matching hits in the search results area. You can also copy and paste these rows into another application.</a>
+        
+    </body>
+</html>

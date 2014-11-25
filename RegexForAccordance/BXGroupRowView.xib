@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="BXGroupRowViewController">
+            <connections>
+                <outlet property="groupRowView" destination="c22-O7-iKe" id="cEz-vn-K30"/>
+                <outlet property="view" destination="c22-O7-iKe" id="M1m-yq-xvy"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="BXGroupRowView">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="25"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c1f-hm-60f">
+                    <rect key="frame" x="5" y="4" width="40" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="ai5-Ou-TCH">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8h8-HT-Dau">
+                    <rect key="frame" x="97" y="6" width="199" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="123|132" allowsEditingTextAttributes="YES" id="pV2-Vi-N0p">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="c1f-hm-60f" secondAttribute="centerY" id="3AP-VW-B2q"/>
+                <constraint firstAttribute="trailing" secondItem="8h8-HT-Dau" secondAttribute="trailing" constant="7" id="9oo-fU-Z3w"/>
+                <constraint firstItem="8h8-HT-Dau" firstAttribute="centerY" secondItem="c1f-hm-60f" secondAttribute="centerY" id="AAy-sj-X98"/>
+                <constraint firstItem="c1f-hm-60f" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="7" id="bf7-rn-hmP"/>
+                <constraint firstItem="8h8-HT-Dau" firstAttribute="leading" secondItem="c1f-hm-60f" secondAttribute="trailing" constant="56" id="sUB-6P-bY6"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="c1f-hm-60f" secondAttribute="bottom" id="xfp-sE-1ME"/>
+            </constraints>
+            <connections>
+                <outlet property="badge" destination="8h8-HT-Dau" id="KK6-83-rMb"/>
+                <outlet property="label" destination="c1f-hm-60f" id="U7w-sO-iQU"/>
+            </connections>
+        </customView>
+    </objects>
+</document>

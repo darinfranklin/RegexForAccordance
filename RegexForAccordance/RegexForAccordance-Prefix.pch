@@ -1,0 +1,21 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#ifdef DEBUG
+#define LogDebug(format, ...) NSLog(@"DEBUG " format, ##__VA_ARGS__)
+#define LogInfo(format, ...) NSLog(@"INFO " format, ##__VA_ARGS__)
+#define LogWarning(format, ...) NSLog(@"WARNING " format, ##__VA_ARGS__)
+#define LogError(format, ...) NSLog(@"ERROR " format, ##__VA_ARGS__)
+#else
+#define LogDebug(format, ...)
+#define LogInfo(format, ...) NSLog(@"INFO " format, ##__VA_ARGS__)
+#define LogWarning(format, ...) NSLog(@"WARNING " format, ##__VA_ARGS__)
+#define LogError(format, ...) NSLog(@"ERROR " format, ##__VA_ARGS__)
+#endif
