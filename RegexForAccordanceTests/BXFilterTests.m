@@ -15,6 +15,7 @@
 #import "BXTextLanguage.h"
 #import "BXFilterGreekNormalizeToCompositeCharacters.h"
 #import "BXFilterGreekDiacritics.h"
+#import "BXFilterTransliterate.h"
 
 @interface BXFilterTests : XCTestCase
 
@@ -78,8 +79,8 @@
     BXFilterHebrewNormalizeToCompositeCharacters *f = [[BXFilterHebrewNormalizeToCompositeCharacters alloc] init];
     XCTAssertEqualObjects(@"\u05E9\u05C1", [f filter:@"\uFB2A"]); // SHIN WITH SHIN DOT
     XCTAssertEqualObjects(@"\u05E9\u05C2", [f filter:@"\uFB2B"]); // SHIN WITH SIN DOT
-    XCTAssertEqualObjects(@"\u05E9\u05C1\u05BC", [f filter:@"\uFB2C"]); // SHIN WITH SIN DOT AND DAGESH
-    XCTAssertEqualObjects(@"\u05E9\u05C2\u05BC", [f filter:@"\uFB2D"]); // SHIN WITH SIN DOT AND DAGESH
+    XCTAssertEqualObjects(@"\u05E9\u05BC\u05C1", [f filter:@"\uFB2C"]); // SHIN WITH SIN DOT AND DAGESH
+    XCTAssertEqualObjects(@"\u05E9\u05BC\u05C2", [f filter:@"\uFB2D"]); // SHIN WITH SIN DOT AND DAGESH
     XCTAssertEqualObjects(@"\u05E9\u05BC", [f filter:@"\uFB49"]); // SHIN WITH DAGESH
 }
 

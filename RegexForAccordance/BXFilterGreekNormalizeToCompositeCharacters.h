@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Darin Franklin. All rights reserved.
 //
 
-#import "BXFilterTransliterate.h"
+#import "BXFilter.h"
 
-@interface BXFilterGreekNormalizeToCompositeCharacters : BXFilterTransliterate
-
+@interface BXFilterGreekNormalizeToCompositeCharacters : NSObject<BXFilter>
+@property NSString *name;
+@property NSString *languageScriptTag;
+- (NSString *)filter:(NSString *)text;
 @end
