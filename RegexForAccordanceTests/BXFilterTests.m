@@ -10,10 +10,9 @@
 #import "BXFilterReplace.h"
 #import "BXFilterSpaces.h"
 #import "BXFilterTrailingSpaces.h"
-#import "BXFilterHebrewNormalizeToCompositeCharacters.h"
+#import "BXFilterDecomposeCharacters.h"
 #import "BXFilterHebrewPoints.h"
 #import "BXTextLanguage.h"
-#import "BXFilterGreekNormalizeToCompositeCharacters.h"
 #import "BXFilterGreekDiacritics.h"
 #import "BXFilterTransliterate.h"
 
@@ -63,10 +62,10 @@
     XCTAssertEqualObjects(@"AzByCx", [f filter:@"azbycx"]);
 }
 
-- (void)testNormalizeHebrewComposite
+- (void)testDecomposeHebrewCharacters
 {
     NSString *str = @"\uFB35";
-    BXFilterHebrewNormalizeToCompositeCharacters *f = [[BXFilterHebrewNormalizeToCompositeCharacters alloc] init];
+    BXFilterDecomposeCharacters *f = [[BXFilterDecomposeCharacters alloc] init];
     str = [f filter:str];
     XCTAssertEqualObjects(@"\u05D5\u05BC", str);
     BXFilterHebrewPoints *f2 = [[BXFilterHebrewPoints alloc] init];
@@ -76,7 +75,7 @@
 
 - (void)testShin
 {
-    BXFilterHebrewNormalizeToCompositeCharacters *f = [[BXFilterHebrewNormalizeToCompositeCharacters alloc] init];
+    BXFilterDecomposeCharacters *f = [[BXFilterDecomposeCharacters alloc] init];
     XCTAssertEqualObjects(@"\u05E9\u05C1", [f filter:@"\uFB2A"]); // SHIN WITH SHIN DOT
     XCTAssertEqualObjects(@"\u05E9\u05C2", [f filter:@"\uFB2B"]); // SHIN WITH SIN DOT
     XCTAssertEqualObjects(@"\u05E9\u05BC\u05C1", [f filter:@"\uFB2C"]); // SHIN WITH SIN DOT AND DAGESH
@@ -92,7 +91,7 @@
     NSString *exp = @"\u05D9\u05E9\u05E9\u05E9\u05E9\u05D0\u05D0\u05D0\u05D1\u05D2\u05D3\u05D4\u05D5\u05D6"
     @"\u05D8\u05D9\u05DA\u05DB\u05DC\u05DE\u05E0\u05E1\u05E3\u05E4\u05E6\u05E7\u05E8\u05E9\u05EA\u05D5"
     @"\u05D1\u05DB\u05E4";
-    BXFilterHebrewNormalizeToCompositeCharacters *f = [[BXFilterHebrewNormalizeToCompositeCharacters alloc] init];
+    BXFilterDecomposeCharacters *f = [[BXFilterDecomposeCharacters alloc] init];
     str = [f filter:str];
     BXFilterHebrewPoints *f2 = [[BXFilterHebrewPoints alloc] init];
     str = [f2 filter:str];
@@ -140,7 +139,7 @@
     "\u03B1\u0301\u03B5\u0301\u03B7\u0301\u03B9\u0301\u03C5\u0308\u0301"
     "\u03B9\u0308\u03C5\u0308"
     "\u03BF\u0301\u03C5\u0301\u03C9\u0301";
-    NSString *act = [[[BXFilterGreekNormalizeToCompositeCharacters alloc] init] filter:str];
+    NSString *act = [[[BXFilterDecomposeCharacters alloc] init] filter:str];
     XCTAssertEqualObjects(exp, act);
 }
 
@@ -152,7 +151,7 @@
     XCTAssertEqual(2, str.length);
     NSLog(@"%@ %ld =%04x%04x", str, str.length, [str characterAtIndex:0], [str characterAtIndex:1]);
     NSString *exp = @"\u03B9\u0308\u03C5\u0308";
-    NSString *act = [[[BXFilterGreekNormalizeToCompositeCharacters alloc] init] filter:str];
+    NSString *act = [[[BXFilterDecomposeCharacters alloc] init] filter:str];
     XCTAssertEqualObjects(exp, act);
 }
 
@@ -167,37 +166,37 @@
     XCTAssertEqualObjects(str, act);
 }
 
-- (void)normalizeSingleCharacter:(NSString *)str expected:(NSString *)exp
+- (void)decomposeSingleCharacter:(NSString *)str expected:(NSString *)exp
 {
     XCTAssertEqual(1, str.length);
     NSLog(@"%@ %ld =%04X", str, str.length, [str characterAtIndex:0]);
-    NSString *act = [[[BXFilterGreekNormalizeToCompositeCharacters alloc] init] filter:str];
+    NSString *act = [[[BXFilterDecomposeCharacters alloc] init] filter:str];
     XCTAssertEqualObjects(exp, act);
 }
 
 - (void)testGreekCompositeCharacters1F00Block
 {
-    [self normalizeSingleCharacter:@"\u1F08" expected:@"\u0391\u0313"]; // Alpha with psili -> Alpha psili
-    [self normalizeSingleCharacter:@"\u1F71" expected:@"\u03B1\u0301"]; // alpha with oxia -> alpha acute
-    [self normalizeSingleCharacter:@"\u03AC" expected:@"\u03B1\u0301"]; // alpha with tonos -> alpha acute
-    [self normalizeSingleCharacter:@"\u1F73" expected:@"\u03B5\u0301"]; // epsilon with oxia -> epsilon acute
-    [self normalizeSingleCharacter:@"\u1F75" expected:@"\u03B7\u0301"]; // eta with oxia -> eta acute
-    [self normalizeSingleCharacter:@"\u03AE" expected:@"\u03B7\u0301"]; // eta with tonos -> eta acute
-    [self normalizeSingleCharacter:@"\u1F77" expected:@"\u03B9\u0301"]; // iota with oxia -> iota acute
-    [self normalizeSingleCharacter:@"\u03CA" expected:@"\u03B9\u0308"]; // iota with dialytica -> iota dialytica
-    [self normalizeSingleCharacter:@"\u1FD3" expected:@"\u03B9\u0308\u0301"]; // iota with dialytica and oxia -> iota dialytica acute
-    [self normalizeSingleCharacter:@"\u1F79" expected:@"\u03BF\u0301"]; // omicron with oxia -> omicron acute
-    [self normalizeSingleCharacter:@"\u1F7B" expected:@"\u03C5\u0301"]; // upsilon with oxia -> upsilon acute
-    [self normalizeSingleCharacter:@"\u03CB" expected:@"\u03C5\u0308"]; // upsilon with dialytica -> upsilon dialytica
-    [self normalizeSingleCharacter:@"\u1FE3" expected:@"\u03C5\u0308\u0301"]; // upsilon with dialytica and oxia -> upsilon dialytica acute
-    [self normalizeSingleCharacter:@"\u03CE" expected:@"\u03C9\u0301"]; // omega with tonos -> omega acute
-    [self normalizeSingleCharacter:@"\u1F7D" expected:@"\u03C9\u0301"]; // omega with oxia -> omega acute
+    [self decomposeSingleCharacter:@"\u1F08" expected:@"\u0391\u0313"]; // Alpha with psili -> Alpha psili
+    [self decomposeSingleCharacter:@"\u1F71" expected:@"\u03B1\u0301"]; // alpha with oxia -> alpha acute
+    [self decomposeSingleCharacter:@"\u03AC" expected:@"\u03B1\u0301"]; // alpha with tonos -> alpha acute
+    [self decomposeSingleCharacter:@"\u1F73" expected:@"\u03B5\u0301"]; // epsilon with oxia -> epsilon acute
+    [self decomposeSingleCharacter:@"\u1F75" expected:@"\u03B7\u0301"]; // eta with oxia -> eta acute
+    [self decomposeSingleCharacter:@"\u03AE" expected:@"\u03B7\u0301"]; // eta with tonos -> eta acute
+    [self decomposeSingleCharacter:@"\u1F77" expected:@"\u03B9\u0301"]; // iota with oxia -> iota acute
+    [self decomposeSingleCharacter:@"\u03CA" expected:@"\u03B9\u0308"]; // iota with dialytica -> iota dialytica
+    [self decomposeSingleCharacter:@"\u1FD3" expected:@"\u03B9\u0308\u0301"]; // iota with dialytica and oxia -> iota dialytica acute
+    [self decomposeSingleCharacter:@"\u1F79" expected:@"\u03BF\u0301"]; // omicron with oxia -> omicron acute
+    [self decomposeSingleCharacter:@"\u1F7B" expected:@"\u03C5\u0301"]; // upsilon with oxia -> upsilon acute
+    [self decomposeSingleCharacter:@"\u03CB" expected:@"\u03C5\u0308"]; // upsilon with dialytica -> upsilon dialytica
+    [self decomposeSingleCharacter:@"\u1FE3" expected:@"\u03C5\u0308\u0301"]; // upsilon with dialytica and oxia -> upsilon dialytica acute
+    [self decomposeSingleCharacter:@"\u03CE" expected:@"\u03C9\u0301"]; // omega with tonos -> omega acute
+    [self decomposeSingleCharacter:@"\u1F7D" expected:@"\u03C9\u0301"]; // omega with oxia -> omega acute
 }
 
 - (void)testGreekCompositeCharacters0370Block
 {
     // \u03AF iota with tonos - as entered with Greek keyboard
-    [self normalizeSingleCharacter:@"\u03AF" expected:@"\u03B9\u0301"];
+    [self decomposeSingleCharacter:@"\u03AF" expected:@"\u03B9\u0301"];
 }
 
 - (void)testIfTextFieldChangesCompositeCharacters

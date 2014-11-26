@@ -48,7 +48,6 @@
 		932D676619B4FF9900222BB8 /* BXSearchFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 932D676519B4FF9900222BB8 /* BXSearchFieldFormatter.m */; };
 		933191A319E395E500F5C84C /* BXSearchResultHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 933191A219E395E500F5C84C /* BXSearchResultHighlighter.m */; };
 		933191A519EAF3FA00F5C84C /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 933191A419EAF3FA00F5C84C /* Help */; };
-		9337917919A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9337917819A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.m */; };
 		933AF7B119CFB8B50036CF7C /* BXFilterPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933AF7B019CFB8B50036CF7C /* BXFilterPopoverViewController.m */; };
 		93475AAD19A015F500882A88 /* BXStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 93475AAC19A015F500882A88 /* BXStatistics.m */; };
 		93475AAF19A0162E00882A88 /* BXStatisticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93475AAE19A0162E00882A88 /* BXStatisticsTests.m */; };
@@ -84,7 +83,7 @@
 		93FDF848199DC5D800BF3576 /* BXFilterSpaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF847199DC5D800BF3576 /* BXFilterSpaces.m */; };
 		93FDF84B199DC75F00BF3576 /* BXFilterHebrewCantillation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF84A199DC75F00BF3576 /* BXFilterHebrewCantillation.m */; };
 		93FDF851199DC93C00BF3576 /* BXFilterHebrewPunctuation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */; };
-		93FDF854199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF853199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.m */; };
+		93FDF854199DCB0900BF3576 /* BXFilterDecomposeCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,8 +163,6 @@
 		933191A119E395E500F5C84C /* BXSearchResultHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXSearchResultHighlighter.h; sourceTree = "<group>"; };
 		933191A219E395E500F5C84C /* BXSearchResultHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXSearchResultHighlighter.m; sourceTree = "<group>"; };
 		933191A419EAF3FA00F5C84C /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
-		9337917719A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterGreekNormalizeToCompositeCharacters.h; sourceTree = "<group>"; };
-		9337917819A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterGreekNormalizeToCompositeCharacters.m; sourceTree = "<group>"; };
 		933AF7AF19CFB8B50036CF7C /* BXFilterPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterPopoverViewController.h; sourceTree = "<group>"; };
 		933AF7B019CFB8B50036CF7C /* BXFilterPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterPopoverViewController.m; sourceTree = "<group>"; };
 		93475AAB19A015F500882A88 /* BXStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXStatistics.h; sourceTree = "<group>"; };
@@ -230,8 +227,8 @@
 		93FDF84A199DC75F00BF3576 /* BXFilterHebrewCantillation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewCantillation.m; sourceTree = "<group>"; };
 		93FDF84F199DC93C00BF3576 /* BXFilterHebrewPunctuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterHebrewPunctuation.h; sourceTree = "<group>"; };
 		93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewPunctuation.m; sourceTree = "<group>"; };
-		93FDF852199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterHebrewNormalizeToCompositeCharacters.h; sourceTree = "<group>"; };
-		93FDF853199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewNormalizeToCompositeCharacters.m; sourceTree = "<group>"; };
+		93FDF852199DCB0900BF3576 /* BXFilterDecomposeCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterDecomposeCharacters.h; sourceTree = "<group>"; };
+		93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterDecomposeCharacters.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,8 +382,6 @@
 		9337917519A464810071BD77 /* Hebrew */ = {
 			isa = PBXGroup;
 			children = (
-				93FDF852199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.h */,
-				93FDF853199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.m */,
 				93FDF849199DC75F00BF3576 /* BXFilterHebrewCantillation.h */,
 				93FDF84A199DC75F00BF3576 /* BXFilterHebrewCantillation.m */,
 				93B5D5591A2257A2008D22FD /* BXFilterHebrewPoints.h */,
@@ -402,8 +397,6 @@
 		9337917619A464930071BD77 /* Greek */ = {
 			isa = PBXGroup;
 			children = (
-				9337917719A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.h */,
-				9337917819A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.m */,
 				9317B2B819A570EF00186A77 /* BXFilterGreekDiacritics.h */,
 				9317B2B919A570EF00186A77 /* BXFilterGreekDiacritics.m */,
 				9317B2BB19A5750B00186A77 /* BXFilterGreekPunctuation.h */,
@@ -527,6 +520,8 @@
 				9337917519A464810071BD77 /* Hebrew */,
 				9337917619A464930071BD77 /* Greek */,
 				93D1573319983D910020CB14 /* BXFilter.h */,
+				93FDF852199DCB0900BF3576 /* BXFilterDecomposeCharacters.h */,
+				93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */,
 				93D1573019983D720020CB14 /* BXFilterReplace.h */,
 				93D1573119983D720020CB14 /* BXFilterReplace.m */,
 				93FDF846199DC5D800BF3576 /* BXFilterSpaces.h */,
@@ -680,7 +675,6 @@
 				9308FC1119945B9C00AB090C /* BXAppDelegate.m in Sources */,
 				93676F5F19E1A8DF00DAA51D /* BXSearchSettings.m in Sources */,
 				931A27B219948DA400DC3C27 /* BXVerseRef.m in Sources */,
-				9337917919A464DB0071BD77 /* BXFilterGreekNormalizeToCompositeCharacters.m in Sources */,
 				9308FC1319945B9C00AB090C /* BXLineSplitter.m in Sources */,
 				934E579419A96AFB006172AC /* BXDocument.m in Sources */,
 				939C166A19B39238009A46E4 /* BXAccLink.m in Sources */,
@@ -688,7 +682,7 @@
 				9308FC1619945B9C00AB090C /* BXTextLanguage.m in Sources */,
 				93080E79199741D100BA9685 /* BXSearchWindowController.m in Sources */,
 				93963DB11A21170C0091F71D /* BXFilterTrailingSpaces.m in Sources */,
-				93FDF854199DCB0900BF3576 /* BXFilterHebrewNormalizeToCompositeCharacters.m in Sources */,
+				93FDF854199DCB0900BF3576 /* BXFilterDecomposeCharacters.m in Sources */,
 				9317B75D19B41017001B3F0D /* BXPreferencesWindowController.m in Sources */,
 				9308FC1719945B9C00AB090C /* BXVerse.m in Sources */,
 				93FDF848199DC5D800BF3576 /* BXFilterSpaces.m in Sources */,

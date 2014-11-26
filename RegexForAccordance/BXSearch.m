@@ -11,15 +11,13 @@
 #import "BXFilter.h"
 #import "BXTextLanguage.h"
 #import "BXFilterHebrewDirectionalMarks.h"
-#import "BXFilterHebrewNormalizeToCompositeCharacters.h"
-#import "BXFilterGreekNormalizeToCompositeCharacters.h"
+#import "BXFilterDecomposeCharacters.h"
 
 @interface BXSearch()
 @property NSRegularExpression *searchRegex;
 @property NSRegularExpression *xformRegex;
 @property NSMutableArray *searchResults; // array of BXSearchResult
-@property id<BXFilter> greekCompositeFilter;
-@property id<BXFilter> hebrewCompositeFilter;
+@property id<BXFilter> filterDecomposeCharacters;
 @property id<BXFilter> hebrewDirectionalFilter;
 @property BOOL cancelled;
 @end
@@ -33,8 +31,7 @@
         _searchResults = [[NSMutableArray alloc] init];
         self.filters = [[NSMutableArray alloc] init];
         self.statisticsGroups = [[BXStatisticsGroups alloc] init];
-        self.hebrewCompositeFilter = [[BXFilterHebrewNormalizeToCompositeCharacters alloc] init];
-        self.greekCompositeFilter = [[BXFilterGreekNormalizeToCompositeCharacters alloc] init];
+        self.filterDecomposeCharacters = [[BXFilterDecomposeCharacters alloc] init];
         self.hebrewDirectionalFilter = [[BXFilterHebrewDirectionalMarks alloc] init];
         [self reset];
     }
@@ -59,8 +56,7 @@
     [self.filters removeAllObjects];
     if ([self useCompositeCharacters])
     {
-        [self addFilter:self.greekCompositeFilter];
-        [self addFilter:self.hebrewCompositeFilter];
+        [self addFilter:self.filterDecomposeCharacters];
     }
     [self addFilter:self.hebrewDirectionalFilter];
     self.cancelled = NO;
@@ -95,8 +91,7 @@
     }
     if ([self useCompositeCharacters])
     {
-        self.pattern = [self.greekCompositeFilter filter:self.pattern];
-        self.pattern = [self.hebrewCompositeFilter filter:self.pattern];
+        self.pattern = [self.filterDecomposeCharacters filter:self.pattern];
     }
     NSRegularExpressionOptions options = NSRegularExpressionUseUnicodeWordBoundaries;
     if (self.ignoreCase)

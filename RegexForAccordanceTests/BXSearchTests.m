@@ -14,7 +14,7 @@
 #import "BXFilterHebrewPoints.h"
 #import "BXFilterHebrewCantillation.h"
 #import "BXFilterHebrewPunctuation.h"
-#import "BXFilterGreekNormalizeToCompositeCharacters.h"
+#import "BXFilterDecomposeCharacters.h"
 
 @interface BXSearchTests : XCTestCase
 
@@ -201,7 +201,7 @@
     BXSearchResult *result = [searcher nextSearchResult];
     // NOTE: ϗ should be ※ (U+203B);  V should be ⸔ (U+2E14)
     NSString *exp = @"ϗ τίς οὐκ ἔγνω ἐν πᾶσι τούτοιςϗ ὅτι χεὶρ κυρίου ἐποίησεν ταῦτα; V ";
-    exp = [[[BXFilterGreekNormalizeToCompositeCharacters alloc] init] filter:exp];
+    exp = [[[BXFilterDecomposeCharacters alloc] init] filter:exp];
     XCTAssertTrue([result.verse.text rangeOfString:@"ϗ"].location != NSNotFound);
     XCTAssertTrue([result.verse.text rangeOfString:@"V"].location != NSNotFound);
     //XCTAssertEqualObjects(exp, result.verse.text);
