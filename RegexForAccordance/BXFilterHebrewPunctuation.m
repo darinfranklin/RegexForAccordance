@@ -14,11 +14,9 @@
 -(id)init
 {
     if (self = [super initWithName:@"Hebrew Remove Punctuation"
-                     searchPattern:@"[" HEB_PUNCTS @"]"
-                    replacePattern:@""
-                        ignoreCase:YES])
+                 languageScriptTag:@SCRIPT_TAG_HEBREW
+               charactersToRemove:[BXTextLanguage hebrewPunctuationCharacterSet]])
     {
-        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

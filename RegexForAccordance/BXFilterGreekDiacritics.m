@@ -11,14 +11,12 @@
 
 @implementation BXFilterGreekDiacritics
 
--(id)init
+- (id)init
 {
     if (self = [super initWithName:@"Greek Remove Diacritics"
-                     searchPattern:@"[" GRK_DIACRITICS "]"
-                    replacePattern:@""
-                        ignoreCase:YES])
+                 languageScriptTag:@SCRIPT_TAG_GREEK
+                charactersToRemove:[BXTextLanguage greekDiacriticsCharacterSet]])
     {
-        self.languageScriptTag = @SCRIPT_TAG_GREEK;
     }
     return self;
 }

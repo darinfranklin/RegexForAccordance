@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Darin Franklin. All rights reserved.
 //
 
-#import "BXFilterReplace.h"
+#import "BXFilterRemove.h"
 
-@interface BXFilterHebrewPunctuation : BXFilterReplace
+@interface BXFilterHebrewPunctuation : BXFilterRemove
 
 @end

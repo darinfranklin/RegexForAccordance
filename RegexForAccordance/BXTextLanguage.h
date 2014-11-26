@@ -39,5 +39,7 @@
 - (NSWritingDirection)writingDirectionForLanguageScriptTag:(NSString *)script;
 + (NSCharacterSet *)hebrewCantillationCharacterSet;
 + (NSCharacterSet *)hebrewPointsCharacterSet;
++ (NSCharacterSet *)hebrewPunctuationCharacterSet;
 + (NSCharacterSet *)greekDiacriticsCharacterSet;
++ (NSCharacterSet *)greekPunctuationCharacterSet;
 @end

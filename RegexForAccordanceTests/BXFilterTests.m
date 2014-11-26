@@ -12,9 +12,13 @@
 #import "BXFilterTrailingSpaces.h"
 #import "BXFilterDecomposeCharacters.h"
 #import "BXFilterHebrewPoints.h"
+#import "BXFilterHebrewCantillation.h"
 #import "BXTextLanguage.h"
 #import "BXFilterGreekDiacritics.h"
 #import "BXFilterTransliterate.h"
+#import "BXFilterHebrewPunctuation.h"
+#import "BXFilterGreekPunctuation.h"
+#import "BXFilterPilcrows.h"
 
 @interface BXFilterTests : XCTestCase
 
@@ -127,6 +131,27 @@
     XCTAssertEqualObjects(@"עַל", result);
 }
 
+- (void)testHebrewRemovePunctuation
+{
+    NSString *str = @"א\u05BEב\u05C0ג\u05C3ד\u05C4ה\u05C5ו\u05C6ז";
+    NSString *exp = @"אבגדהוז";
+    XCTAssertEqualObjects(exp, [[[BXFilterHebrewPunctuation alloc] init] filter:str]);
+}
+
+- (void)testGreekRemovePunctuation
+{
+    NSString *str = @"α.β,γ;δ·ε᾿ζ«η»θ_ι-κ\u2014λ";
+    NSString *exp = @"αβγδεζηθικλ";
+    XCTAssertEqualObjects(exp, [[[BXFilterGreekPunctuation alloc] init] filter:str]);
+}
+
+- (void)testRemovePilcrow
+{
+    NSString *str = @"¶ α¶ ¶β¶  .";
+    NSString *exp = @"α¶β ."; // "¶ " replaced by ""
+    XCTAssertEqualObjects(exp, [[[BXFilterPilcrows alloc] init] filter:str]);
+}
+
 - (void)testGreekCompositeCharacters
 {
     NSString *str = @"\u0386\u0388\u0389\u038A\u038C\u038E\u038F\u0390" // CAPITAL + TONOS
@@ -160,8 +185,6 @@
     // iota subscript 0345 matches iota 03B9
     NSString *str = @"αβγδεζηθικλμνξοπρστυφχψω ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ;.,;·᾿¶\u2014ῳ";
     BXFilterGreekDiacritics *f = [[BXFilterGreekDiacritics alloc] init];
-    XCTAssertEqualObjects(@"[" GRK_DIACRITICS "]", f.searchPattern);
-    XCTAssertEqualObjects(@"", f.replacePattern);
     NSString *act = [f filter:str];
     XCTAssertEqualObjects(str, act);
 }
@@ -204,6 +227,60 @@
     NSTextField *tf = [[NSTextField alloc] init];
     tf.stringValue = @"\u03B9\u0301";
     XCTAssertEqualObjects(@"\u03B9\u0301", tf.stringValue);
+}
+
+
+- (void)testPerformanceOfFilter:(id<BXFilter>)filter withString:(NSString *)string expecting:(NSString *)expected
+{
+    XCTAssertEqualObjects(expected, [filter filter:string]);
+    [self measureBlock:^{
+        for (int i = 0; i < 10000; i++)
+        {
+            [filter filter:string];
+        }
+    }];
+}
+
+
+- (void)testPerformanceOfRemoveSpaces
+{
+    [self testPerformanceOfFilter:[[BXFilterSpaces alloc] init]
+                             withString:@"And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters. "                              expecting:@"Andtheearthwaswithoutform,andvoid;anddarknesswasuponthefaceofthedeep.AndtheSpiritofGodmoveduponthefaceofthewaters."];
+}
+
+- (void)testPerformanceOfRemoveTrailingSpaces
+{
+    [self testPerformanceOfFilter:[[BXFilterTrailingSpaces alloc] init]
+                             withString:@"And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.  "
+                              expecting:@"And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters."];
+}
+
+- (void)testPerformanceOfRemovePilcrows
+{
+    [self testPerformanceOfFilter:[[BXFilterPilcrows alloc] init]
+                       withString:@"¶ The sons of Merari: ¶ Mahli and Mushi. ¶ The sons of Mahli: ¶ Eleazar and Kish. "
+                        expecting:@"The sons of Merari: Mahli and Mushi. The sons of Mahli: Eleazar and Kish. "];
+}
+
+- (void)testPerformanceOfRemoveGreekDiacritics
+{
+    [self testPerformanceOfFilter:[[BXFilterGreekDiacritics alloc] init]
+                             withString:@"κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ᾿ ὁ πέμψας με βαπτίζειν ἐν ὕδατι ἐκεῖνός μοι εἶπεν· ἐφ᾿ ὃν ἂν ἴδῃς τὸ πνεῦμα καταβαῖνον καὶ μένον ἐπ᾿ αὐτόν, οὗτός ἐστιν ὁ βαπτίζων ἐν πνεύματι ἁγίῳ."
+                              expecting:@"καγω ουκ ῃδειν αυτον, αλλ᾿ ο πεμψας με βαπτιζειν εν υδατι εκεινος μοι ειπεν· εφ᾿ ον αν ιδῃς το πνευμα καταβαινον και μενον επ᾿ αυτον, ουτος εστιν ο βαπτιζων εν πνευματι αγιῳ."];
+}
+
+- (void)testPerformanceOfRemoveHebrewCantillation
+{
+    [self testPerformanceOfFilter:[[BXFilterHebrewCantillation alloc] init]
+                       withString:@"יְהוָ֣ה ׀ אֱלֹהֵ֣י הַשָּׁמַ֗יִם אֲשֶׁ֨ר לְקָחַ֜נִי מִבֵּ֣ית אָבִי֮ וּמֵאֶ֣רֶץ מֽוֹלַדְתִּי֒ וַאֲשֶׁ֨ר דִּבֶּר־לִ֜י וַאֲשֶׁ֤ר נִֽשְׁבַּֽע־לִי֙ לֵאמֹ֔ר לְזַ֨רְעֲךָ֔ אֶתֵּ֖ן אֶת־הָאָ֣רֶץ הַזֹּ֑את ה֗וּא יִשְׁלַ֤ח מַלְאָכוֹ֙ לְפָנֶ֔יךָ וְלָקַחְתָּ֥ אִשָּׁ֛ה לִבְנִ֖י מִשָּֽׁם׃"
+                        expecting:@"יְהוָה ׀ אֱלֹהֵי הַשָּׁמַיִם אֲשֶׁר לְקָחַנִי מִבֵּית אָבִי וּמֵאֶרֶץ מֽוֹלַדְתִּי וַאֲשֶׁר דִּבֶּר־לִי וַאֲשֶׁר נִֽשְׁבַּֽע־לִי לֵאמֹר לְזַרְעֲךָ אֶתֵּן אֶת־הָאָרֶץ הַזֹּאת הוּא יִשְׁלַח מַלְאָכוֹ לְפָנֶיךָ וְלָקַחְתָּ אִשָּׁה לִבְנִי מִשָּֽׁם׃"];
+}
+
+- (void)testPerformanceOfRemoveHebrewPoints
+{
+    [self testPerformanceOfFilter:[[BXFilterHebrewPoints alloc] init]
+                       withString:@"יְהוָ֣ה ׀ אֱלֹהֵ֣י הַשָּׁמַ֗יִם אֲשֶׁ֨ר לְקָחַ֜נִי מִבֵּ֣ית אָבִי֮ וּמֵאֶ֣רֶץ מֽוֹלַדְתִּי֒ וַאֲשֶׁ֨ר דִּבֶּר־לִ֜י וַאֲשֶׁ֤ר נִֽשְׁבַּֽע־לִי֙ לֵאמֹ֔ר לְזַ֨רְעֲךָ֔ אֶתֵּ֖ן אֶת־הָאָ֣רֶץ הַזֹּ֑את ה֗וּא יִשְׁלַ֤ח מַלְאָכוֹ֙ לְפָנֶ֔יךָ וְלָקַחְתָּ֥ אִשָּׁ֛ה לִבְנִ֖י מִשָּֽׁם׃"
+                        expecting:@"יהו֣ה ׀ אלה֣י השמ֗ים אש֨ר לקח֜ני מב֣ית אבי֮ ומא֣רץ מולדתי֒ ואש֨ר דבר־ל֜י ואש֤ר נשבע־לי֙ לאמ֔ר לז֨רעך֔ את֖ן את־הא֣רץ הז֑את ה֗וא ישל֤ח מלאכו֙ לפנ֔יך ולקחת֥ אש֛ה לבנ֖י משם׃"];
 }
 
 @end

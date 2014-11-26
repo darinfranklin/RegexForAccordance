@@ -14,11 +14,9 @@
 -(id)init
 {
     if (self = [super initWithName:@"Hebrew Remove Cantillation"
-                     searchPattern:@"[" HEB_CANTIL @"]"
-                    replacePattern:@""
-                        ignoreCase:YES])
+                 languageScriptTag:@SCRIPT_TAG_HEBREW
+                charactersToRemove:[BXTextLanguage hebrewCantillationCharacterSet]])
     {
-        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

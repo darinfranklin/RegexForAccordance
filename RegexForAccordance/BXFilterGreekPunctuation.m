@@ -11,14 +11,12 @@
 
 @implementation BXFilterGreekPunctuation
 
--(id)init
+- (id)init
 {
     if (self = [super initWithName:@"Greek Remove Punctuation"
-                     searchPattern:@"[" GRK_PUNCTS @"]"
-                    replacePattern:@""
-                        ignoreCase:YES])
+                 languageScriptTag:@SCRIPT_TAG_GREEK
+                     charactersToRemove:[BXTextLanguage greekPunctuationCharacterSet]])
     {
-        self.languageScriptTag = @SCRIPT_TAG_GREEK;
     }
     return self;
 }

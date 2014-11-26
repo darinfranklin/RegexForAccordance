@@ -14,11 +14,9 @@
 -(id)init
 {
     if (self = [super initWithName:@"Hebrew Remove Directional Marks"
-                     searchPattern:@"[" LRM RLM @"]"
-                    replacePattern:@""
-                        ignoreCase:YES])
+                 languageScriptTag:@SCRIPT_TAG_HEBREW
+                charactersToRemove:[NSCharacterSet characterSetWithCharactersInString:@LRM RLM]])
     {
-        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

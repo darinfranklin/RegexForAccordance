@@ -10,7 +10,9 @@
 
 static NSCharacterSet *hebrewCantillationCharacterSet = nil;
 static NSCharacterSet *hebrewPointsCharacterSet = nil;
+static NSCharacterSet *hebrewPunctuationCharacterSet = nil;
 static NSCharacterSet *greekDiacriticsCharacterSet = nil;
+static NSCharacterSet *greekPunctuationCharacterSet = nil;
 
 @interface BXTextLanguage ()
     @property NSRegularExpression *hebRegex;
@@ -119,6 +121,18 @@ static NSCharacterSet *greekDiacriticsCharacterSet = nil;
     return hebrewPointsCharacterSet;
 }
 
++ (NSCharacterSet *)hebrewPunctuationCharacterSet
+{
+    // HEB_PUNCTS "\\u05BE\\u05C0\\u05C3-\\u05C6"
+    if (hebrewPunctuationCharacterSet == nil)
+    {
+        NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
+        [charSet addCharactersInString:@"\u05BE\u05C0\u05C3\u05C4\u05C5\u05C6"];
+        hebrewPunctuationCharacterSet = charSet;
+    }
+    return hebrewPunctuationCharacterSet;
+}
+
 + (NSCharacterSet *)greekDiacriticsCharacterSet
 {
     // GRK_DIACRITICS "\\u0300-\\u0344\u0346-\\u036F" // U+0345 is iota subscript, which regex matches to iota U+03B9
@@ -131,6 +145,18 @@ static NSCharacterSet *greekDiacriticsCharacterSet = nil;
         greekDiacriticsCharacterSet = charSet;
     }
     return greekDiacriticsCharacterSet;
+}
+
++ (NSCharacterSet *)greekPunctuationCharacterSet
+{
+    // GRK_PUNCTS ".,;·᾿«»_\\u002D\\u2014" // U+2014 EM DASH; U+002D -
+    if (greekPunctuationCharacterSet == nil)
+    {
+        NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
+        [charSet addCharactersInString:@".,;·᾿«»_-\u2014"];
+        greekPunctuationCharacterSet = charSet;
+    }
+    return greekPunctuationCharacterSet;
 }
 
 @end

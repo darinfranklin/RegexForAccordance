@@ -40,17 +40,11 @@
 {
     if (isEnabled)
     {
-        if (![searcher.filters containsObject:filter])
-        {
-            [searcher addFilter:filter];
-        }
+        [searcher addFilter:filter];
     }
     else
     {
-        if ([searcher.filters containsObject:filter])
-        {
-            [searcher removeFilter:filter];
-        }
+        [searcher removeFilter:filter];
     }
 }
 

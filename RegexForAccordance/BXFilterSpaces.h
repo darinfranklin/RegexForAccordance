@@ -6,10 +6,8 @@
 //  Copyright (c) 2014 Darin Franklin. All rights reserved.
 //
 
-#import "BXFilterReplace.h"
+#import "BXFilterRemove.h"
 
-@interface BXFilterSpaces : BXFilterReplace
-
-- (id) init;
+@interface BXFilterSpaces : BXFilterRemove
 
 @end

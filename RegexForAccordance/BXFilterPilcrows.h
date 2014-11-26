@@ -10,7 +10,4 @@
 #import "BXFilterReplace.h"
 
 @interface BXFilterPilcrows : BXFilterReplace
-
-- (id) init;
-
 @end

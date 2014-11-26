@@ -12,7 +12,19 @@
 
 - (id) init
 {
-    return [super initWithName:@"Remove Trailing Spaces" searchPattern:@"\\s+$" replacePattern:@"" ignoreCase:YES];
+    return [super initWithName:@"Remove Trailing Spaces"
+             languageScriptTag:nil
+            charactersToRemove:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString *)filter:(NSString *)text
+{
+    NSUInteger length = text.length;
+    while (length > 0 && [self.characterSetToRemove characterIsMember:[text characterAtIndex:length - 1]])
+    {
+        length--;
+    }
+    return [text substringToIndex:length];
 }
 
 @end

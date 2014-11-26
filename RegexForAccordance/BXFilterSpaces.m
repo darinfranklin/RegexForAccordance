@@ -12,7 +12,9 @@
 
 - (id) init
 {
-    return [super initWithName:@"Remove Spaces" searchPattern:@" " replacePattern:@"" ignoreCase:YES];
+    return [super initWithName:@"Remove Spaces"
+             languageScriptTag:nil
+            charactersToRemove:[NSCharacterSet characterSetWithCharactersInString:@" "]];
 }
 
 @end

@@ -41,6 +41,7 @@
         {
             XCTAssertEqualObjects(@"Gen 1:1", [[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1].stringValue);
         }
-    }];}
+    }];
+}
 
 @end

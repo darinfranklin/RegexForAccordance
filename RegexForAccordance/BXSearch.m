@@ -20,6 +20,7 @@
 @property id<BXFilter> filterDecomposeCharacters;
 @property id<BXFilter> hebrewDirectionalFilter;
 @property BOOL cancelled;
+@property NSMutableArray *filters;
 @end
 
 @implementation BXSearch
@@ -146,14 +147,20 @@
 
 - (void)addFilter:(id<BXFilter>)filter
 {
-    LogDebug(@"Add filter: %@", filter.name);
-    [self.filters addObject:filter];
+    if (![self.filters containsObject:filter])
+    {
+        LogDebug(@"Add filter: %@", filter.name);
+        [self.filters addObject:filter];
+    }
 }
 
 - (void)removeFilter:(id<BXFilter>)filter
 {
-    LogDebug(@"Remove filter: %@", filter.name);
-    [self.filters removeObject:filter];
+    if ([self.filters containsObject:filter])
+    {
+        LogDebug(@"Remove filter: %@", filter.name);
+        [self.filters removeObject:filter];
+    }
 }
 
 - (NSString *)applyFilters:(NSString *)text

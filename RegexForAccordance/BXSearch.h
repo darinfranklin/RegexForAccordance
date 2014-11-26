@@ -17,7 +17,6 @@
 @interface BXSearch : NSObject
 @property BXAccVerseFetcher *fetcher;
 @property NSString *pattern;
-@property NSMutableArray *filters;
 @property BXStatisticsGroups *statisticsGroups;
 @property (readonly) NSError *error;
 @property BOOL ignoreCase;

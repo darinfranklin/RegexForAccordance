@@ -14,11 +14,9 @@
 -(id)init
 {
     if (self = [super initWithName:@"Hebrew Remove Points"
-                     searchPattern:@"[" HEB_POINTS @"]"
-                    replacePattern:@""
-                        ignoreCase:YES])
+                 languageScriptTag:@SCRIPT_TAG_HEBREW
+                charactersToRemove:[BXTextLanguage hebrewPointsCharacterSet]])
     {
-        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

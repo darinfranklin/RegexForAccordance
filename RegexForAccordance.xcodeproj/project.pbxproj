@@ -43,6 +43,7 @@
 		931A27B71994920D00DC3C27 /* BXVerseRefConsolidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 931A27B61994920D00DC3C27 /* BXVerseRefConsolidator.m */; };
 		931A27BA1994A36100DC3C27 /* BXLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 931A27B91994A36100DC3C27 /* BXLineParser.m */; };
 		931A27BC1994A3E000DC3C27 /* BXLineParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 931A27BB1994A3E000DC3C27 /* BXLineParserTests.m */; };
+		931F51A51A25876D006774A3 /* BXFilterRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = 931F51A41A25876D006774A3 /* BXFilterRemove.m */; };
 		9323356D19B033EA00FFADCF /* BXSearchFieldFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9323356C19B033EA00FFADCF /* BXSearchFieldFormatterTests.m */; };
 		9323357019B0374800FFADCF /* BXStatisticsGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 9323356F19B0374800FFADCF /* BXStatisticsGroups.m */; };
 		932D676619B4FF9900222BB8 /* BXSearchFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 932D676519B4FF9900222BB8 /* BXSearchFieldFormatter.m */; };
@@ -155,6 +156,8 @@
 		931A27B81994A36100DC3C27 /* BXLineParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXLineParser.h; sourceTree = "<group>"; };
 		931A27B91994A36100DC3C27 /* BXLineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXLineParser.m; sourceTree = "<group>"; };
 		931A27BB1994A3E000DC3C27 /* BXLineParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXLineParserTests.m; sourceTree = "<group>"; };
+		931F51A31A25876D006774A3 /* BXFilterRemove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterRemove.h; sourceTree = "<group>"; };
+		931F51A41A25876D006774A3 /* BXFilterRemove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterRemove.m; sourceTree = "<group>"; };
 		9323356C19B033EA00FFADCF /* BXSearchFieldFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXSearchFieldFormatterTests.m; sourceTree = "<group>"; };
 		9323356E19B0374800FFADCF /* BXStatisticsGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXStatisticsGroups.h; sourceTree = "<group>"; };
 		9323356F19B0374800FFADCF /* BXStatisticsGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXStatisticsGroups.m; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */,
 				93D1573019983D720020CB14 /* BXFilterReplace.h */,
 				93D1573119983D720020CB14 /* BXFilterReplace.m */,
+				931F51A31A25876D006774A3 /* BXFilterRemove.h */,
+				931F51A41A25876D006774A3 /* BXFilterRemove.m */,
 				93FDF846199DC5D800BF3576 /* BXFilterSpaces.h */,
 				93FDF847199DC5D800BF3576 /* BXFilterSpaces.m */,
 				93963DAF1A21170C0091F71D /* BXFilterTrailingSpaces.h */,
@@ -672,6 +677,7 @@
 				931A27B71994920D00DC3C27 /* BXVerseRefConsolidator.m in Sources */,
 				9323357019B0374800FFADCF /* BXStatisticsGroups.m in Sources */,
 				933191A319E395E500F5C84C /* BXSearchResultHighlighter.m in Sources */,
+				931F51A51A25876D006774A3 /* BXFilterRemove.m in Sources */,
 				9308FC1119945B9C00AB090C /* BXAppDelegate.m in Sources */,
 				93676F5F19E1A8DF00DAA51D /* BXSearchSettings.m in Sources */,
 				931A27B219948DA400DC3C27 /* BXVerseRef.m in Sources */,

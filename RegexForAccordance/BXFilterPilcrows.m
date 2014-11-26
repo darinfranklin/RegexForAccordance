@@ -12,7 +12,12 @@
 
 - (id) init
 {
-    return [super initWithName:@"Remove Pilcrows" searchPattern:@"¶\\s*" replacePattern:@"" ignoreCase:YES];
+    return [super initWithName:@"Remove Pilcrows" searchPattern:@"¶ " replacePattern:@"" ignoreCase:YES];
+}
+
+- (NSString *)filter:(NSString *)text
+{
+    return [text stringByReplacingOccurrencesOfString:self.searchPattern withString:self.replacePattern];
 }
 
 @end
