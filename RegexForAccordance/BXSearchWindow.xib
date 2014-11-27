@@ -490,8 +490,8 @@
                 <outlet property="hebrewPoints" destination="yOG-8o-86N" id="5tT-KY-NTq"/>
                 <outlet property="hebrewPunctuation" destination="IXF-8u-Qxn" id="5ug-lE-2PF"/>
                 <outlet property="pilcrows" destination="jI8-F3-nGS" id="9Is-Jb-TTG"/>
-                <outlet property="spaces" destination="2aY-hr-kaQ" id="Ak4-R7-OYO"/>
-                <outlet property="trailingSpaces" destination="iFY-tx-rvA" id="zF7-GM-pCO"/>
+                <outlet property="spaces" destination="iFY-tx-rvA" id="fXM-3M-OFC"/>
+                <outlet property="trailingSpaces" destination="2aY-hr-kaQ" id="sKl-4h-SBf"/>
                 <outlet property="view" destination="HBx-sr-Wi8" id="AvC-nu-Zj7"/>
             </connections>
         </viewController>
@@ -501,12 +501,12 @@
             </connections>
         </popover>
         <customView id="HBx-sr-Wi8" userLabel="Filter Popover View">
-            <rect key="frame" x="0.0" y="0.0" width="187" height="276"/>
+            <rect key="frame" x="0.0" y="0.0" width="161" height="276"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="iFY-tx-rvA">
-                    <rect key="frame" x="18" y="175" width="109" height="18"/>
-                    <buttonCell key="cell" type="check" title="Trailing Space" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="HG0-NA-4B6">
+                    <rect key="frame" x="18" y="175" width="88" height="18"/>
+                    <buttonCell key="cell" type="check" title="All Spaces" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="HG0-NA-4B6">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -515,8 +515,8 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="PE7-VX-WVa">
-                    <rect key="frame" x="18" y="128" width="146" height="18"/>
-                    <buttonCell key="cell" type="check" title="Remove Cantillation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="QIx-lB-yab">
+                    <rect key="frame" x="18" y="128" width="92" height="18"/>
+                    <buttonCell key="cell" type="check" title="Cantillation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="QIx-lB-yab">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -525,8 +525,8 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="yOG-8o-86N">
-                    <rect key="frame" x="18" y="108" width="115" height="18"/>
-                    <buttonCell key="cell" type="check" title="Remove Points" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="udA-B0-vrh">
+                    <rect key="frame" x="18" y="108" width="61" height="18"/>
+                    <buttonCell key="cell" type="check" title="Points" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="udA-B0-vrh">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -535,8 +535,8 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="IXF-8u-Qxn">
-                    <rect key="frame" x="18" y="88" width="151" height="18"/>
-                    <buttonCell key="cell" type="check" title="Remove Punctuation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="w2C-eV-hIg">
+                    <rect key="frame" x="18" y="88" width="96" height="18"/>
+                    <buttonCell key="cell" type="check" title="Punctuation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="w2C-eV-hIg">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -544,17 +544,9 @@
                         <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="Kqe-5O-Wls"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-bU-U5r">
-                    <rect key="frame" x="18" y="152" width="55" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hebrew" id="SqD-n7-ne7">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="UxE-GW-bLB">
-                    <rect key="frame" x="18" y="41" width="134" height="18"/>
-                    <buttonCell key="cell" type="check" title="Remove Diacritics" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="njn-Ao-6I2">
+                    <rect key="frame" x="18" y="41" width="80" height="18"/>
+                    <buttonCell key="cell" type="check" title="Diacritics" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="njn-Ao-6I2">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -563,8 +555,8 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="HgR-x9-E4q">
-                    <rect key="frame" x="18" y="21" width="151" height="18"/>
-                    <buttonCell key="cell" type="check" title="Remove Punctuation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="X4u-CE-46W">
+                    <rect key="frame" x="18" y="21" width="96" height="18"/>
+                    <buttonCell key="cell" type="check" title="Punctuation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="X4u-CE-46W">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -573,24 +565,24 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-ru-bbH">
-                    <rect key="frame" x="18" y="65" width="43" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Greek" id="mpD-dp-ITn">
+                    <rect key="frame" x="18" y="65" width="114" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Greek…" id="mpD-dp-ITn">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vy-xd-ooy">
-                    <rect key="frame" x="18" y="239" width="134" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Characters" id="WA6-yC-nCa">
+                    <rect key="frame" x="18" y="239" width="71" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove…" id="WA6-yC-nCa">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="jI8-F3-nGS">
-                    <rect key="frame" x="18" y="215" width="80" height="18"/>
-                    <buttonCell key="cell" type="check" title="¶ Pilcrow" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="w7a-UF-OYo">
+                    <rect key="frame" x="18" y="215" width="87" height="18"/>
+                    <buttonCell key="cell" type="check" title="¶ Pilcrows" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="w7a-UF-OYo">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -599,8 +591,8 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="2aY-hr-kaQ">
-                    <rect key="frame" x="18" y="195" width="61" height="18"/>
-                    <buttonCell key="cell" type="check" title="Space" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="hFs-qd-kmc">
+                    <rect key="frame" x="18" y="195" width="116" height="18"/>
+                    <buttonCell key="cell" type="check" title="Trailing Spaces" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="hFs-qd-kmc">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -608,6 +600,14 @@
                         <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="Rvm-KZ-hiY"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-bU-U5r">
+                    <rect key="frame" x="18" y="152" width="125" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Hebrew…" id="SqD-n7-ne7">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="jI8-F3-nGS" firstAttribute="leading" secondItem="2vy-xd-ooy" secondAttribute="leading" id="2As-VQ-7xy"/>
@@ -633,7 +633,7 @@
                 <constraint firstItem="C4i-ru-bbH" firstAttribute="leading" secondItem="HgR-x9-E4q" secondAttribute="leading" id="v4l-o6-6W0"/>
                 <constraint firstItem="e3K-bU-U5r" firstAttribute="top" secondItem="iFY-tx-rvA" secondAttribute="bottom" constant="8" symbolic="YES" id="xLh-U3-SN8"/>
             </constraints>
-            <point key="canvasLocation" x="137.5" y="335"/>
+            <point key="canvasLocation" x="126.5" y="754"/>
         </customView>
     </objects>
     <resources>
