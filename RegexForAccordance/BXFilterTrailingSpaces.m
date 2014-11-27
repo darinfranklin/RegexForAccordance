@@ -12,9 +12,7 @@
 
 - (id) init
 {
-    return [super initWithName:@"Remove Trailing Spaces"
-             languageScriptTag:nil
-            charactersToRemove:[NSCharacterSet whitespaceCharacterSet]];
+    return [super initWithName:@"Remove Trailing Spaces" charactersToRemove:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 - (NSString *)filter:(NSString *)text

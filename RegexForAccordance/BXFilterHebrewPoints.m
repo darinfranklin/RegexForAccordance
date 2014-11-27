@@ -11,12 +11,11 @@
 
 @implementation BXFilterHebrewPoints
 
--(id)init
+- (id)init
 {
-    if (self = [super initWithName:@"Hebrew Remove Points"
-                 languageScriptTag:@SCRIPT_TAG_HEBREW
-                charactersToRemove:[BXTextLanguage hebrewPointsCharacterSet]])
+    if (self = [super initWithName:@"Hebrew Remove Points" charactersToRemove:[BXTextLanguage hebrewPointsCharacterSet]])
     {
+        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

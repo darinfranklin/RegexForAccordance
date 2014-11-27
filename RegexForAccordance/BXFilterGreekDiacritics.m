@@ -13,10 +13,9 @@
 
 - (id)init
 {
-    if (self = [super initWithName:@"Greek Remove Diacritics"
-                 languageScriptTag:@SCRIPT_TAG_GREEK
-                charactersToRemove:[BXTextLanguage greekDiacriticsCharacterSet]])
+    if (self = [super initWithName:@"Greek Remove Diacritics" charactersToRemove:[BXTextLanguage greekDiacriticsCharacterSet]])
     {
+        self.languageScriptTag = @SCRIPT_TAG_GREEK;
     }
     return self;
 }

@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BXFilter.h"
 
-@interface BXFilterTransliterate : NSObject <BXFilter>
-@property NSString *name;
-@property NSString *languageScriptTag;
+@interface BXFilterTransliterate : BXFilter
 @property NSDictionary *map;
--(id)initWithName:(NSString *)name searchPattern:(NSString *)searchPattern replacePattern:(NSString *)replacePattern;
--(id)initWithName:(NSString *)name searchReplaceMap:(NSDictionary *)map;
-- (NSString *)filter:(NSString *)text;
+- (id)initWithName:(NSString *)name searchPattern:(NSString *)searchPattern replacePattern:(NSString *)replacePattern;
+- (id)initWithName:(NSString *)name searchReplaceMap:(NSDictionary *)map;
 @end

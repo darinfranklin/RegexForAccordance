@@ -15,6 +15,7 @@
 #import "BXFilterHebrewCantillation.h"
 #import "BXFilterHebrewPunctuation.h"
 #import "BXFilterDecomposeCharacters.h"
+#import "BXFilter.h"
 
 @interface BXSearchTests : XCTestCase
 
@@ -150,6 +151,21 @@
     XCTAssertEqualObjects(@"There!otheships::thereisthatle?iathan,,whomthouhastmadetoplaytherein..", [[result verse] text]);
 }
 
+- (void)testAddRemoveFilters
+{
+    BXSearch *searcher = [[BXSearch alloc] init];
+    XCTAssertEqual(2, searcher.filters.count);
+    [searcher addFilter:[[BXFilter alloc] initWithName:@"one"]];
+    [searcher addFilter:[[BXFilter alloc] initWithName:@"two"]];
+    [searcher addFilter:[[BXFilter alloc] initWithName:@"three"]];
+    XCTAssertEqual(5, searcher.filters.count);
+    [searcher addFilter:[[BXFilter alloc] initWithName:@"one"]];
+    XCTAssertEqual(5, searcher.filters.count);
+    [searcher removeFilter:[[BXFilter alloc] initWithName:@"one"]];
+    XCTAssertEqual(4, searcher.filters.count);
+    [searcher removeFilter:[[BXFilter alloc] initWithName:@"one"]];
+    XCTAssertEqual(4, searcher.filters.count);
+}
 
 - (void)testSearchFullRange
 {

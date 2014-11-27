@@ -10,12 +10,10 @@
 
 @implementation BXFilterRemove
 
-- (id)initWithName:(NSString *)name languageScriptTag:(NSString *)languageScriptTag charactersToRemove:(NSCharacterSet *)characterSet
+- (id)initWithName:(NSString *)name charactersToRemove:(NSCharacterSet *)characterSet
 {
-    if (self = [super init])
+    if (self = [super initWithName:name])
     {
-        self.languageScriptTag = languageScriptTag;
-        self.name = name;
         self.characterSetToRemove = characterSet;
     }
     return self;

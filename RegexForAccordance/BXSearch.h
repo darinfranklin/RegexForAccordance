@@ -29,7 +29,8 @@
 - (BXSearchResult *)nextSearchResult;
 - (void)cancelSearch;
 - (BOOL)hasValidSearchPattern;
--(void)addFilter:(id<BXFilter>)filter;
-- (void)removeFilter:(id<BXFilter>)filter;
+- (void)addFilter:(BXFilter *)filter;
+- (void)removeFilter:(BXFilter *)filter;
+- (NSArray *)filters;
 - (NSArray *)searchResults;
 @end

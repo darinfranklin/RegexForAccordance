@@ -9,10 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BXFilter.h"
 
-@interface BXFilterRemove : NSObject<BXFilter>
-@property NSString *name;
-@property NSString *languageScriptTag;
+@interface BXFilterRemove : BXFilter
 @property NSCharacterSet *characterSetToRemove;
-- (NSString *)filter:(NSString *)text;
-- (id)initWithName:(NSString *)name languageScriptTag:(NSString *)languageScriptTag charactersToRemove:(NSCharacterSet *)characterSet;
+- (id)initWithName:(NSString *)name charactersToRemove:(NSCharacterSet *)characterSet;
 @end

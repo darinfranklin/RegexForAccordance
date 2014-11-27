@@ -11,11 +11,10 @@
 
 @implementation BXFilterDecomposeCharacters
 
--(id)init
+- (id)init
 {
-    if (self = [super init])
+    if (self = [super initWithName:@"Decompose Characters"])
     {
-        self.name = @"Decompose Characters";
     }
     return self;
 }

@@ -12,9 +12,8 @@
 
 - (id)initWithName:(NSString *)name transform:(CFStringRef)transform;
 {
-    if (self = [super init])
+    if (self = [super initWithName:name])
     {
-        self.name = name;
         self.transform = transform;
     }
     return self;

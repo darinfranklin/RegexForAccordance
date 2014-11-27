@@ -8,8 +8,5 @@
 
 #import "BXFilter.h"
 
-@interface BXFilterDecomposeCharacters : NSObject<BXFilter>
-@property NSString *name;
-@property NSString *languageScriptTag;
-- (NSString *)filter:(NSString *)text;
+@interface BXFilterDecomposeCharacters : BXFilter
 @end

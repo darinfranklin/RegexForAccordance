@@ -36,7 +36,7 @@
 }
 
 
-- (void)setFilter:(id<BXFilter>)filter inSearcher:(BXSearch *)searcher enabled:(BOOL)isEnabled
+- (void)setFilter:(BXFilter *)filter inSearcher:(BXSearch *)searcher enabled:(BOOL)isEnabled
 {
     if (isEnabled)
     {

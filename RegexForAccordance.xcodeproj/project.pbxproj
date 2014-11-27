@@ -60,6 +60,7 @@
 		935E3AE019C2A573007A635A /* BXGroupRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 935E3ADF19C2A573007A635A /* BXGroupRowView.m */; };
 		93613DD419AC2C7400968843 /* BXStatisticsDatasourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93613DD319AC2C7400968843 /* BXStatisticsDatasourceTests.m */; };
 		93676F5F19E1A8DF00DAA51D /* BXSearchSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 93676F5E19E1A8DF00DAA51D /* BXSearchSettings.m */; };
+		936CA3351A26D96F00C27A7F /* BXFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 936CA3341A26D96F00C27A7F /* BXFilter.m */; };
 		9387CA8F19B1910800129B96 /* BXTestSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387CA8E19B1910800129B96 /* BXTestSearchResult.m */; };
 		93963DB11A21170C0091F71D /* BXFilterTrailingSpaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 93963DB01A21170C0091F71D /* BXFilterTrailingSpaces.m */; };
 		93984F6A19873CA70034CB53 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93984F6919873CA70034CB53 /* Cocoa.framework */; };
@@ -184,6 +185,7 @@
 		93613DD319AC2C7400968843 /* BXStatisticsDatasourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXStatisticsDatasourceTests.m; sourceTree = "<group>"; };
 		93676F5D19E1A8DF00DAA51D /* BXSearchSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXSearchSettings.h; sourceTree = "<group>"; };
 		93676F5E19E1A8DF00DAA51D /* BXSearchSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXSearchSettings.m; sourceTree = "<group>"; };
+		936CA3341A26D96F00C27A7F /* BXFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilter.m; sourceTree = "<group>"; };
 		9387CA8D19B1910800129B96 /* BXTestSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXTestSearchResult.h; sourceTree = "<group>"; };
 		9387CA8E19B1910800129B96 /* BXTestSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXTestSearchResult.m; sourceTree = "<group>"; };
 		93963DAF1A21170C0091F71D /* BXFilterTrailingSpaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterTrailingSpaces.h; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				9337917519A464810071BD77 /* Hebrew */,
 				9337917619A464930071BD77 /* Greek */,
 				93D1573319983D910020CB14 /* BXFilter.h */,
+				936CA3341A26D96F00C27A7F /* BXFilter.m */,
 				93FDF852199DCB0900BF3576 /* BXFilterDecomposeCharacters.h */,
 				93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */,
 				93D1573019983D720020CB14 /* BXFilterReplace.h */,
@@ -699,6 +702,7 @@
 				931A27BA1994A36100DC3C27 /* BXLineParser.m in Sources */,
 				93AF6A9619AE8359006A8328 /* BXSearchResultHit.m in Sources */,
 				93D1573219983D720020CB14 /* BXFilterReplace.m in Sources */,
+				936CA3351A26D96F00C27A7F /* BXFilter.m in Sources */,
 				9308FC1219945B9C00AB090C /* BXFontSelector.m in Sources */,
 				9308FC1419945B9C00AB090C /* BXSearch.m in Sources */,
 				9317B2BA19A570EF00186A77 /* BXFilterGreekDiacritics.m in Sources */,

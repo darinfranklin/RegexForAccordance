@@ -15,9 +15,8 @@
 
 -(id)initWithName:(NSString *)name searchPattern:(NSString *)searchPattern replacePattern:(NSString *)replacePattern ignoreCase:(BOOL)ignoreCase
 {
-    if (self = [super init])
+    if (self = [super initWithName:name])
     {
-        [self setName:name];
         [self setSearchPattern:searchPattern];
         [self setReplacePattern:replacePattern];
         [self setIgnoreCase:ignoreCase];

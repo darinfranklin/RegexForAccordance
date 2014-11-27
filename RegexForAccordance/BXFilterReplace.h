@@ -9,12 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BXFilter.h"
 
-@interface BXFilterReplace : NSObject <BXFilter>
-@property NSString *name;
-@property NSString *languageScriptTag;
+@interface BXFilterReplace : BXFilter
 @property NSString *searchPattern;
 @property NSString *replacePattern;
 @property BOOL ignoreCase;
-- (NSString *)filter:(NSString *)text;
 -(id)initWithName:(NSString *)name searchPattern:(NSString *)searchPattern replacePattern:(NSString *)replacePattern ignoreCase:(BOOL)ignoreCase;
 @end

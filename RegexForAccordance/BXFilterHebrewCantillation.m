@@ -11,12 +11,11 @@
 
 @implementation BXFilterHebrewCantillation
 
--(id)init
+- (id)init
 {
-    if (self = [super initWithName:@"Hebrew Remove Cantillation"
-                 languageScriptTag:@SCRIPT_TAG_HEBREW
-                charactersToRemove:[BXTextLanguage hebrewCantillationCharacterSet]])
+    if (self = [super initWithName:@"Hebrew Remove Cantillation" charactersToRemove:[BXTextLanguage hebrewCantillationCharacterSet]])
     {
+        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

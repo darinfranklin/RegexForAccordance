@@ -116,7 +116,7 @@
 - (void)testMaqefIsWordBoundary
 {
     NSString *str = @"בא־ת";
-    id<BXFilter> f2 = [[BXFilterReplace alloc] initWithName:@"Keep First Word Only"
+    BXFilter *f2 = [[BXFilterReplace alloc] initWithName:@"Keep First Word Only"
                                               searchPattern:@"^(\\w*).*$" replacePattern:@"$1" ignoreCase:NO];
     str = [f2 filter:str];
     XCTAssertEqualObjects(@"בא", str);
@@ -125,7 +125,7 @@
 - (void)testHebrewMaqaf
 {
     NSString *str = @"עַל־פְּנֵ֣י";
-    id<BXFilter> firstWordOnlyFilter = [[BXFilterReplace alloc] initWithName:@"Keep First Word Only"
+    BXFilter *firstWordOnlyFilter = [[BXFilterReplace alloc] initWithName:@"Keep First Word Only"
                                                                searchPattern:@"^(\\w+).*$" replacePattern:@"$1" ignoreCase:NO];
     NSString *result = [firstWordOnlyFilter filter:str];
     XCTAssertEqualObjects(@"עַל", result);
@@ -230,7 +230,7 @@
 }
 
 
-- (void)testPerformanceOfFilter:(id<BXFilter>)filter withString:(NSString *)string expecting:(NSString *)expected
+- (void)testPerformanceOfFilter:(BXFilter *)filter withString:(NSString *)string expecting:(NSString *)expected
 {
     XCTAssertEqualObjects(expected, [filter filter:string]);
     [self measureBlock:^{

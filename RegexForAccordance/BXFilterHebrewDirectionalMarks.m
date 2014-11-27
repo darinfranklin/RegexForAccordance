@@ -11,12 +11,11 @@
 
 @implementation BXFilterHebrewDirectionalMarks
 
--(id)init
+- (id)init
 {
-    if (self = [super initWithName:@"Hebrew Remove Directional Marks"
-                 languageScriptTag:@SCRIPT_TAG_HEBREW
-                charactersToRemove:[NSCharacterSet characterSetWithCharactersInString:@LRM RLM]])
+    if (self = [super initWithName:@"Hebrew Remove Directional Marks" charactersToRemove:[NSCharacterSet characterSetWithCharactersInString:@LRM RLM]])
     {
+        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

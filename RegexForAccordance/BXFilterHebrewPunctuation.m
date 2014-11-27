@@ -11,12 +11,11 @@
 
 @implementation BXFilterHebrewPunctuation
 
--(id)init
+- (id)init
 {
-    if (self = [super initWithName:@"Hebrew Remove Punctuation"
-                 languageScriptTag:@SCRIPT_TAG_HEBREW
-               charactersToRemove:[BXTextLanguage hebrewPunctuationCharacterSet]])
+    if (self = [super initWithName:@"Hebrew Remove Punctuation" charactersToRemove:[BXTextLanguage hebrewPunctuationCharacterSet]])
     {
+        self.languageScriptTag = @SCRIPT_TAG_HEBREW;
     }
     return self;
 }

@@ -17,8 +17,8 @@
 @property NSRegularExpression *searchRegex;
 @property NSRegularExpression *xformRegex;
 @property NSMutableArray *searchResults; // array of BXSearchResult
-@property id<BXFilter> filterDecomposeCharacters;
-@property id<BXFilter> hebrewDirectionalFilter;
+@property BXFilter *filterDecomposeCharacters;
+@property BXFilter *hebrewDirectionalFilter;
 @property BOOL cancelled;
 @property NSMutableArray *filters;
 @end
@@ -54,7 +54,7 @@
     _error = nil;
     [self.fetcher reset];
     [self.statisticsGroups reset];
-    [self.filters removeAllObjects];
+    [_filters removeAllObjects];
     if ([self useCompositeCharacters])
     {
         [self addFilter:self.filterDecomposeCharacters];
@@ -119,7 +119,7 @@
     {
         for (int i = (int) self.filters.count - 1; i >= 0; i--)
         {
-            id<BXFilter>filter = [self.filters objectAtIndex:i];
+            BXFilter *filter = [self.filters objectAtIndex:i];
             if (filter.languageScriptTag != nil
                 && ![filter.languageScriptTag isEqualToString:self.languageScriptTag])
             {
@@ -127,7 +127,7 @@
             }
         }
 #ifdef DEBUG
-        for (id<BXFilter>filter in self.filters)
+        for (BXFilter *filter in self.filters)
         {
             LogDebug(@"Active filter: %@", filter.name);
         }
@@ -145,27 +145,43 @@
 }
 
 
-- (void)addFilter:(id<BXFilter>)filter
+- (NSUInteger)indexOfFilterWithName:(NSString *)name
 {
-    if (![self.filters containsObject:filter])
+    __block NSUInteger index = NSNotFound;
+    [_filters enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    {
+        BXFilter *filter = (BXFilter *)obj;
+        if ([filter.name isEqualToString:name])
+        {
+            index = idx;
+            *stop = YES;
+        }
+    }];
+    return index;
+}
+
+- (void)addFilter:(BXFilter *)filter
+{
+    if (NSNotFound == [self indexOfFilterWithName:filter.name])
     {
         LogDebug(@"Add filter: %@", filter.name);
-        [self.filters addObject:filter];
+        [_filters addObject:filter];
     }
 }
 
-- (void)removeFilter:(id<BXFilter>)filter
+- (void)removeFilter:(BXFilter *)filter
 {
-    if ([self.filters containsObject:filter])
+    NSUInteger index = [self indexOfFilterWithName:filter.name];
+    if (index != NSNotFound)
     {
-        LogDebug(@"Remove filter: %@", filter.name);
-        [self.filters removeObject:filter];
+        LogDebug(@"Remove filter: %@", [[_filters objectAtIndex:index] name]);
+        [_filters removeObjectAtIndex:index];
     }
 }
 
 - (NSString *)applyFilters:(NSString *)text
 {
-    for (id<BXFilter>filter in self.filters)
+    for (BXFilter *filter in self.filters)
     {
         text = [filter filter:text];
     }
@@ -213,7 +229,8 @@
         } // GC: Exit the autorelease pool so that memory from previous iterations is released.
         self.fetcher.hasGarbage = NO;
         // Now keep going if not cancelled, there are more verses, and no result yet
-    } while (!self.cancelled && verse != nil && result == nil);
+    }
+    while (!self.cancelled && verse != nil && result == nil);
     
     if (verse == nil)
     {

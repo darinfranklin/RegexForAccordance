@@ -14,9 +14,8 @@
 
 - (id)initWithName:(NSString *)name searchPattern:(NSString *)searchPattern replacePattern:(NSString *)replacePattern
 {
-    if (self = [super init])
+    if (self = [super initWithName:name])
     {
-        self.name = name;
         self.map = [self mapFromSearchPattern:searchPattern replacePattern:replacePattern];
     }
     return self;
@@ -24,9 +23,8 @@
 
 - (id)initWithName:(NSString *)name searchReplaceMap:(NSDictionary *)map
 {
-    if (self = [super init])
+    if (self = [super initWithName:name])
     {
-        self.name = name;
         self.map = map;
     }
     return self;

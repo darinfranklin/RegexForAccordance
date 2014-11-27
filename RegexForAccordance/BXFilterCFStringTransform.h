@@ -9,14 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BXFilter.h"
 
-@interface BXFilterCFStringTransform : NSObject<BXFilter>
-
-@property NSString *name;
-@property NSString *languageScriptTag;
+@interface BXFilterCFStringTransform : BXFilter
 @property CFStringRef transform;
-
 - (id)initWithName:(NSString *)name transform:(CFStringRef)transform;
-- (NSString *)filter:(NSString *)text;
-
-
 @end

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BXFilter <NSObject>
-- (NSString *)name;
+@interface BXFilter : NSObject
+@property NSString *name;
+@property NSString *languageScriptTag;
 - (NSString *)filter:(NSString *)text;
-- (NSString *)languageScriptTag;
+- (id)initWithName:(NSString *)name;
 @end

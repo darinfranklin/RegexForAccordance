@@ -13,10 +13,9 @@
 
 - (id)init
 {
-    if (self = [super initWithName:@"Greek Remove Punctuation"
-                 languageScriptTag:@SCRIPT_TAG_GREEK
-                     charactersToRemove:[BXTextLanguage greekPunctuationCharacterSet]])
+    if (self = [super initWithName:@"Greek Remove Punctuation" charactersToRemove:[BXTextLanguage greekPunctuationCharacterSet]])
     {
+        self.languageScriptTag = @SCRIPT_TAG_GREEK;
     }
     return self;
 }
