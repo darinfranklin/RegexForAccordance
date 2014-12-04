@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NSCellStateValue cellStateValueForBool(BOOL b);
+
 @interface BXSearchSettings : NSObject
 @property BOOL ignoreCase;
 @property BOOL includeReference;

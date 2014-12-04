@@ -10,7 +10,7 @@
 
 @implementation BXVerse
 
-- (NSString *)searchText:(BOOL)includeReference
+- (NSString *)textIncludingReference:(BOOL)includeReference
 {
     if (includeReference)
     {

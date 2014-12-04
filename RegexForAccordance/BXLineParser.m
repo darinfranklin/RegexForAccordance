@@ -18,7 +18,7 @@
 {
     if ( self = [super init] )
     {
-        NSString *verseRefPattern = @"^((?:[1-9] )?[a-z]+) (\\d+)(?::(\\d+))?"; // 1 Cor 2:3; Gen 1:23; Jude 9
+        NSString *verseRefPattern = @"^((?:[1-9] )?[a-z]+) (?:(\\d+):)?(\\d+)"; // 1 Cor 2:3; Gen 1:23; Jude 9
         NSError *error;
         _verseRefRegex = [NSRegularExpression regularExpressionWithPattern:verseRefPattern
                                                                        options:NSRegularExpressionCaseInsensitive
@@ -39,25 +39,18 @@
         {
             verse.text = [line substringFromIndex:result.range.length + 1];
         }
-        NSString *book = nil;
+        NSString *book = [line substringWithRange:[result rangeAtIndex:1]];
+        NSRange chapterRange = [result rangeAtIndex:2];
+        NSRange verseRange = [result rangeAtIndex:3];
         NSInteger chapterNumber = 0;
         NSInteger verseNumber = 0;
-        book = [line substringWithRange:[result rangeAtIndex:1]];
-        NSRange verseRange = [result rangeAtIndex:3];
         NSString *verseRefStringValue;
-        if (NSEqualRanges(NSMakeRange(NSNotFound, 0), verseRange))
+        if (!NSEqualRanges(NSMakeRange(NSNotFound, 0), chapterRange))
         {
-            // 3 John 9
-            verseNumber = [[line substringWithRange:[result rangeAtIndex:2]] integerValue];
-            verseRefStringValue = [line substringToIndex:NSMaxRange([result rangeAtIndex:2])];
+            chapterNumber = [[line substringWithRange:chapterRange] integerValue];
         }
-        else
-        {
-            // John 3:9
-            chapterNumber = [[line substringWithRange:[result rangeAtIndex:2]] integerValue];
-            verseNumber = [[line substringWithRange:[result rangeAtIndex:3]] integerValue];
-            verseRefStringValue = [line substringToIndex:NSMaxRange([result rangeAtIndex:3])];
-        }
+        verseNumber = [[line substringWithRange:verseRange] integerValue];
+        verseRefStringValue = [line substringWithRange:result.range];
         verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber stringValue:verseRefStringValue];
     }
     else

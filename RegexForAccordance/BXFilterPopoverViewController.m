@@ -94,16 +94,16 @@
 
 - (void)willBecomeVisible
 {
-    self.spaces.state = self.document.searchSettings.removeSpaces ? NSOnState : NSOffState;
-    self.trailingSpaces.state = self.document.searchSettings.removeTrailingSpaces ? NSOnState : NSOffState;
-    self.pilcrows.state = self.document.searchSettings.removePilcrows ? NSOnState : NSOffState;
+    self.spaces.state = cellStateValueForBool(self.document.searchSettings.removeSpaces);
+    self.trailingSpaces.state = cellStateValueForBool(self.document.searchSettings.removeTrailingSpaces);
+    self.pilcrows.state = cellStateValueForBool(self.document.searchSettings.removePilcrows);
     
-    self.hebrewCantillation.state = self.document.searchSettings.hebrewRemoveCantillation ? NSOnState : NSOffState;
-    self.hebrewPoints.state = self.document.searchSettings.hebrewRemovePoints ? NSOnState : NSOffState;
-    self.hebrewPunctuation.state = self.document.searchSettings.hebrewRemovePunctuation ? NSOnState : NSOffState;
+    self.hebrewCantillation.state = cellStateValueForBool(self.document.searchSettings.hebrewRemoveCantillation);
+    self.hebrewPoints.state = cellStateValueForBool(self.document.searchSettings.hebrewRemovePoints);
+    self.hebrewPunctuation.state = cellStateValueForBool(self.document.searchSettings.hebrewRemovePunctuation);
     
-    self.greekDiacritics.state = self.document.searchSettings.greekRemoveDiacritics ? NSOnState : NSOffState;
-    self.greekPunctuation.state = self.document.searchSettings.greekRemovePunctuation ? NSOnState : NSOffState;
+    self.greekDiacritics.state = cellStateValueForBool(self.document.searchSettings.greekRemoveDiacritics);
+    self.greekPunctuation.state = cellStateValueForBool(self.document.searchSettings.greekRemovePunctuation);
 }
 
 @end

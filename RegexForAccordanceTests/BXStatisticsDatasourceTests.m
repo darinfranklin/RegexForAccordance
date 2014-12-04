@@ -30,12 +30,6 @@
     stats = statisticsGroups.combinedStatistics;
 }
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)testSearchResultsForRow
 {
     [statisticsGroups addSearchResult:[[BXTestSearchResult alloc] initWithText:@"aaa" book:@"A"]];

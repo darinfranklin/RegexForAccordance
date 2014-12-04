@@ -63,38 +63,4 @@
     return string;
 }
 
-
-- (BOOL)isEqual:(id)other
-{
-    if (other == nil)
-    {
-        return NO;
-    }
-    if (other == self)
-    {
-        return YES;
-    }
-    if (![other isKindOfClass:[self class]])
-    {
-        return NO;
-    }
-    return [self isEqualToTransliterateFilter:other];
-}
-
-- (BOOL)isEqualToTransliterateFilter:(BXFilterTransliterate *)other
-{
-    if (![self.name isEqualToString:[other name]])
-    {
-        return NO;
-    }
-    return YES;
-}
-
-- (NSUInteger)hash
-{
-    NSUInteger hash = 0;
-    hash += self.name.hash;
-    return hash;
-}
-
 @end

@@ -24,12 +24,6 @@
     stats = [[BXStatistics alloc] init];
 }
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (BXSearchResult *)makeSearchResult:(NSString *)text book:(NSString *)book
 {
     BXSearchResult *result = [[BXSearchResult alloc] init];

@@ -12,21 +12,18 @@
 #import "BXAccLink.h"
 
 @interface BXAccVerseURLTests : XCTestCase
+
 @end
 
 @implementation BXAccVerseURLTests
 {
     BXAccVerseURL *urlFormatter;
 }
+
 - (void)setUp
 {
     [super setUp];
     urlFormatter = [[BXAccVerseURL alloc] init];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
 }
 
 - (void)testURL

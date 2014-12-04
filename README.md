@@ -6,8 +6,9 @@ RegexForAccordance
 How It Works
 ------------
 
-Accordance has an AppleScript interface which provides access to all of its text modules in a consistent, verse-per-line, Unicode format.  RegexForAccordance gets the text through AppleScript, transforms it with some optional filters, and then searches it with the regular expression.  It lists the search results, offers some basic statistics, and provides links back to Accordance through the accord:// URL scheme.
+RegexForAccordance gets the text from Accordance through its AppleScript interface.  It transforms the text with some optional filters, and then searches it with the regular expression.  It lists the search results, tabulates some statistics, and provides links back to Accordance through the accord:// URL scheme.
 
 Unicode characters are decomposed so that combining marks, like Hebrew vowel points and Greek diacritics, can be matched individually or removed altogether.
 
 The regex matching is provided by Apple’s implementation of [ICU Regular Expression](http://userguide.icu-project.org/strings/regexp) syntax.
+

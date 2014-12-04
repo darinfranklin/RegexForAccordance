@@ -26,12 +26,7 @@
 
 - (id)initWithText:(NSString *)text book:(NSString *)book
 {
-    if (self = [self initWithText:text book:book chapter:1 verse:1])
-    {
-    }
-    return self;
+    return [self initWithText:text book:book chapter:1 verse:1];
 }
-
-
 
 @end

@@ -15,18 +15,6 @@
 
 @implementation BXVerseRefTests
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)testFormatVerseRef
 {
     XCTAssertEqualObjects(@"Gen 1:1", [[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1].stringValue);

@@ -15,21 +15,10 @@
 @end
 
 @implementation BXLineSplitterTests
-BXLineSplitter *splitter;
-
-- (void)setUp
-{
-    [super setUp];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
-}
 
 - (void)testIterateLines
 {
-    splitter = [[BXLineSplitter alloc] initWithString:@"line one\rline two\rline three" delimiter:@"\r"];
+    BXLineSplitter *splitter = [[BXLineSplitter alloc] initWithString:@"line one\rline two\rline three" delimiter:@"\r"];
     XCTAssertEqualObjects(@"line one", [splitter peekAtNextLine]);
     XCTAssertEqualObjects(@"line one", [splitter peekAtNextLine]);
     XCTAssertEqualObjects(@"line one", [splitter nextLine]);

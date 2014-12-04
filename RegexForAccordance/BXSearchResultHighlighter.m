@@ -73,7 +73,7 @@
 
 - (NSRange)rangeToHighlightForHit:(NSTextCheckingResult *)hit inSearchResult:(BXSearchResult *)searchResult
 {
-    NSString *searchText = [searchResult.verse searchText:self.searchSettings.includeReference];
+    NSString *searchText = [searchResult.verse textIncludingReference:self.searchSettings.includeReference];
     NSRange highlightRange = hit.range;
     highlightRange = [searchText rangeOfComposedCharacterSequencesForRange:highlightRange];
     highlightRange = [self.formatter hitRange:highlightRange inFormattedSearchResult:searchResult];

@@ -26,17 +26,6 @@
 
 @implementation BXFilterTests
 
-- (void)setUp
-{
-    [super setUp];
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)testFilter
 {
     BXFilterReplace *filter;
@@ -229,18 +218,21 @@
     XCTAssertEqualObjects(@"\u03B9\u0301", tf.stringValue);
 }
 
-
 - (void)testPerformanceOfFilter:(BXFilter *)filter withString:(NSString *)string expecting:(NSString *)expected
+{
+    [self testPerformanceOfFilter:filter withString:string expecting:expected iterations:10000];
+}
+
+- (void)testPerformanceOfFilter:(BXFilter *)filter withString:(NSString *)string expecting:(NSString *)expected iterations:(NSUInteger)iterations
 {
     XCTAssertEqualObjects(expected, [filter filter:string]);
     [self measureBlock:^{
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < iterations; i++)
         {
             [filter filter:string];
         }
     }];
 }
-
 
 - (void)testPerformanceOfRemoveSpaces
 {
@@ -266,21 +258,24 @@
 {
     [self testPerformanceOfFilter:[[BXFilterGreekDiacritics alloc] init]
                              withString:@"κἀγὼ οὐκ ᾔδειν αὐτόν, ἀλλ᾿ ὁ πέμψας με βαπτίζειν ἐν ὕδατι ἐκεῖνός μοι εἶπεν· ἐφ᾿ ὃν ἂν ἴδῃς τὸ πνεῦμα καταβαῖνον καὶ μένον ἐπ᾿ αὐτόν, οὗτός ἐστιν ὁ βαπτίζων ἐν πνεύματι ἁγίῳ."
-                              expecting:@"καγω ουκ ῃδειν αυτον, αλλ᾿ ο πεμψας με βαπτιζειν εν υδατι εκεινος μοι ειπεν· εφ᾿ ον αν ιδῃς το πνευμα καταβαινον και μενον επ᾿ αυτον, ουτος εστιν ο βαπτιζων εν πνευματι αγιῳ."];
+                              expecting:@"καγω ουκ ῃδειν αυτον, αλλ᾿ ο πεμψας με βαπτιζειν εν υδατι εκεινος μοι ειπεν· εφ᾿ ον αν ιδῃς το πνευμα καταβαινον και μενον επ᾿ αυτον, ουτος εστιν ο βαπτιζων εν πνευματι αγιῳ."
+                       iterations:5000];
 }
 
 - (void)testPerformanceOfRemoveHebrewCantillation
 {
     [self testPerformanceOfFilter:[[BXFilterHebrewCantillation alloc] init]
                        withString:@"יְהוָ֣ה ׀ אֱלֹהֵ֣י הַשָּׁמַ֗יִם אֲשֶׁ֨ר לְקָחַ֜נִי מִבֵּ֣ית אָבִי֮ וּמֵאֶ֣רֶץ מֽוֹלַדְתִּי֒ וַאֲשֶׁ֨ר דִּבֶּר־לִ֜י וַאֲשֶׁ֤ר נִֽשְׁבַּֽע־לִי֙ לֵאמֹ֔ר לְזַ֨רְעֲךָ֔ אֶתֵּ֖ן אֶת־הָאָ֣רֶץ הַזֹּ֑את ה֗וּא יִשְׁלַ֤ח מַלְאָכוֹ֙ לְפָנֶ֔יךָ וְלָקַחְתָּ֥ אִשָּׁ֛ה לִבְנִ֖י מִשָּֽׁם׃"
-                        expecting:@"יְהוָה ׀ אֱלֹהֵי הַשָּׁמַיִם אֲשֶׁר לְקָחַנִי מִבֵּית אָבִי וּמֵאֶרֶץ מֽוֹלַדְתִּי וַאֲשֶׁר דִּבֶּר־לִי וַאֲשֶׁר נִֽשְׁבַּֽע־לִי לֵאמֹר לְזַרְעֲךָ אֶתֵּן אֶת־הָאָרֶץ הַזֹּאת הוּא יִשְׁלַח מַלְאָכוֹ לְפָנֶיךָ וְלָקַחְתָּ אִשָּׁה לִבְנִי מִשָּֽׁם׃"];
+                        expecting:@"יְהוָה ׀ אֱלֹהֵי הַשָּׁמַיִם אֲשֶׁר לְקָחַנִי מִבֵּית אָבִי וּמֵאֶרֶץ מֽוֹלַדְתִּי וַאֲשֶׁר דִּבֶּר־לִי וַאֲשֶׁר נִֽשְׁבַּֽע־לִי לֵאמֹר לְזַרְעֲךָ אֶתֵּן אֶת־הָאָרֶץ הַזֹּאת הוּא יִשְׁלַח מַלְאָכוֹ לְפָנֶיךָ וְלָקַחְתָּ אִשָּׁה לִבְנִי מִשָּֽׁם׃"
+                       iterations:2500];
 }
 
 - (void)testPerformanceOfRemoveHebrewPoints
 {
     [self testPerformanceOfFilter:[[BXFilterHebrewPoints alloc] init]
                        withString:@"יְהוָ֣ה ׀ אֱלֹהֵ֣י הַשָּׁמַ֗יִם אֲשֶׁ֨ר לְקָחַ֜נִי מִבֵּ֣ית אָבִי֮ וּמֵאֶ֣רֶץ מֽוֹלַדְתִּי֒ וַאֲשֶׁ֨ר דִּבֶּר־לִ֜י וַאֲשֶׁ֤ר נִֽשְׁבַּֽע־לִי֙ לֵאמֹ֔ר לְזַ֨רְעֲךָ֔ אֶתֵּ֖ן אֶת־הָאָ֣רֶץ הַזֹּ֑את ה֗וּא יִשְׁלַ֤ח מַלְאָכוֹ֙ לְפָנֶ֔יךָ וְלָקַחְתָּ֥ אִשָּׁ֛ה לִבְנִ֖י מִשָּֽׁם׃"
-                        expecting:@"יהו֣ה ׀ אלה֣י השמ֗ים אש֨ר לקח֜ני מב֣ית אבי֮ ומא֣רץ מולדתי֒ ואש֨ר דבר־ל֜י ואש֤ר נשבע־לי֙ לאמ֔ר לז֨רעך֔ את֖ן את־הא֣רץ הז֑את ה֗וא ישל֤ח מלאכו֙ לפנ֔יך ולקחת֥ אש֛ה לבנ֖י משם׃"];
+                        expecting:@"יהו֣ה ׀ אלה֣י השמ֗ים אש֨ר לקח֜ני מב֣ית אבי֮ ומא֣רץ מולדתי֒ ואש֨ר דבר־ל֜י ואש֤ר נשבע־לי֙ לאמ֔ר לז֨רעך֔ את֖ן את־הא֣רץ הז֑את ה֗וא ישל֤ח מלאכו֙ לפנ֔יך ולקחת֥ אש֛ה לבנ֖י משם׃"
+                       iterations:2500];
 }
 
 @end

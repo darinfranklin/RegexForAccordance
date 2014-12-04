@@ -17,6 +17,12 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
+#ifdef DEBUG
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    LogDebug(@"DocumentsDirectory: %@", documentsDirectory);
+    setenv("GCOV_PREFIX", [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding], 1);
+#endif
     NSString *appDefaultsPath = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
     LogDebug(@"Loading Defaults from %@", appDefaultsPath);
     NSDictionary *appDefaults = [NSDictionary dictionaryWithContentsOfFile:appDefaultsPath];

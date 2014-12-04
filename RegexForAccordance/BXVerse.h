@@ -14,6 +14,6 @@
 @property NSString *text;
 @property BXVerseRef *ref;
 @property NSUInteger lineNumber;
-- (NSString *)searchText:(BOOL)includeReference;
+- (NSString *)textIncludingReference:(BOOL)includeReference;
 - (NSString *)referenceAndText;
 @end

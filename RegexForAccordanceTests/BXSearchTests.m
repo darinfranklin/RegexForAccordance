@@ -23,19 +23,6 @@
 
 @implementation BXSearchTests
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-
 - (void)testSearch
 {
     BXAccVerseFetcher *fetcher = [[BXAccVerseFetcher alloc] init];
@@ -198,30 +185,23 @@
     return result.verse.ref.stringValue;
 }
 
-- (void)testHebrewRegex
-{
-    XCTAssertEqualObjects(@"Esth 5:4",  [self findFirstRefForHebrewRegex:@"\\bי\\w*\\W+ה\\w*\\W+ו\\w*\\W+ה\\w*\\b"]);
-    XCTAssertEqualObjects(@"Esth 1:20", [self findFirstRefForHebrewRegex:@"\\bה\\w*\\W+ו\\w*\\W+ה\\w*\\W+י\\w*\\b"]);
-    XCTAssertEqualObjects(@"Esth 7:7",  [self findFirstRefForHebrewRegex:@"\\b\\w*י\\W+\\w*ה\\W+\\w*ו\\W+\\w*ה\\b"]);
-    XCTAssertEqualObjects(@"Esth 5:13", [self findFirstRefForHebrewRegex:@"\\b\\w*ה\\W+\\w*ו\\W+\\w*ה\\W+\\w*י\\b"]);
-}
-
-- (void)testSpecialCharactersInJob
-{
-    BXSearch *searcher = [[BXSearch alloc] init];
-    searcher.fetcher = [[BXAccVerseFetcher alloc] init];
-    searcher.fetcher.textName = @"LXX1";
-    searcher.fetcher.verseRange = @"Job 12:9";
-    searcher.pattern = @"^";
-    [searcher prepareSearch:nil];
-    BXSearchResult *result = [searcher nextSearchResult];
-    // NOTE: ϗ should be ※ (U+203B);  V should be ⸔ (U+2E14)
-    NSString *exp = @"ϗ τίς οὐκ ἔγνω ἐν πᾶσι τούτοιςϗ ὅτι χεὶρ κυρίου ἐποίησεν ταῦτα; V ";
-    exp = [[[BXFilterDecomposeCharacters alloc] init] filter:exp];
-    XCTAssertTrue([result.verse.text rangeOfString:@"ϗ"].location != NSNotFound);
-    XCTAssertTrue([result.verse.text rangeOfString:@"V"].location != NSNotFound);
-    //XCTAssertEqualObjects(exp, result.verse.text);
-}
+// Demonstrates a bug in Accordance Unicode conversion. This test will start failing when they fix Accordance.
+//- (void)testSpecialCharactersInJob
+//{
+//    BXSearch *searcher = [[BXSearch alloc] init];
+//    searcher.fetcher = [[BXAccVerseFetcher alloc] init];
+//    searcher.fetcher.textName = @"LXX1";
+//    searcher.fetcher.verseRange = @"Job 12:9";
+//    searcher.pattern = @"^";
+//    [searcher prepareSearch:nil];
+//    BXSearchResult *result = [searcher nextSearchResult];
+//    // NOTE: ϗ should be ※ (U+203B);  V should be ⸔ (U+2E14)
+//    NSString *exp = @"ϗ τίς οὐκ ἔγνω ἐν πᾶσι τούτοιςϗ ὅτι χεὶρ κυρίου ἐποίησεν ταῦτα; V ";
+//    exp = [[[BXFilterDecomposeCharacters alloc] init] filter:exp];
+//    XCTAssertTrue([result.verse.text rangeOfString:@"ϗ"].location != NSNotFound);
+//    XCTAssertTrue([result.verse.text rangeOfString:@"V"].location != NSNotFound);
+//    XCTAssertEqualObjects(exp, result.verse.text);
+//}
 
 
 - (void)testInvalidRegexIgnoreError
@@ -251,27 +231,21 @@
     XCTAssertEqualObjects(nil, [searcher nextSearchResult]);
 }
 
-// Test works, but Accordance blocks with an error dialog.
+// Prior to 10.4.5, Accordance would block with an error dialog because Matt is not in LXX.
+// This was fixed in Accordance 10.4.5 and 11.0.0, but it still plays an alert sound, so I comment out this test.
 //- (void)testInvalidRangeError
 //{
 //    BXSearch *searcher = [[BXSearch alloc] init];
 //    searcher.fetcher = [[BXAccVerseFetcher alloc] init];
 //    searcher.fetcher.textName = @"LXX1";
-//    searcher.fetcher.verseReferences = @"Matt 1:1";
+//    searcher.fetcher.verseRange = @"Matt 1:1";
 //    searcher.pattern = @"^";
 //    NSError *error;
 //    BOOL success = [searcher prepareSearch:&error];
 //    XCTAssertTrue(success);
 //    XCTAssertEqualObjects(nil, [searcher nextSearchResult]);
 //    error = searcher.error;
-//    XCTAssertEqual(-1, error.code);
+//    XCTAssertEqual(500, error.code);
 //}
 
 @end
-
-// \bי\w*\W+ה\w*\W+ו\w*\W+ה\w*\b Esth 5:4
-// \bה\w*\W+ו\w*\W+ה\w*\W+י\w*\b Esth 1:20
-// \b\w*י\W+\w*ה\W+\w*ו\W+\w*ה\b Esth 7:7
-// \b\w*ה\W+\w*ו\W+\w*ה\W+\w*י\b Esth 5:13
-// \b(\s*\w\s*)(\s*\w\s*)(\s*\w\s*)\3\2\1\b  palindromes
-

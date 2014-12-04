@@ -90,7 +90,6 @@ NSString *makeBlankIfNil(NSString *str)
     
     self.filterPopoverViewController.document = self.document;
     [self.searchField.cell setCancelButtonCell:nil];
-    //self.searchField.font = self.fontSelector.hebrewFont;
     [self.window makeKeyAndOrderFront:self];
     [self.progressIndicatorLabel setHidden:YES];
     [self updateSearchStatus];
@@ -98,7 +97,6 @@ NSString *makeBlankIfNil(NSString *str)
     [self buildColumnChooserMenu];
     [self loadSearchSettings];
     
-    //self.searchField.font = self.fontSelector.hebrewFont;
     [self.searchField sizeToFit];
 }
 
@@ -140,7 +138,7 @@ NSString *makeBlankIfNil(NSString *str)
 
 - (void)updateSearchFieldLRO
 {
-    self.lroButton.state = self.document.searchSettings.leftToRightOverride ? NSOnState : NSOffState;
+    self.lroButton.state = cellStateValueForBool(self.document.searchSettings.leftToRightOverride);
     self.searchFieldFormatter.leftToRightOverride = self.document.searchSettings.leftToRightOverride;
     self.searchField.stringValue = self.searchField.stringValue; // trigger a reformat
     [self.window makeFirstResponder:self.searchField]; // reformat with LRO doesn't display unless this is first responder
@@ -161,7 +159,7 @@ NSString *makeBlankIfNil(NSString *str)
         menuItem.representedObject = column;
         menuItem.target = self;
         [self.statisticsTableMenu addItem:menuItem];
-        [menuItem setState:column.isHidden ? NSOffState : NSOnState];
+        [menuItem setState:cellStateValueForBool(!column.isHidden)];
     }
 }
 
@@ -169,7 +167,7 @@ NSString *makeBlankIfNil(NSString *str)
 {
     NSTableColumn *column = [sender representedObject];
     [column setHidden:!column.isHidden];
-    [sender setState:column.isHidden ? NSOffState : NSOnState];
+    [sender setState:cellStateValueForBool(!column.isHidden)];
 }
 
 - (IBAction)showFiltersPopover:(id)sender
@@ -191,7 +189,6 @@ NSString *makeBlankIfNil(NSString *str)
 
 - (void)controlTextDidChange:(NSNotification *)notification
 {
-    //LogDebug(@"controlTextDidChange %@", notification.object);
     if (notification.object == self.verseReferenceField)
     {
         self.document.searchSettings.verseRange = self.verseReferenceField.stringValue;
@@ -238,9 +235,9 @@ NSString *makeBlankIfNil(NSString *str)
 
 - (void)loadSearchSettings
 {
-    self.ignoreCase.state = self.document.searchSettings.ignoreCase ? NSOnState : NSOffState;
-    self.includeReference.state = self.document.searchSettings.includeReference ? NSOnState : NSOffState;
-    self.groupByBook.state = self.document.searchSettings.groupByBook ? NSOnState : NSOffState;
+    self.ignoreCase.state = cellStateValueForBool(self.document.searchSettings.ignoreCase);
+    self.includeReference.state = cellStateValueForBool(self.document.searchSettings.includeReference);
+    self.groupByBook.state = cellStateValueForBool(self.document.searchSettings.groupByBook);
     if (self.document.searchSettings.textName != nil)
     {
         [self.textNamePopup selectItemWithTitle:self.document.searchSettings.textName];
@@ -250,7 +247,7 @@ NSString *makeBlankIfNil(NSString *str)
         self.document.searchSettings.textName = self.textNamePopup.selectedItem.title;
     }
     self.verseReferenceField.stringValue = makeBlankIfNil(self.document.searchSettings.verseRange);
-    self.lroButton.state = self.document.searchSettings.leftToRightOverride ? NSOnState : NSOffState;
+    self.lroButton.state = cellStateValueForBool(self.document.searchSettings.leftToRightOverride);
     self.searchField.stringValue = makeBlankIfNil(self.document.searchSettings.searchPattern);
     [self updateSearchFieldLRO];
 }
@@ -371,7 +368,6 @@ NSString *makeBlankIfNil(NSString *str)
     [[self.searchField.cell cancelButtonCell] setAction:@selector(cancelSearch:)];
     [[self.searchField.cell cancelButtonCell] setTarget:self];
     [self.searchField display];
-    // Why doesn't cancelButtonCell display when an item is chosen from the searchField menu?
 }
 
 - (void)stopProgressIndicator
@@ -547,12 +543,10 @@ NSString *makeBlankIfNil(NSString *str)
     {
         self.searchField.font = self.fontSelector.greekFont;
     }
-    //[self.searchField sizeToFit];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-    //LogDebug(@"validateMenuItem %@", menuItem);
     if (menuItem.action == @selector(copy:))
     {
         if (self.window.firstResponder == self.statisticsTableView)
