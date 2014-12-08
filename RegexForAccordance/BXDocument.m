@@ -195,7 +195,6 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
     LogDebug(@"Saving document \"%@\" %@", self.displayName, typeName);
-    LogDebug(@"SearchFieldFont %@", self.searchSettings.searchFieldFont);
     NSDictionary *documentContents = [self searchSettingsDictionary];
     NSData *data = [NSPropertyListSerialization dataWithPropertyList:documentContents
                                                               format:NSPropertyListXMLFormat_v1_0
@@ -212,7 +211,6 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
                                                                        format:NULL
                                                                         error:outError];
     [self loadDocumentContents:documentContents];
-    LogDebug(@"SearchFieldFont %@", self.searchSettings.searchFieldFont);
     return documentContents != nil;
 }
 

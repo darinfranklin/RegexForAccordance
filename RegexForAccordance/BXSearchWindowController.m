@@ -248,7 +248,6 @@ NSString *makeBlankIfNil(NSString *str)
     self.lroButton.state = cellStateValueForBool(self.document.searchSettings.leftToRightOverride);
     self.searchField.stringValue = makeBlankIfNil(self.document.searchSettings.searchPattern);
     [self setSearchFieldFontByName:self.document.searchSettings.searchFieldFont];
-    LogDebug(@"set searchField Font %@", self.document.searchSettings.searchFieldFont);
     [self updateSearchFieldLRO];
 }
 
