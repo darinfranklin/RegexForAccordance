@@ -24,8 +24,6 @@
 	<false/>
 	<key>ShowUnicodeID</key>
 	<false/>
-	<key>UseCompositeCharacters</key>
-	<true/>
 	<key>RemoveSpaces</key>
 	<false/>
 	<key>RemoveTrailingSpaces</key>

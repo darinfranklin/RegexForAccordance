@@ -14,6 +14,7 @@ NSString *const IncludeReference = @"IncludeReference";
 NSString *const LeftToRightOverride = @"LeftToRightOverride";
 NSString *const GroupByBook = @"GroupByBook";
 NSString *const SearchPattern = @"SearchPattern";
+NSString *const SearchFieldFont = @"SearchFieldFont";
 NSString *const VerseRange = @"VerseRange";
 NSString *const TextName = @"TextName";
 NSString *const RemoveSpaces = @"RemoveSpaces";
@@ -116,6 +117,10 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
         {
             self.searchSettings.searchPattern = string;
         }
+        if (nil != (string = [documentContents objectForKey:SearchFieldFont]))
+        {
+            self.searchSettings.searchFieldFont = string;
+        }
 
         // Filters
         if (nil != (number = [documentContents objectForKey:RemoveSpaces]))
@@ -173,6 +178,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     [self setObject:self.searchSettings.searchPattern forKey:SearchPattern inDictionary:dict];
     [self setObject:self.searchSettings.verseRange forKey:VerseRange inDictionary:dict];
     [self setObject:self.searchSettings.textName forKey:TextName inDictionary:dict];
+    [self setObject:self.searchSettings.searchFieldFont forKey:SearchFieldFont inDictionary:dict];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeSpaces] forKey:RemoveSpaces];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeTrailingSpaces] forKey:RemoveTrailingSpaces];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removePilcrows] forKey:RemovePilcrows];
@@ -189,6 +195,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
     LogDebug(@"Saving document \"%@\" %@", self.displayName, typeName);
+    LogDebug(@"SearchFieldFont %@", self.searchSettings.searchFieldFont);
     NSDictionary *documentContents = [self searchSettingsDictionary];
     NSData *data = [NSPropertyListSerialization dataWithPropertyList:documentContents
                                                               format:NSPropertyListXMLFormat_v1_0
@@ -205,6 +212,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
                                                                        format:NULL
                                                                         error:outError];
     [self loadDocumentContents:documentContents];
+    LogDebug(@"SearchFieldFont %@", self.searchSettings.searchFieldFont);
     return documentContents != nil;
 }
 

@@ -95,13 +95,18 @@ static NSCharacterSet *greekPunctuationCharacterSet = nil;
     return scriptTag;
 }
 
+NSRange BXMakeRangeWithEndpoints(unichar begin, unichar end)
+{
+    return NSMakeRange(begin, end - begin + 1);
+}
+
 + (NSCharacterSet *)hebrewCantillationCharacterSet
 {
     if (hebrewCantillationCharacterSet == nil)
     {
         NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
-        [charSet addCharactersInRange:NSMakeRange(L'\u0591', L'\u05AF' - L'\u0591' + 1)];
-        hebrewCantillationCharacterSet = charSet;
+        [charSet addCharactersInRange:BXMakeRangeWithEndpoints(L'\u0591', L'\u05AF')];
+        hebrewCantillationCharacterSet = [charSet copy];
     }
     return hebrewCantillationCharacterSet;
 }
@@ -112,11 +117,9 @@ static NSCharacterSet *greekPunctuationCharacterSet = nil;
     if (hebrewPointsCharacterSet == nil)
     {
         NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
-        [charSet addCharactersInRange:NSMakeRange(L'\u05B0', L'\u05BD' - L'\u05B0' + 1)];
-        [charSet addCharactersInRange:NSMakeRange(L'\u05BF', 1)];
-        [charSet addCharactersInRange:NSMakeRange(L'\u05C1', 2)];
-        [charSet addCharactersInRange:NSMakeRange(L'\u05C7', 1)];
-        hebrewPointsCharacterSet = charSet;
+        [charSet addCharactersInRange:BXMakeRangeWithEndpoints(L'\u05B0', L'\u05BD')];
+        [charSet addCharactersInString:@"\u05BF\u05C1\u05C2\u05C7"];
+        hebrewPointsCharacterSet = [charSet copy];
     }
     return hebrewPointsCharacterSet;
 }
@@ -128,7 +131,7 @@ static NSCharacterSet *greekPunctuationCharacterSet = nil;
     {
         NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
         [charSet addCharactersInString:@"\u05BE\u05C0\u05C3\u05C4\u05C5\u05C6"];
-        hebrewPunctuationCharacterSet = charSet;
+        hebrewPunctuationCharacterSet = [charSet copy];
     }
     return hebrewPunctuationCharacterSet;
 }
@@ -140,9 +143,9 @@ static NSCharacterSet *greekPunctuationCharacterSet = nil;
     if (greekDiacriticsCharacterSet == nil)
     {
         NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
-        [charSet addCharactersInRange:NSMakeRange(L'\u0300', L'\u0344' - L'\u0300' + 1)];
-        [charSet addCharactersInRange:NSMakeRange(L'\u0346', L'\u036F' - L'\u0346' + 1)];
-        greekDiacriticsCharacterSet = charSet;
+        [charSet addCharactersInRange:BXMakeRangeWithEndpoints(L'\u0300', L'\u0344')];
+        [charSet addCharactersInRange:BXMakeRangeWithEndpoints(L'\u0346', L'\u036F')];
+        greekDiacriticsCharacterSet = [charSet copy];
     }
     return greekDiacriticsCharacterSet;
 }
@@ -154,7 +157,7 @@ static NSCharacterSet *greekPunctuationCharacterSet = nil;
     {
         NSMutableCharacterSet *charSet = [[NSMutableCharacterSet alloc] init];
         [charSet addCharactersInString:@".,;·᾿«»_-\u2014"];
-        greekPunctuationCharacterSet = charSet;
+        greekPunctuationCharacterSet = [charSet copy];
     }
     return greekPunctuationCharacterSet;
 }

@@ -55,18 +55,10 @@
     [self.fetcher reset];
     [self.statisticsGroups reset];
     [_filters removeAllObjects];
-    if ([self useCompositeCharacters])
-    {
-        [self addFilter:self.filterDecomposeCharacters];
-    }
+    [self addFilter:self.filterDecomposeCharacters];
     [self addFilter:self.hebrewDirectionalFilter];
     self.cancelled = NO;
     self.languageScriptTag = nil;
-}
-
-- (BOOL)useCompositeCharacters
-{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"UseCompositeCharacters"];
 }
 
 - (NSError *)errorForInvalidPattern:(NSString *)pattern errorCode:(NSInteger)code
@@ -90,10 +82,7 @@
         }
         return NO;
     }
-    if ([self useCompositeCharacters])
-    {
-        self.pattern = [self.filterDecomposeCharacters filter:self.pattern];
-    }
+    self.pattern = [self.filterDecomposeCharacters filter:self.pattern];
     NSRegularExpressionOptions options = NSRegularExpressionUseUnicodeWordBoundaries;
     if (self.ignoreCase)
     {

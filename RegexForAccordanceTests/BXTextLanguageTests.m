@@ -71,4 +71,19 @@
     XCTAssertEqual(NSWritingDirectionLeftToRight, [lang writingDirectionForString:text]);
 }
 
+- (void)testCustomCharacterSetsAreAlwaysSameInstance
+{
+    NSCharacterSet *cs;
+    cs = [BXTextLanguage hebrewPointsCharacterSet];
+    XCTAssertEqual(cs, [BXTextLanguage hebrewPointsCharacterSet]);
+    cs = [BXTextLanguage hebrewCantillationCharacterSet];
+    XCTAssertEqual(cs, [BXTextLanguage hebrewCantillationCharacterSet]);
+    cs = [BXTextLanguage hebrewPunctuationCharacterSet];
+    XCTAssertEqual(cs, [BXTextLanguage hebrewPunctuationCharacterSet]);
+    cs = [BXTextLanguage greekDiacriticsCharacterSet];
+    XCTAssertEqual(cs, [BXTextLanguage greekDiacriticsCharacterSet]);
+    cs = [BXTextLanguage greekPunctuationCharacterSet];
+    XCTAssertEqual(cs, [BXTextLanguage greekPunctuationCharacterSet]);
+}
+
 @end

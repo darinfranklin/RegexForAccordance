@@ -110,6 +110,9 @@
                                     </textField>
                                     <searchField wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="t3k-1v-DkA">
                                         <rect key="frame" x="63" y="300" width="349" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Nxy-JE-e7p"/>
+                                        </constraints>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" baseWritingDirection="leftToRight" drawsBackground="YES" sendsWholeSearchString="YES" maximumRecents="10" recentsAutosaveName="SearchField" id="sni-Z3-Acy">
                                             <customFormatter key="formatter" id="N3d-BD-cCU" customClass="BXSearchFieldFormatter"/>
                                             <font key="font" metaFont="system"/>

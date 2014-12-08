@@ -101,6 +101,27 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
     }
 }
 
+//NSTableViewDelegate
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSTableView *tableView = notification.object;
+    
+    NSMutableIndexSet *indexesToHighlight;
+    NSMutableIndexSet *indexesToUnhighlight;
+    if (self.prevSelectedRowIndexes == nil)
+    {
+        self.prevSelectedRowIndexes = [[NSIndexSet alloc] init];
+    }
+    
+    indexesToHighlight = [tableView.selectedRowIndexes mutableCopy];
+    [indexesToHighlight removeIndexes:self.prevSelectedRowIndexes];
+    
+    indexesToUnhighlight = [self.prevSelectedRowIndexes mutableCopy];
+    [indexesToUnhighlight removeIndexes:tableView.selectedRowIndexes];
+    
+    self.prevSelectedRowIndexes = [tableView.selectedRowIndexes copy];
+}
+
 #pragma mark NSTableViewDataSource
 
 // NSTableViewDataSource
@@ -397,26 +418,6 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
      }];
 
     [pasteboard writeObjects:[NSArray arrayWithObject:tsv]];
-}
-
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
-{
-    NSTableView *tableView = notification.object;
-
-    NSMutableIndexSet *indexesToHighlight;
-    NSMutableIndexSet *indexesToUnhighlight;
-    if (self.prevSelectedRowIndexes == nil)
-    {
-        self.prevSelectedRowIndexes = [[NSIndexSet alloc] init];
-    }
-    
-    indexesToHighlight = [tableView.selectedRowIndexes mutableCopy];
-    [indexesToHighlight removeIndexes:self.prevSelectedRowIndexes];
-    
-    indexesToUnhighlight = [self.prevSelectedRowIndexes mutableCopy];
-    [indexesToUnhighlight removeIndexes:tableView.selectedRowIndexes];
-    
-    self.prevSelectedRowIndexes = [tableView.selectedRowIndexes copy];
 }
 
 - (void)setGroupByBook:(BOOL)groupByBook

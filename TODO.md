@@ -6,10 +6,9 @@
 
 * Create GitHub Pages
 
-
 # Bugs
 
-* The statistics table would look nicer if the baselines were aligned when using a large font size.
+* When using a large font size, baselines within statistics table rows are not aligned.
 
 
 # Feature Ideas
@@ -27,6 +26,7 @@
 
 # Font Problems
 
-* Dotted Circle placeholder is misaligned with combiner in some fonts.  SBL Hebrew is best.
+* Dotted Circle placeholder is misaligned with the combining marks in some fonts.  SBL Hebrew is best.
 
-* Hebrew points are misplaced in the search field when LRO is on.  Maybe the formatter should precompose the characters as they are entered.
+* When LRO is on, Hebrew points are misplaced when using system font in the search field.  The points stay on the correct characters when using SBL Hebrew (Edit > Search field font > Hebrew).
+

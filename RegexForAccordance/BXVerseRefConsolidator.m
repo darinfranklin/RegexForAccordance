@@ -90,44 +90,54 @@
             book = ref.book;
             pending = nil;
         }
-        else if ((ref.verse == verse || ref.verse == verse + 1) && ref.chapter == chapter && [ref.book isEqualToString:book])
+        else if ([ref.book isEqualToString:book])
         {
-            NSString *prevPending = pending;
-            pending = [NSString stringWithFormat:@"-%ld", ref.verse];
-            if (str.length + pending.length > self.maxLength)
+            if (ref.chapter == chapter)
             {
-                pending = nil;
-                _verseRefIndex--;
-                if (prevPending != nil)
+                if (ref.verse == verse) // same book, chapter, and verse
                 {
-                    [str appendString:prevPending];
+                    // Do nothing. Verse is repeated.
                 }
-                break;
+                else if (ref.verse == verse + 1) // same book and chapter, next verse
+                {
+                    NSString *prevPending = pending;
+                    pending = [NSString stringWithFormat:@"-%ld", ref.verse];
+                    if (str.length + pending.length > self.maxLength)
+                    {
+                        pending = nil;
+                        _verseRefIndex--;
+                        if (prevPending != nil)
+                        {
+                            [str appendString:prevPending];
+                        }
+                        break;
+                    }
+                    verse = ref.verse;
+                }
+                else // same book and chapter, different verse
+                {
+                    if (pending != nil)
+                    {
+                        [str appendString:pending];
+                        pending = nil;
+                    }
+                    verse = ref.verse;
+                    [nextPart appendString:[NSString stringWithFormat:@",%ld", verse]];
+                }
             }
-            verse = ref.verse;
-        }
-        else if (ref.verse != verse + 1 && ref.chapter == chapter && [ref.book isEqualToString:book])
-        {
-            if (pending != nil)
+            else // same book, different chapter
             {
-                [str appendString:pending];
-                pending = nil;
+                if (pending != nil)
+                {
+                    [str appendString:pending];
+                    pending = nil;
+                }
+                verse = ref.verse;
+                chapter = ref.chapter;
+                [nextPart appendString:[NSString stringWithFormat:@"; %ld:%ld", ref.chapter, ref.verse]];
             }
-            verse = ref.verse;
-            [nextPart appendString:[NSString stringWithFormat:@",%ld", verse]];
         }
-        else if (ref.verse != verse + 1 && ref.chapter != chapter && [ref.book isEqualToString:book])
-        {
-            if (pending != nil)
-            {
-                [str appendString:pending];
-                pending = nil;
-            }
-            verse = ref.verse;
-            chapter = ref.chapter;
-            [nextPart appendString:[NSString stringWithFormat:@"; %ld:%ld", ref.chapter, ref.verse]];
-        }
-        else
+        else // different book
         {
             if (pending != nil)
             {

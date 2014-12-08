@@ -21,7 +21,6 @@
                 <outlet property="showUnicodeCheckbox" destination="pnT-6j-wCN" id="WnH-rk-ia3"/>
                 <outlet property="tabView" destination="Yoi-Xk-s27" id="zrl-mh-tp0"/>
                 <outlet property="toolbar" destination="pIW-lo-0Dz" id="FnS-mK-ho3"/>
-                <outlet property="useCompositeCheckbox" destination="2t4-ob-77L" id="BWA-kl-9Vt"/>
                 <outlet property="verseRefFontNamePopUp" destination="gEB-Ev-pw3" id="dHX-ZO-5hF"/>
                 <outlet property="verseRefFontSizePopUp" destination="W7u-5h-EKZ" id="Hl6-rM-fPm"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -32,7 +31,7 @@
         <window identifier="PreferencesWindow" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" unifiedTitleAndToolbar="YES"/>
             <rect key="contentRect" x="625" y="389" width="504" height="295"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="504" height="295"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -437,37 +436,27 @@
                             </tabViewItem>
                             <tabViewItem label="Advanced" identifier="2" id="gbd-2o-0oA">
                                 <view key="view" id="m8v-nK-CRC">
-                                    <rect key="frame" x="0.0" y="0.0" width="490" height="305"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="504" height="295"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2t4-ob-77L">
-                                            <rect key="frame" x="18" y="269" width="444" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Convert precomposed characters into composite" bezelStyle="regularSquare" imagePosition="left" inset="2" id="51l-Lq-88q">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="useCompositeClicked:" target="-2" id="L4g-PM-lC2"/>
-                                            </connections>
-                                        </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnT-6j-wCN">
-                                            <rect key="frame" x="18" y="229" width="359" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Show Unicode ID as a tool tip for single character hits" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ngQ-dw-uCF">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="showUnicodeIDClicked:" target="-2" id="BM6-wv-8PN"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMY-qN-zKG">
-                                            <rect key="frame" x="14" y="62" width="177" height="32"/>
+                                            <rect key="frame" x="14" y="52" width="177" height="32"/>
                                             <buttonCell key="cell" type="push" title="Reset All Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4aF-SC-dKM">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="resetPreferences:" target="-2" id="ggf-rH-8wK"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnT-6j-wCN">
+                                            <rect key="frame" x="18" y="259" width="359" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Show Unicode ID as a tool tip for single character hits" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ngQ-dw-uCF">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="showUnicodeIDClicked:" target="-2" id="BM6-wv-8PN"/>
                                             </connections>
                                         </button>
                                     </subviews>

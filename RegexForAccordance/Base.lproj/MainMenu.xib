@@ -167,32 +167,27 @@
                             <menuItem title="Search Field Font" enabled="NO" id="pLr-E0-Qxc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="System" indentationLevel="1" id="BPX-hz-pmm">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="System" keyEquivalent="1" indentationLevel="1" id="BPX-hz-pmm">
                                 <connections>
                                     <action selector="setSearchFieldFont:" target="-1" id="qFU-h8-lVw"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Default" indentationLevel="1" id="UrI-pr-ago">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Default" keyEquivalent="2" indentationLevel="1" id="UrI-pr-ago">
                                 <connections>
                                     <action selector="setSearchFieldFont:" target="-1" id="Py3-PC-clr"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Hebrew" indentationLevel="1" id="qIz-2g-JLd">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Hebrew" keyEquivalent="3" indentationLevel="1" id="qIz-2g-JLd">
                                 <connections>
                                     <action selector="setSearchFieldFont:" target="-1" id="hUZ-JG-HBA"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Greek" indentationLevel="1" id="Jdp-kc-fGU">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Greek" keyEquivalent="4" indentationLevel="1" id="Jdp-kc-fGU">
                                 <connections>
                                     <action selector="setSearchFieldFont:" target="-1" id="P6l-1c-Y10"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Left-To-Right Override" id="OVM-1W-BGB">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Left-To-Right Override" keyEquivalent="l" id="OVM-1W-BGB">
                                 <connections>
                                     <action selector="toggleLRO:" target="-1" id="wzT-8r-zen"/>
                                 </connections>

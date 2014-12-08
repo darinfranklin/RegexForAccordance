@@ -13,7 +13,6 @@
 #import "BXSearchResult.h"
 #import "BXTextLanguage.h"
 
-NSString *const UseCompositeCharacters = @"UseCompositeCharacters";
 NSString *const ShowUnicodeID = @"ShowUnicodeID";
 NSString *const HitsFontBold = @"HitsFontBold";
 NSString *const VerseRefFontBold = @"VerseRefFontBold";
@@ -137,7 +136,6 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
     [self updateSample:self.hebrewFontSample withFontNameKey:HebrewFontName andFontSizeKey:HebrewFontSize];
     [self updateSample:self.greekFontSample withFontNameKey:GreekFontName andFontSizeKey:GreekFontSize];
     self.toolbar.selectedItemIdentifier = @"FontsToolbarItem";
-    self.useCompositeCheckbox.state = [defaults boolForKey:UseCompositeCharacters];
     self.showUnicodeCheckbox.state = [defaults boolForKey:ShowUnicodeID];
     self.boldHitsButton.state = [defaults boolForKey:HitsFontBold];
     self.boldReferencesButton.state = [defaults boolForKey:VerseRefFontBold];
@@ -232,12 +230,6 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
     [defaults setBool:value forKey:ShowUnicodeID];
 }
 
-- (IBAction)useCompositeClicked:(id)sender
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL value = self.useCompositeCheckbox.state == NSOnState;
-    [defaults setBool:value forKey:UseCompositeCharacters];
-}
 
 - (IBAction)resetPreferences:(id)sender
 {

@@ -44,6 +44,7 @@
     self.document.searchSettings.verseRange = @"Def - Ghi";
     self.document.searchSettings.leftToRightOverride = YES;
     self.document.searchSettings.searchPattern = @"abc";
+    self.document.searchSettings.searchFieldFont = @"Greek";
 
     NSDictionary *dict = [self.document searchSettingsDictionary];
     XCTAssertEqual(YES, [[dict objectForKey:@"RemovePilcrows"] boolValue]);
@@ -61,6 +62,7 @@
     XCTAssertEqualObjects(@"Abc", [dict objectForKey:@"TextName"]);
     XCTAssertEqualObjects(@"Def - Ghi", [dict objectForKey:@"VerseRange"]);
     XCTAssertEqualObjects(@"abc", [dict objectForKey:@"SearchPattern"]);
+    XCTAssertEqualObjects(@"Greek", [dict objectForKey:@"SearchFieldFont"]);
 }
 
 - (void)testLoadDocumentContents
@@ -81,6 +83,7 @@
     [dict setObject:@"Abc" forKey:@"TextName"];
     [dict setObject:@"Def - Ghi" forKey:@"VerseRange"];
     [dict setObject:@"abc" forKey:@"SearchPattern"];
+    [dict setObject:@"Hebrew" forKey:@"SearchFieldFont"];
 
     [self.document loadDocumentContents:dict];
 
@@ -99,6 +102,7 @@
     XCTAssertEqualObjects(@"Def - Ghi", self.document.searchSettings.verseRange);
     XCTAssertEqual(YES, self.document.searchSettings.leftToRightOverride);
     XCTAssertEqualObjects(@"abc", self.document.searchSettings.searchPattern);
+    XCTAssertEqualObjects(@"Hebrew", self.document.searchSettings.searchFieldFont);
 
 }
 

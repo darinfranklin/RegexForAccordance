@@ -14,7 +14,6 @@
 @property IBOutlet NSTextView *greekFontSample;
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSToolbar *toolbar;
-@property (weak) IBOutlet NSButton *useCompositeCheckbox;
 @property (weak) IBOutlet NSButton *showUnicodeCheckbox;
 
 @property (weak) IBOutlet NSPopUpButton *defaultFontNamePopUp;
@@ -32,7 +31,6 @@
 - (IBAction)resetPreferences:(id)sender;
 - (IBAction)showUnicodeIDClicked:(id)sender;
 
-- (IBAction)useCompositeClicked:(id)sender;
 - (IBAction)changeFont:(id)sender;
 
 @end

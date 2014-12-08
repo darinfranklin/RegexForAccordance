@@ -50,6 +50,7 @@
 		933191A319E395E500F5C84C /* BXSearchResultHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 933191A219E395E500F5C84C /* BXSearchResultHighlighter.m */; };
 		933191A519EAF3FA00F5C84C /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 933191A419EAF3FA00F5C84C /* Help */; };
 		933AF7B119CFB8B50036CF7C /* BXFilterPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933AF7B019CFB8B50036CF7C /* BXFilterPopoverViewController.m */; };
+		93404DB01A2ABBB9007927A2 /* BXVerseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93404DAF1A2ABBB9007927A2 /* BXVerseTests.m */; };
 		93475AAD19A015F500882A88 /* BXStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 93475AAC19A015F500882A88 /* BXStatistics.m */; };
 		93475AAF19A0162E00882A88 /* BXStatisticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93475AAE19A0162E00882A88 /* BXStatisticsTests.m */; };
 		93475AB219A04F1200882A88 /* BXStatisticsDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93475AB119A04F1200882A88 /* BXStatisticsDatasource.m */; };
@@ -72,6 +73,9 @@
 		93B5D5561A2254FB008D22FD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9308FBE419945B9B00AB090C /* MainMenu.xib */; };
 		93B5D5581A22575C008D22FD /* BXVerseRefConsolidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B5D5571A22575C008D22FD /* BXVerseRefConsolidatorTests.m */; };
 		93B5D55B1A2257A2008D22FD /* BXFilterHebrewPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B5D55A1A2257A2008D22FD /* BXFilterHebrewPoints.m */; };
+		93B66DD01A2D74CB009F5D13 /* BXDocumentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B66DCF1A2D74CB009F5D13 /* BXDocumentTests.m */; };
+		93B66DD21A2D892A009F5D13 /* BXSearchResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B66DD11A2D892A009F5D13 /* BXSearchResultTests.m */; };
+		93B66DD41A2EC08A009F5D13 /* BXFilterPopOverViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B66DD31A2EC08A009F5D13 /* BXFilterPopOverViewControllerTests.m */; };
 		93BC372F19F363980074B9C8 /* BXFilterPilcrows.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BC372E19F363980074B9C8 /* BXFilterPilcrows.m */; };
 		93D1573219983D720020CB14 /* BXFilterReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1573119983D720020CB14 /* BXFilterReplace.m */; };
 		93D1573619983E220020CB14 /* BXFilterTransliterate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1573519983E220020CB14 /* BXFilterTransliterate.m */; };
@@ -169,6 +173,7 @@
 		933191A419EAF3FA00F5C84C /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
 		933AF7AF19CFB8B50036CF7C /* BXFilterPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterPopoverViewController.h; sourceTree = "<group>"; };
 		933AF7B019CFB8B50036CF7C /* BXFilterPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterPopoverViewController.m; sourceTree = "<group>"; };
+		93404DAF1A2ABBB9007927A2 /* BXVerseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXVerseTests.m; sourceTree = "<group>"; };
 		93475AAB19A015F500882A88 /* BXStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXStatistics.h; sourceTree = "<group>"; };
 		93475AAC19A015F500882A88 /* BXStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXStatistics.m; sourceTree = "<group>"; };
 		93475AAE19A0162E00882A88 /* BXStatisticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXStatisticsTests.m; sourceTree = "<group>"; };
@@ -206,6 +211,9 @@
 		93B5D55A1A2257A2008D22FD /* BXFilterHebrewPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewPoints.m; sourceTree = "<group>"; };
 		93B5D55C1A22583E008D22FD /* icon.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon.psd; sourceTree = "<group>"; };
 		93B5D55D1A22598E008D22FD /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		93B66DCF1A2D74CB009F5D13 /* BXDocumentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BXDocumentTests.m; path = RegexForAccordanceTests/BXDocumentTests.m; sourceTree = SOURCE_ROOT; };
+		93B66DD11A2D892A009F5D13 /* BXSearchResultTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXSearchResultTests.m; sourceTree = "<group>"; };
+		93B66DD31A2EC08A009F5D13 /* BXFilterPopOverViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterPopOverViewControllerTests.m; sourceTree = "<group>"; };
 		93BC372D19F363980074B9C8 /* BXFilterPilcrows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterPilcrows.h; sourceTree = "<group>"; };
 		93BC372E19F363980074B9C8 /* BXFilterPilcrows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterPilcrows.m; sourceTree = "<group>"; };
 		93D1573019983D720020CB14 /* BXFilterReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterReplace.h; sourceTree = "<group>"; };
@@ -272,18 +280,22 @@
 			isa = PBXGroup;
 			children = (
 				930CA723199889D100711558 /* Supporting Files */,
+				93B66DCF1A2D74CB009F5D13 /* BXDocumentTests.m */,
 				9308FC0419945B9C00AB090C /* BXAccVerseFetcherTests.m */,
 				9308FC0519945B9C00AB090C /* BXAccVerseURLTests.m */,
 				934E574D19A955F8006172AC /* BXFontSelectorTests.m */,
 				931A27BB1994A3E000DC3C27 /* BXLineParserTests.m */,
 				9308FC0619945B9C00AB090C /* BXLineSplitterTests.m */,
 				9308FC0719945B9C00AB090C /* BXSearchTests.m */,
+				93B66DD11A2D892A009F5D13 /* BXSearchResultTests.m */,
 				93D157371998458B0020CB14 /* BXFilterTests.m */,
+				93B66DD31A2EC08A009F5D13 /* BXFilterPopOverViewControllerTests.m */,
 				9308FBE219945B9B00AB090C /* BXSearchResultFormatterTests.m */,
 				93FDF844199DAAF600BF3576 /* BXTextLanguageTests.m */,
 				93D1573919984C2A0020CB14 /* BXTransliterateFilterTests.m */,
 				931A27AC1994706300DC3C27 /* BXVerseRangeParserTests.m */,
 				9313263419BCDAD400974229 /* BXVerseRefTests.m */,
+				93404DAF1A2ABBB9007927A2 /* BXVerseTests.m */,
 				93B5D5571A22575C008D22FD /* BXVerseRefConsolidatorTests.m */,
 				93475AAE19A0162E00882A88 /* BXStatisticsTests.m */,
 				93613DD319AC2C7400968843 /* BXStatisticsDatasourceTests.m */,
@@ -735,6 +747,7 @@
 				931A27BC1994A3E000DC3C27 /* BXLineParserTests.m in Sources */,
 				931A27A119945F1D00DC3C27 /* BXSearchTests.m in Sources */,
 				93475AAF19A0162E00882A88 /* BXStatisticsTests.m in Sources */,
+				93B66DD01A2D74CB009F5D13 /* BXDocumentTests.m in Sources */,
 				934E574E19A955F8006172AC /* BXFontSelectorTests.m in Sources */,
 				9313263519BCDAD400974229 /* BXVerseRefTests.m in Sources */,
 				931A27A019945F1D00DC3C27 /* BXLineSplitterTests.m in Sources */,
@@ -742,8 +755,11 @@
 				93613DD419AC2C7400968843 /* BXStatisticsDatasourceTests.m in Sources */,
 				931A27AD1994706300DC3C27 /* BXVerseRangeParserTests.m in Sources */,
 				93E667AB19B05F4700D8E08D /* BXStatisticsGroupsTests.m in Sources */,
+				93B66DD41A2EC08A009F5D13 /* BXFilterPopOverViewControllerTests.m in Sources */,
 				93D157381998458B0020CB14 /* BXFilterTests.m in Sources */,
+				93B66DD21A2D892A009F5D13 /* BXSearchResultTests.m in Sources */,
 				93FDF845199DAAF600BF3576 /* BXTextLanguageTests.m in Sources */,
+				93404DB01A2ABBB9007927A2 /* BXVerseTests.m in Sources */,
 				931A279F19945F1D00DC3C27 /* BXAccVerseURLTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,6 +810,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		93404DAC1A2A94AC007927A2 /* GCov_Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = GCov_Build;
+		};
+		93404DAD1A2A94AC007927A2 /* GCov_Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RegexForAccordance/RegexForAccordance.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
+				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = RegexForAccordance;
+				WRAPPER_EXTENSION = app;
+			};
+			name = GCov_Build;
+		};
+		93404DAE1A2A94AC007927A2 /* GCov_Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RegexForAccordance.app/Contents/MacOS/RegexForAccordance";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RegexForAccordanceTests/RegexForAccordanceTests-Info.plist";
+				PRODUCT_NAME = RegexForAccordanceTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = GCov_Build;
+		};
 		93984F9519873CA70034CB53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -941,6 +1035,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93984F9519873CA70034CB53 /* Debug */,
+				93404DAC1A2A94AC007927A2 /* GCov_Build */,
 				93984F9619873CA70034CB53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -950,6 +1045,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93984F9819873CA70034CB53 /* Debug */,
+				93404DAD1A2A94AC007927A2 /* GCov_Build */,
 				93984F9919873CA70034CB53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -959,6 +1055,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93984F9B19873CA70034CB53 /* Debug */,
+				93404DAE1A2A94AC007927A2 /* GCov_Build */,
 				93984F9C19873CA70034CB53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -15,10 +15,18 @@
 @end
 
 @implementation BXVerseRefConsolidatorTests
+{
+    BXVerseRefConsolidator *vrc;
+}
+
+- (void)setUp
+{
+    [super setUp];
+    vrc = [[BXVerseRefConsolidator alloc] init];
+}
 
 - (void)testBuildRefString
 {
-    BXVerseRefConsolidator *vrc = [[BXVerseRefConsolidator alloc] init];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1]];
     XCTAssertEqualObjects(@"Gen 1:1", vrc.currentVerseRef.stringValue);
     XCTAssertEqualObjects(@"Gen 1:1", [vrc buildRefString]);
@@ -65,7 +73,6 @@
 
 - (void)testMaxLength
 {
-    BXVerseRefConsolidator *vrc = [[BXVerseRefConsolidator alloc] init];
     vrc.maxLength = 21;
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1]];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:2]];
@@ -110,7 +117,6 @@
 {
     // Accordance has two verse 1:1's in Odes and Lam
     // but... LetJer starts with verse 0
-    BXVerseRefConsolidator *vrc = [[BXVerseRefConsolidator alloc] init];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Odes" chapter:1 verse:1]]; // why not verse 1:0 ??
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Odes" chapter:1 verse:1]];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Odes" chapter:1 verse:2]];
@@ -130,7 +136,6 @@
 - (void)testVerseZeroOutOfOrder
 {
     // NETS has Lam 1:1, 1:0, 1:2 in Accordance, but they are listed in correct order through AppleScript: 1:0,1,2
-    BXVerseRefConsolidator *vrc = [[BXVerseRefConsolidator alloc] init];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Lam" chapter:1 verse:0]];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Lam" chapter:1 verse:1]];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Lam" chapter:1 verse:2]];
@@ -143,5 +148,40 @@
     XCTAssertTrue(ref.length <= vrc.maxLength);
 }
 
+- (void)testSameBookChapterVerse
+{
+    // multiple hits in the same verse should not make the verse number repeat in the ref string
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:4 verse:20]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:4 verse:20]];
+    XCTAssertEqualObjects(@"Gen 4:20", [vrc buildRefString]);
+}
+
+- (void)testSameBookChapterNextVerse
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:4 verse:20]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:4 verse:21]];
+    XCTAssertEqualObjects(@"Gen 4:20-21", [vrc buildRefString]);
+}
+
+- (void)testSameBookChapterDifferentVerse
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:4 verse:20]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:4 verse:22]];
+    XCTAssertEqualObjects(@"Gen 4:20,22", [vrc buildRefString]);
+}
+
+- (void)testSameBookDifferentChapterNextVerse
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:2 verse:2]];
+    XCTAssertEqualObjects(@"Gen 1:1; 2:2", [vrc buildRefString]);
+}
+
+- (void)testNextVerseDifferentBook
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Exod" chapter:1 verse:2]];
+    XCTAssertEqualObjects(@"Gen 1:1; Exod 1:2", [vrc buildRefString]);
+}
 
 @end

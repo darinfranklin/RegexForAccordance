@@ -18,6 +18,7 @@ NSCellStateValue cellStateValueForBool(BOOL b);
 @property NSString *verseRange;
 @property BOOL leftToRightOverride;
 @property NSString *searchPattern;
+@property NSString *searchFieldFont;
 
 @property BOOL removeSpaces;
 @property BOOL removeTrailingSpaces;

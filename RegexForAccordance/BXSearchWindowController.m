@@ -96,8 +96,6 @@ NSString *makeBlankIfNil(NSString *str)
     [self.document windowControllerDidLoadNib:self];
     [self buildColumnChooserMenu];
     [self loadSearchSettings];
-    
-    [self.searchField sizeToFit];
 }
 
 - (BXDocument *)document
@@ -249,6 +247,8 @@ NSString *makeBlankIfNil(NSString *str)
     self.verseReferenceField.stringValue = makeBlankIfNil(self.document.searchSettings.verseRange);
     self.lroButton.state = cellStateValueForBool(self.document.searchSettings.leftToRightOverride);
     self.searchField.stringValue = makeBlankIfNil(self.document.searchSettings.searchPattern);
+    [self setSearchFieldFontByName:self.document.searchSettings.searchFieldFont];
+    LogDebug(@"set searchField Font %@", self.document.searchSettings.searchFieldFont);
     [self updateSearchFieldLRO];
 }
 
@@ -527,19 +527,27 @@ NSString *makeBlankIfNil(NSString *str)
 - (IBAction)setSearchFieldFont:(id)sender
 {
     NSMenuItem *menuItem = sender;
-    if ([menuItem.title isEqualToString:@"System"])
+    NSString *fontTypeName = menuItem.title;
+    [self setSearchFieldFontByName:fontTypeName];
+    self.document.searchSettings.searchFieldFont = fontTypeName;
+    [self.document updateChangeCount:NSChangeDone];
+}
+
+- (void)setSearchFieldFontByName:(NSString *)fontTypeName
+{
+    if ([fontTypeName isEqualToString:@"System"])
     {
         self.searchField.font = self.fontSelector.systemFont;
     }
-    else if ([menuItem.title isEqualToString:@"Default"])
+    else if ([fontTypeName isEqualToString:@"Default"])
     {
         self.searchField.font = self.fontSelector.latinFont;
     }
-    else if ([menuItem.title isEqualToString:@"Hebrew"])
+    else if ([fontTypeName isEqualToString:@"Hebrew"])
     {
         self.searchField.font = self.fontSelector.hebrewFont;
     }
-    else if ([menuItem.title isEqualToString:@"Greek"])
+    else if ([fontTypeName isEqualToString:@"Greek"])
     {
         self.searchField.font = self.fontSelector.greekFont;
     }
