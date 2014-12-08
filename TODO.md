@@ -1,10 +1,5 @@
 # TODO
 
-* Screenshots and description
-
-* Put on GitHub
-
-* Create GitHub Pages
 
 # Bugs
 
@@ -29,4 +24,3 @@
 * Dotted Circle placeholder is misaligned with the combining marks in some fonts.  SBL Hebrew is best.
 
 * When LRO is on, Hebrew points are misplaced when using system font in the search field.  The points stay on the correct characters when using SBL Hebrew (Edit > Search field font > Hebrew).
-

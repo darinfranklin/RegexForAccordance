@@ -38,4 +38,9 @@
     [self.preferences showWindow:sender];
 }
 
+- (IBAction)reportIssues:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/darinfranklin/RegexForAccordance/issues"]];
+}
+
 @end

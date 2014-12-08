@@ -10,5 +10,5 @@
 
 @interface BXAppDelegate : NSObject <NSApplicationDelegate>
 - (IBAction)openPreferences:(id)sender;
-
+- (IBAction)reportIssues:(id)sender;
 @end

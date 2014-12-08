@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner">
@@ -164,28 +164,32 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="uyl-h8-XO2"/>
-                            <menuItem title="Search Field Font" enabled="NO" id="pLr-E0-Qxc">
+                            <menuItem title="Search Field Font" id="PVI-o5-wGV">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="System" keyEquivalent="1" indentationLevel="1" id="BPX-hz-pmm">
-                                <connections>
-                                    <action selector="setSearchFieldFont:" target="-1" id="qFU-h8-lVw"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Default" keyEquivalent="2" indentationLevel="1" id="UrI-pr-ago">
-                                <connections>
-                                    <action selector="setSearchFieldFont:" target="-1" id="Py3-PC-clr"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Hebrew" keyEquivalent="3" indentationLevel="1" id="qIz-2g-JLd">
-                                <connections>
-                                    <action selector="setSearchFieldFont:" target="-1" id="hUZ-JG-HBA"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Greek" keyEquivalent="4" indentationLevel="1" id="Jdp-kc-fGU">
-                                <connections>
-                                    <action selector="setSearchFieldFont:" target="-1" id="P6l-1c-Y10"/>
-                                </connections>
+                                <menu key="submenu" title="Search Field Font" id="4pp-J9-Qo1">
+                                    <items>
+                                        <menuItem title="System" keyEquivalent="1" indentationLevel="1" id="BPX-hz-pmm">
+                                            <connections>
+                                                <action selector="setSearchFieldFont:" target="-1" id="qFU-h8-lVw"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Default" keyEquivalent="2" indentationLevel="1" id="UrI-pr-ago">
+                                            <connections>
+                                                <action selector="setSearchFieldFont:" target="-1" id="Py3-PC-clr"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hebrew" keyEquivalent="3" indentationLevel="1" id="qIz-2g-JLd">
+                                            <connections>
+                                                <action selector="setSearchFieldFont:" target="-1" id="hUZ-JG-HBA"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Greek" keyEquivalent="4" indentationLevel="1" id="Jdp-kc-fGU">
+                                            <connections>
+                                                <action selector="setSearchFieldFont:" target="-1" id="P6l-1c-Y10"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                             </menuItem>
                             <menuItem title="Left-To-Right Override" keyEquivalent="l" id="OVM-1W-BGB">
                                 <connections>
@@ -285,6 +289,12 @@
                             <menuItem title="RegexForAccordance Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Report Issues…" id="N5a-oh-IhB">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reportIssues:" target="Voe-Tx-rLC" id="Xi6-PF-0q0"/>
                                 </connections>
                             </menuItem>
                         </items>
