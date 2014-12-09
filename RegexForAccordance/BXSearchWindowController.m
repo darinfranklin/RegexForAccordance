@@ -103,6 +103,11 @@ NSString *makeBlankIfNil(NSString *str)
     return super.document;
 }
 
+- (void)documentDidChange
+{
+    [self loadSearchSettings];
+}
+
 - (void)loadTextNamePopup
 {
     [self.textNamePopup removeAllItems];

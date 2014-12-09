@@ -45,5 +45,6 @@
 
 - (void)performFindPanelAction:(id)sender;
 - (BXDocument *)document;
+- (void)documentDidChange;
 
 @end

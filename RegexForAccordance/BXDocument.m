@@ -207,11 +207,22 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
 {
     LogDebug(@"Reading document \"%@\" %@", self.displayName, typeName);
     NSDictionary *documentContents = [NSPropertyListSerialization propertyListWithData:data
-                                                                      options:0
-                                                                       format:NULL
-                                                                        error:outError];
+                                                                               options:0
+                                                                                format:NULL
+                                                                                 error:outError];
     [self loadDocumentContents:documentContents];
     return documentContents != nil;
+}
+
+- (BOOL)revertToContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+{
+    BOOL success = [super revertToContentsOfURL:url ofType:typeName error:outError];
+    LogDebug(@"reverted=%@", success ? @"YES" : @"NO");
+    if (success)
+    {
+        [self.windowController documentDidChange];
+    }
+    return success;
 }
 
 @end
