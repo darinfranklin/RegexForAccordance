@@ -291,7 +291,7 @@
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Report Issues…" id="N5a-oh-IhB">
+                            <menuItem title="Issues, Comments, Questions…" id="N5a-oh-IhB">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="reportIssues:" target="Voe-Tx-rLC" id="Xi6-PF-0q0"/>
