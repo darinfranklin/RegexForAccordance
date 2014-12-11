@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "0510"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "93984F6519873CA70034CB53"
+               BuildableName = "RegexForAccordance.app"
+               BlueprintName = "RegexForAccordance"
+               ReferencedContainer = "container:RegexForAccordance.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Debug">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "93984F8619873CA70034CB53"
+               BuildableName = "RegexForAccordanceTests.xctest"
+               BlueprintName = "RegexForAccordanceTests"
+               ReferencedContainer = "container:RegexForAccordance.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "93984F6519873CA70034CB53"
+            BuildableName = "RegexForAccordance.app"
+            BlueprintName = "RegexForAccordance"
+            ReferencedContainer = "container:RegexForAccordance.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </TestAction>
+   <LaunchAction
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "93984F6519873CA70034CB53"
+            BuildableName = "RegexForAccordance.app"
+            BlueprintName = "RegexForAccordance"
+            ReferencedContainer = "container:RegexForAccordance.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Release"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "93984F6519873CA70034CB53"
+            BuildableName = "RegexForAccordance.app"
+            BlueprintName = "RegexForAccordance"
+            ReferencedContainer = "container:RegexForAccordance.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "#printenv &gt; /tmp/env.txt&#10;APP_PATH=&quot;${ARCHIVE_PRODUCTS_PATH}/Applications/$FULL_PRODUCT_NAME&quot;&#10;PLIST_PATH=&quot;${ARCHIVE_PRODUCTS_PATH}/Applications/${INFOPLIST_PATH}&quot;&#10;VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleShortVersionString&quot; &quot;$PLIST_PATH&quot;)&#10;hdiutil create &quot;$ARCHIVE_PRODUCTS_PATH/$PROJECT_NAME-$VERSION_NUMBER.dmg&quot; -srcfolder &quot;$APP_PATH&quot; -ov&#10;open &quot;$ARCHIVE_PRODUCTS_PATH&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "93984F6519873CA70034CB53"
+                     BuildableName = "RegexForAccordance.app"
+                     BlueprintName = "RegexForAccordance"
+                     ReferencedContainer = "container:RegexForAccordance.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+   </ArchiveAction>
+</Scheme>
