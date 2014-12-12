@@ -42,18 +42,24 @@
                           [[result verse] text]);
 
     result = [searcher nextSearchResult];
-    XCTAssertEqualObjects(@"Ps 74:14", [result.verse.ref stringValue]);
+    XCTAssertTrue([result.verse.ref.book hasPrefix:@"Ps"]);
+    XCTAssertEqual(74, result.verse.ref.chapter);
+    XCTAssertEqual(14, result.verse.ref.verse);
     XCTAssertEqualObjects(@"Thou brakest the heads of leviathan in pieces,"
                           " and gavest him to be meat to the people inhabiting the wilderness. ",
                           [[result verse] text]);
     
     result = [searcher nextSearchResult];
-    XCTAssertEqualObjects(@"Ps 104:26", [result.verse.ref stringValue]);
+    XCTAssertTrue([result.verse.ref.book hasPrefix:@"Ps"]);
+    XCTAssertEqual(104, result.verse.ref.chapter);
+    XCTAssertEqual(26, result.verse.ref.verse);
     XCTAssertEqualObjects(@"There go the ships: there is that leviathan, whom thou hast made to play therein. ",
                           [[result verse] text]);
     
     result = [searcher nextSearchResult];
-    XCTAssertEqualObjects(@"Isa 27:1", [result.verse.ref stringValue]);
+    XCTAssertTrue([result.verse.ref.book hasPrefix:@"Is"]);
+    XCTAssertEqual(27, result.verse.ref.chapter);
+    XCTAssertEqual(1, result.verse.ref.verse);
     XCTAssertEqualObjects(@"¶ In that day the Lord with his sore and great and strong sword"
                           " shall punish leviathan the piercing serpent,"
                           " even leviathan that crooked serpent;"
@@ -101,7 +107,9 @@
     BXSearchResult *result;
     
     result = [searcher nextSearchResult];
-    XCTAssertEqualObjects(@"Gen 1:1", [result.verse.ref stringValue]);
+    XCTAssertTrue([result.verse.ref.book hasPrefix:@"Gen"]);
+    XCTAssertEqual(1, result.verse.ref.verse);
+    XCTAssertEqual(1, result.verse.ref.chapter);
     XCTAssertTrue(NSEqualRanges(NSMakeRange(NSNotFound, 0), [result.verse.text rangeOfString:@LRM]));
     XCTAssertTrue(NSEqualRanges(NSMakeRange(NSNotFound, 0), [result.verse.text rangeOfString:@RLM]));
     XCTAssertEqualObjects(@"ב", [result.verse.text substringWithRange:NSMakeRange(0, 1)]);
@@ -168,7 +176,9 @@
     {
         lastResult = result;
     }
-    XCTAssertEqualObjects(@"Isa 66:24", [[[lastResult verse] ref] stringValue]);
+    XCTAssertTrue([lastResult.verse.ref.book hasPrefix:@"Is"]);
+    XCTAssertEqual(66, lastResult.verse.ref.chapter);
+    XCTAssertEqual(24, lastResult.verse.ref.verse);
 }
 
 - (NSString *)findFirstRefForHebrewRegex:(NSString *)pattern

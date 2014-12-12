@@ -18,7 +18,13 @@
 {
     if ( self = [super init] )
     {
-        NSString *verseRefPattern = @"^((?:[1-9] )?[a-z]+) (?:(\\d+):)?(\\d+)"; // 1 Cor 2:3; Gen 1:23; Jude 9
+        // Two Accordance preferences affect the verse reference format
+        //   Appearance: Use European verse notation; Use SBL standard abbreviations
+        // SBL: 1 Cor 2:3; Gen 1:23; Jude 9; 3 John 1
+        // Non-SBL: 1Cor. 2:3; Gen. 1:23; Jude 9; 3John 1
+        // SBL Euro: 1 Cor 2,3; Gen 1,23; Jude 9; 3 John 1
+        // Non-SBL Euro: 1Cor. 2,3; Gen. 1,23; Jude 9; 3John 1
+        NSString *verseRefPattern = @"^((?:[1-9] ?)?[a-z]+\\.?) (?:(\\d+)[:,])?(\\d+)";
         NSError *error;
         _verseRefRegex = [NSRegularExpression regularExpressionWithPattern:verseRefPattern
                                                                        options:NSRegularExpressionCaseInsensitive
@@ -51,7 +57,7 @@
         }
         verseNumber = [[line substringWithRange:verseRange] integerValue];
         verseRefStringValue = [line substringWithRange:result.range];
-        verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber stringValue:verseRefStringValue];
+        verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber];
     }
     else
     {

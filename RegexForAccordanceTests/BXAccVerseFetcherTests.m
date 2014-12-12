@@ -30,13 +30,17 @@
     [acc setVerseRange:@"Psalms"];
     BXVerse *verse, *lastVerse;
     verse = [acc nextVerse];
-    XCTAssertEqualObjects(@"Ps 1:1", verse.ref.stringValue);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Ps"]);
+    XCTAssertEqual(1, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
     XCTAssertEqual(1, verse.lineNumber);
     while (nil != (verse = [acc nextVerse]))
     {
         lastVerse = verse;
     }
-    XCTAssertEqualObjects(@"Ps 150:6", lastVerse.ref.stringValue);
+    XCTAssertTrue([lastVerse.ref.book hasPrefix:@"Ps"]);
+    XCTAssertEqual(150, lastVerse.ref.chapter);
+    XCTAssertEqual(6, lastVerse.ref.verse);
     XCTAssertEqual(2577, lastVerse.lineNumber);
 }
 
