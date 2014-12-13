@@ -24,7 +24,7 @@
 
 - (NSString *)referenceAndText
 {
-    return [[self.ref.stringValue stringByAppendingString:@" "] stringByAppendingString:self.text];
+    return [NSString stringWithFormat:@"%@ %@", self.ref.stringValue, self.text];
 }
 
 @end

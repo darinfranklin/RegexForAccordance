@@ -203,7 +203,7 @@ NSUInteger const MaxLinesPerFetch = 500;
         self.lineNumber += 1;
         verse.lineNumber = self.lineNumber;
         self.indexInCurrentFetch += 1;
-        self.refRangeStart = verse.ref.stringValue;
+        self.refRangeStart = verse.ref.stringValue ?: @"NULL";
         if (self.firstVerse == nil)
         {
             self.firstVerse = verse;

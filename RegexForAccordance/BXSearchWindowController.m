@@ -428,12 +428,15 @@ NSString *makeBlankIfNil(NSString *str)
     self.searchInProgress = NO;
     [self stopStatusUpdateTimer];
     [self stopProgressIndicator];
-    [self.statisticsTableView reloadData];
-    [self buildSearchResultLinks];
     if (self.error != nil)
     {
         [NSApp presentError:self.error modalForWindow:self.window delegate:nil didPresentSelector:nil contextInfo:nil];
         self.error = nil;
+    }
+    else
+    {
+        [self.statisticsTableView reloadData];
+        [self buildSearchResultLinks];
     }
 }
 
