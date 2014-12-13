@@ -24,7 +24,7 @@
         // Non-SBL: 1Cor. 2:3; Gen. 1:23; Jude 9; 3John 1
         // SBL Euro: 1 Cor 2,3; Gen 1,23; Jude 9; 3 John 1
         // Non-SBL Euro: 1Cor. 2,3; Gen. 1,23; Jude 9; 3John 1
-        NSString *verseRefPattern = @"^((?:[1-9] ?)?[a-z]+\\.?) (?:(\\d+)[:,])?(\\d+)";
+        NSString *verseRefPattern = @"^(.*?)\\s(?:(\\d+)\\S)?(\\d+)";
         NSError *error;
         _verseRefRegex = [NSRegularExpression regularExpressionWithPattern:verseRefPattern
                                                                        options:NSRegularExpressionCaseInsensitive
