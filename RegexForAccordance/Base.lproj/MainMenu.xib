@@ -191,7 +191,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Left-To-Right Override" keyEquivalent="l" id="OVM-1W-BGB">
+                            <menuItem title="Left-To-Right Override" keyEquivalent="L" id="OVM-1W-BGB">
                                 <connections>
                                     <action selector="toggleLRO:" target="-1" id="wzT-8r-zen"/>
                                 </connections>
