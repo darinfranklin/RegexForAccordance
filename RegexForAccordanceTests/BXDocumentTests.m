@@ -30,6 +30,7 @@
 - (void)testSetGet
 {
     self.document.searchSettings.removePilcrows = YES;
+    self.document.searchSettings.removeBracketedText = YES;
     self.document.searchSettings.removeSpaces = YES;
     self.document.searchSettings.removeTrailingSpaces = YES;
     self.document.searchSettings.hebrewRemoveCantillation = YES;
@@ -48,6 +49,7 @@
 
     NSDictionary *dict = [self.document searchSettingsDictionary];
     XCTAssertEqual(YES, [[dict objectForKey:@"RemovePilcrows"] boolValue]);
+    XCTAssertEqual(YES, [[dict objectForKey:@"RemoveBracketedText"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"RemoveSpaces"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"RemoveTrailingSpaces"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"HebrewRemoveCantillation"] boolValue]);
@@ -69,6 +71,7 @@
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"RemovePilcrows"];
+    [dict setObject:[NSNumber numberWithBool:YES] forKey:@"RemoveBracketedText"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"RemoveSpaces"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"RemoveTrailingSpaces"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"HebrewRemoveCantillation"];
@@ -88,6 +91,7 @@
     [self.document loadDocumentContents:dict];
 
     XCTAssertEqual(YES, self.document.searchSettings.removePilcrows);
+    XCTAssertEqual(YES, self.document.searchSettings.removeBracketedText);
     XCTAssertEqual(YES, self.document.searchSettings.removeSpaces);
     XCTAssertEqual(YES, self.document.searchSettings.removeTrailingSpaces);
     XCTAssertEqual(YES, self.document.searchSettings.hebrewRemoveCantillation);

@@ -20,6 +20,7 @@ NSString *const TextName = @"TextName";
 NSString *const RemoveSpaces = @"RemoveSpaces";
 NSString *const RemoveTrailingSpaces = @"RemoveTrailingSpaces";
 NSString *const RemovePilcrows = @"RemovePilcrows";
+NSString *const RemoveBracketedText = @"RemoveBracketedText";
 NSString *const HebrewRemoveCantillation = @"HebrewRemoveCantillation";
 NSString *const HebrewRemovePoints = @"HebrewRemovePoints";
 NSString *const HebrewRemovePunctuation = @"HebrewRemovePunctuation";
@@ -75,6 +76,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     self.searchSettings.removeSpaces = [defaults boolForKey:RemoveSpaces];
     self.searchSettings.removeTrailingSpaces = [defaults boolForKey:RemoveTrailingSpaces];
     self.searchSettings.removePilcrows = [defaults boolForKey:RemovePilcrows];
+    self.searchSettings.removeBracketedText = [defaults boolForKey:RemoveBracketedText];
     self.searchSettings.hebrewRemoveCantillation = [defaults boolForKey:HebrewRemoveCantillation];
     self.searchSettings.hebrewRemovePoints = [defaults boolForKey:HebrewRemovePoints];
     self.searchSettings.hebrewRemovePunctuation = [defaults boolForKey:HebrewRemovePunctuation];
@@ -135,6 +137,10 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
         {
             self.searchSettings.removePilcrows = number.boolValue;
         }
+        if (nil != (number = [documentContents objectForKey:RemoveBracketedText]))
+        {
+            self.searchSettings.removeBracketedText = number.boolValue;
+        }
         
         if (nil != (number = [documentContents objectForKey:HebrewRemoveCantillation]))
         {
@@ -182,6 +188,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeSpaces] forKey:RemoveSpaces];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeTrailingSpaces] forKey:RemoveTrailingSpaces];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removePilcrows] forKey:RemovePilcrows];
+    [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeBracketedText] forKey:RemoveBracketedText];
     
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.hebrewRemoveCantillation] forKey:HebrewRemoveCantillation];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.hebrewRemovePoints] forKey:HebrewRemovePoints];

@@ -19,6 +19,7 @@
 #import "BXFilterHebrewPunctuation.h"
 #import "BXFilterGreekPunctuation.h"
 #import "BXFilterPilcrows.h"
+#import "BXFilterBracketedText.h"
 
 @interface BXFilterTests : XCTestCase
 
@@ -276,6 +277,14 @@
                        withString:@"יְהוָ֣ה ׀ אֱלֹהֵ֣י הַשָּׁמַ֗יִם אֲשֶׁ֨ר לְקָחַ֜נִי מִבֵּ֣ית אָבִי֮ וּמֵאֶ֣רֶץ מֽוֹלַדְתִּי֒ וַאֲשֶׁ֨ר דִּבֶּר־לִ֜י וַאֲשֶׁ֤ר נִֽשְׁבַּֽע־לִי֙ לֵאמֹ֔ר לְזַ֨רְעֲךָ֔ אֶתֵּ֖ן אֶת־הָאָ֣רֶץ הַזֹּ֑את ה֗וּא יִשְׁלַ֤ח מַלְאָכוֹ֙ לְפָנֶ֔יךָ וְלָקַחְתָּ֥ אִשָּׁ֛ה לִבְנִ֖י מִשָּֽׁם׃"
                         expecting:@"יהו֣ה ׀ אלה֣י השמ֗ים אש֨ר לקח֜ני מב֣ית אבי֮ ומא֣רץ מולדתי֒ ואש֨ר דבר־ל֜י ואש֤ר נשבע־לי֙ לאמ֔ר לז֨רעך֔ את֖ן את־הא֣רץ הז֑את ה֗וא ישל֤ח מלאכו֙ לפנ֔יך ולקחת֥ אש֛ה לבנ֖י משם׃"
                        iterations:2500];
+}
+
+- (void)testRemoveBracketedText
+{
+    BXFilter *filter = [[BXFilterBracketedText alloc] init];
+    XCTAssertEqualObjects(@"Abc  jkl", [filter filter:@"Abc [def ghi] jkl"]);
+    XCTAssertEqualObjects(@"Abc  jkl  qrst.", [filter filter:@"Abc [def ghi] jkl [mnop] qrst."]);
+    XCTAssertEqualObjects(@" jkl  ", [filter filter:@"[Abc def ghi] jkl [mnop] [qrst.]"]);
 }
 
 @end

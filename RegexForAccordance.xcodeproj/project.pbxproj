@@ -56,6 +56,7 @@
 		93475AB219A04F1200882A88 /* BXStatisticsDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93475AB119A04F1200882A88 /* BXStatisticsDatasource.m */; };
 		934E574E19A955F8006172AC /* BXFontSelectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 934E574D19A955F8006172AC /* BXFontSelectorTests.m */; };
 		934E579419A96AFB006172AC /* BXDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 934E579319A96AFB006172AC /* BXDocument.m */; };
+		9354DD4B1A6B29AE008429D6 /* BXFilterBracketedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9354DD4A1A6B29AE008429D6 /* BXFilterBracketedText.m */; };
 		935E3ADA19C29E04007A635A /* BXGroupRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935E3AD919C29E04007A635A /* BXGroupRowView.xib */; };
 		935E3ADD19C29E2A007A635A /* BXGroupRowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935E3ADC19C29E2A007A635A /* BXGroupRowViewController.m */; };
 		935E3AE019C2A573007A635A /* BXGroupRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 935E3ADF19C2A573007A635A /* BXGroupRowView.m */; };
@@ -182,6 +183,8 @@
 		934E574D19A955F8006172AC /* BXFontSelectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFontSelectorTests.m; sourceTree = "<group>"; };
 		934E579219A96AFB006172AC /* BXDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXDocument.h; sourceTree = "<group>"; };
 		934E579319A96AFB006172AC /* BXDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXDocument.m; sourceTree = "<group>"; };
+		9354DD491A6B29AE008429D6 /* BXFilterBracketedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterBracketedText.h; sourceTree = "<group>"; };
+		9354DD4A1A6B29AE008429D6 /* BXFilterBracketedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterBracketedText.m; sourceTree = "<group>"; };
 		935E3AD919C29E04007A635A /* BXGroupRowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BXGroupRowView.xib; sourceTree = "<group>"; };
 		935E3ADB19C29E2A007A635A /* BXGroupRowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXGroupRowViewController.h; sourceTree = "<group>"; };
 		935E3ADC19C29E2A007A635A /* BXGroupRowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXGroupRowViewController.m; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */,
 				93D1573019983D720020CB14 /* BXFilterReplace.h */,
 				93D1573119983D720020CB14 /* BXFilterReplace.m */,
+				9354DD491A6B29AE008429D6 /* BXFilterBracketedText.h */,
+				9354DD4A1A6B29AE008429D6 /* BXFilterBracketedText.m */,
 				931F51A31A25876D006774A3 /* BXFilterRemove.h */,
 				931F51A41A25876D006774A3 /* BXFilterRemove.m */,
 				93FDF846199DC5D800BF3576 /* BXFilterSpaces.h */,
@@ -729,6 +734,7 @@
 				93475AB219A04F1200882A88 /* BXStatisticsDatasource.m in Sources */,
 				935E3ADD19C29E2A007A635A /* BXGroupRowViewController.m in Sources */,
 				93B5D55B1A2257A2008D22FD /* BXFilterHebrewPoints.m in Sources */,
+				9354DD4B1A6B29AE008429D6 /* BXFilterBracketedText.m in Sources */,
 				9317B2BD19A5750B00186A77 /* BXFilterGreekPunctuation.m in Sources */,
 				931A27AA19946F5800DC3C27 /* BXVerseRangeParser.m in Sources */,
 				9308FC1019945B9C00AB090C /* BXAccVerseURL.m in Sources */,

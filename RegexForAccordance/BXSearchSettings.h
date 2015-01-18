@@ -23,6 +23,7 @@ NSCellStateValue cellStateValueForBool(BOOL b);
 @property BOOL removeSpaces;
 @property BOOL removeTrailingSpaces;
 @property BOOL removePilcrows;
+@property BOOL removeBracketedText;
 @property BOOL hebrewRemoveCantillation;
 @property BOOL hebrewRemovePoints;
 @property BOOL hebrewRemovePunctuation;

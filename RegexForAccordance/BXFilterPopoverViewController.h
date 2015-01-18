@@ -15,6 +15,7 @@
 @property IBOutlet NSButton *spaces;
 @property IBOutlet NSButton *trailingSpaces;
 @property IBOutlet NSButton *pilcrows;
+@property IBOutlet NSButton *bracketedText;
 @property IBOutlet NSButton *hebrewCantillation;
 @property IBOutlet NSButton *hebrewPoints;
 @property IBOutlet NSButton *hebrewPunctuation;

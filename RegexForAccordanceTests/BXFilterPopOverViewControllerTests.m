@@ -29,6 +29,7 @@
 {
     XCTAssertEqual(2, self.searcher.filters.count);
     self.vc.document.searchSettings.removePilcrows = YES;
+    self.vc.document.searchSettings.removeBracketedText = YES;
     self.vc.document.searchSettings.removeSpaces = YES;
     self.vc.document.searchSettings.removeTrailingSpaces = YES;
     self.vc.document.searchSettings.hebrewRemoveCantillation = YES;
@@ -37,8 +38,9 @@
     self.vc.document.searchSettings.greekRemoveDiacritics = YES;
     self.vc.document.searchSettings.greekRemovePunctuation = YES;
     [self.vc setFiltersInSearcher:self.searcher];
-    XCTAssertEqual(10, self.searcher.filters.count);
+    XCTAssertEqual(11, self.searcher.filters.count);
     self.vc.document.searchSettings.removePilcrows = NO;
+    self.vc.document.searchSettings.removeBracketedText = NO;
     self.vc.document.searchSettings.removeSpaces = NO;
     self.vc.document.searchSettings.removeTrailingSpaces = NO;
     self.vc.document.searchSettings.hebrewRemoveCantillation = NO;
@@ -64,6 +66,11 @@
     XCTAssertEqual(initialState, self.vc.document.searchSettings.removePilcrows);
     [self toggleState:initialState ofButton:self.vc.pilcrows = [[NSButton alloc] init]];
     XCTAssertEqual(!initialState, self.vc.document.searchSettings.removePilcrows);
+    
+    initialState = NO;
+    XCTAssertEqual(initialState, self.vc.document.searchSettings.removeBracketedText);
+    [self toggleState:initialState ofButton:self.vc.bracketedText = [[NSButton alloc] init]];
+    XCTAssertEqual(!initialState, self.vc.document.searchSettings.removeBracketedText);
 
     initialState = NO;
     XCTAssertEqual(initialState, self.vc.document.searchSettings.removeSpaces);

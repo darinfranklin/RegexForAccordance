@@ -18,6 +18,7 @@
 #import "BXFilterHebrewPunctuation.h"
 #import "BXFilterGreekDiacritics.h"
 #import "BXFilterGreekPunctuation.h"
+#import "BXFilterBracketedText.h"
 
 @implementation BXFilterPopoverViewController
 
@@ -26,6 +27,7 @@
     [self setFilter:[[BXFilterSpaces alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeSpaces];
     [self setFilter:[[BXFilterTrailingSpaces alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeTrailingSpaces];
     [self setFilter:[[BXFilterPilcrows alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removePilcrows];
+    [self setFilter:[[BXFilterBracketedText alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeBracketedText];
 
     [self setFilter:[[BXFilterHebrewCantillation alloc] init] inSearcher:searcher enabled:self.document.searchSettings.hebrewRemoveCantillation];
     [self setFilter:[[BXFilterHebrewPoints alloc] init] inSearcher:searcher enabled:self.document.searchSettings.hebrewRemovePoints];
@@ -65,6 +67,11 @@
         self.document.searchSettings.removePilcrows = ([sender state] == NSOnState);
         [self.document updateChangeCount:NSChangeDone];
     }
+    else if (sender == self.bracketedText)
+    {
+        self.document.searchSettings.removeBracketedText = ([sender state] == NSOnState);
+        [self.document updateChangeCount:NSChangeDone];
+    }
     else if (sender == self.hebrewCantillation)
     {
         self.document.searchSettings.hebrewRemoveCantillation = ([sender state] == NSOnState);
@@ -97,6 +104,7 @@
     self.spaces.state = cellStateValueForBool(self.document.searchSettings.removeSpaces);
     self.trailingSpaces.state = cellStateValueForBool(self.document.searchSettings.removeTrailingSpaces);
     self.pilcrows.state = cellStateValueForBool(self.document.searchSettings.removePilcrows);
+    self.bracketedText.state = cellStateValueForBool(self.document.searchSettings.removeBracketedText);
     
     self.hebrewCantillation.state = cellStateValueForBool(self.document.searchSettings.hebrewRemoveCantillation);
     self.hebrewPoints.state = cellStateValueForBool(self.document.searchSettings.hebrewRemovePoints);

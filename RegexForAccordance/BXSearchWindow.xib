@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BXSearchWindowController">
@@ -487,6 +487,7 @@
         </menu>
         <viewController title="Text Filters" nibName="BXSearchWindow" id="ril-Rg-obf" userLabel="Popover View Controller" customClass="BXFilterPopoverViewController">
             <connections>
+                <outlet property="bracketedText" destination="bE1-UD-oV9" id="gMK-er-yeD"/>
                 <outlet property="greekDiacritics" destination="UxE-GW-bLB" id="Q0j-26-qmj"/>
                 <outlet property="greekPunctuation" destination="HgR-x9-E4q" id="OMW-c0-gji"/>
                 <outlet property="hebrewCantillation" destination="PE7-VX-WVa" id="zrc-FA-Kgr"/>
@@ -504,11 +505,11 @@
             </connections>
         </popover>
         <customView id="HBx-sr-Wi8" userLabel="Filter Popover View">
-            <rect key="frame" x="0.0" y="0.0" width="161" height="276"/>
+            <rect key="frame" x="0.0" y="0.0" width="161" height="293"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="iFY-tx-rvA">
-                    <rect key="frame" x="18" y="175" width="88" height="18"/>
+                    <rect key="frame" x="18" y="192" width="88" height="18"/>
                     <buttonCell key="cell" type="check" title="All Spaces" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="HG0-NA-4B6">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -518,7 +519,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="PE7-VX-WVa">
-                    <rect key="frame" x="18" y="128" width="92" height="18"/>
+                    <rect key="frame" x="18" y="125" width="92" height="18"/>
                     <buttonCell key="cell" type="check" title="Cantillation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="QIx-lB-yab">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -528,7 +529,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="yOG-8o-86N">
-                    <rect key="frame" x="18" y="108" width="61" height="18"/>
+                    <rect key="frame" x="18" y="105" width="61" height="18"/>
                     <buttonCell key="cell" type="check" title="Points" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="udA-B0-vrh">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -538,7 +539,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="IXF-8u-Qxn">
-                    <rect key="frame" x="18" y="88" width="96" height="18"/>
+                    <rect key="frame" x="18" y="85" width="96" height="18"/>
                     <buttonCell key="cell" type="check" title="Punctuation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="w2C-eV-hIg">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -548,7 +549,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="UxE-GW-bLB">
-                    <rect key="frame" x="18" y="41" width="80" height="18"/>
+                    <rect key="frame" x="18" y="38" width="80" height="18"/>
                     <buttonCell key="cell" type="check" title="Diacritics" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="njn-Ao-6I2">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -558,7 +559,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="HgR-x9-E4q">
-                    <rect key="frame" x="18" y="21" width="96" height="18"/>
+                    <rect key="frame" x="18" y="18" width="96" height="18"/>
                     <buttonCell key="cell" type="check" title="Punctuation" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="X4u-CE-46W">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -568,7 +569,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-ru-bbH">
-                    <rect key="frame" x="18" y="65" width="114" height="17"/>
+                    <rect key="frame" x="18" y="62" width="114" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Greek…" id="mpD-dp-ITn">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -576,7 +577,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vy-xd-ooy">
-                    <rect key="frame" x="18" y="239" width="71" height="17"/>
+                    <rect key="frame" x="18" y="256" width="71" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove…" id="WA6-yC-nCa">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -584,7 +585,7 @@
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="jI8-F3-nGS">
-                    <rect key="frame" x="18" y="215" width="87" height="18"/>
+                    <rect key="frame" x="18" y="232" width="87" height="18"/>
                     <buttonCell key="cell" type="check" title="¶ Pilcrows" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="w7a-UF-OYo">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -594,7 +595,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="2aY-hr-kaQ">
-                    <rect key="frame" x="18" y="195" width="116" height="18"/>
+                    <rect key="frame" x="18" y="212" width="116" height="18"/>
                     <buttonCell key="cell" type="check" title="Trailing Spaces" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="hFs-qd-kmc">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -604,13 +605,23 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-bU-U5r">
-                    <rect key="frame" x="18" y="152" width="125" height="17"/>
+                    <rect key="frame" x="18" y="149" width="125" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Hebrew…" id="SqD-n7-ne7">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="bE1-UD-oV9">
+                    <rect key="frame" x="18" y="172" width="115" height="18"/>
+                    <buttonCell key="cell" type="check" title="Bracketed Text" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="EUL-Tj-pJV">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="Ex0-3u-t4V"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="jI8-F3-nGS" firstAttribute="leading" secondItem="2vy-xd-ooy" secondAttribute="leading" id="2As-VQ-7xy"/>
@@ -621,6 +632,7 @@
                 <constraint firstItem="2aY-hr-kaQ" firstAttribute="top" secondItem="jI8-F3-nGS" secondAttribute="bottom" constant="6" symbolic="YES" id="JU5-9i-RRJ"/>
                 <constraint firstItem="yOG-8o-86N" firstAttribute="top" secondItem="PE7-VX-WVa" secondAttribute="bottom" constant="6" symbolic="YES" id="LEQ-oA-ahD"/>
                 <constraint firstItem="PE7-VX-WVa" firstAttribute="top" secondItem="e3K-bU-U5r" secondAttribute="bottom" constant="8" symbolic="YES" id="Mn5-NC-6O5"/>
+                <constraint firstItem="e3K-bU-U5r" firstAttribute="top" secondItem="bE1-UD-oV9" secondAttribute="bottom" constant="8" symbolic="YES" id="NHo-YC-c7r"/>
                 <constraint firstItem="IXF-8u-Qxn" firstAttribute="top" secondItem="yOG-8o-86N" secondAttribute="bottom" constant="6" symbolic="YES" id="Y44-zE-gqK"/>
                 <constraint firstItem="C4i-ru-bbH" firstAttribute="leading" secondItem="2vy-xd-ooy" secondAttribute="leading" id="dzF-kr-vPg"/>
                 <constraint firstItem="2aY-hr-kaQ" firstAttribute="leading" secondItem="2vy-xd-ooy" secondAttribute="leading" id="eqT-dH-rDd"/>
@@ -630,13 +642,14 @@
                 <constraint firstItem="e3K-bU-U5r" firstAttribute="leading" secondItem="IXF-8u-Qxn" secondAttribute="leading" id="kF1-70-4WH"/>
                 <constraint firstItem="HgR-x9-E4q" firstAttribute="top" secondItem="UxE-GW-bLB" secondAttribute="bottom" constant="6" symbolic="YES" id="oAB-W4-an2"/>
                 <constraint firstItem="e3K-bU-U5r" firstAttribute="leading" secondItem="PE7-VX-WVa" secondAttribute="leading" id="qPh-oa-FKb"/>
+                <constraint firstItem="bE1-UD-oV9" firstAttribute="top" secondItem="iFY-tx-rvA" secondAttribute="bottom" constant="6" symbolic="YES" id="r0X-Ff-0aj"/>
                 <constraint firstItem="C4i-ru-bbH" firstAttribute="leading" secondItem="UxE-GW-bLB" secondAttribute="leading" id="sk4-BS-wUW"/>
                 <constraint firstItem="iFY-tx-rvA" firstAttribute="leading" secondItem="2vy-xd-ooy" secondAttribute="leading" id="uXj-nA-IB7"/>
                 <constraint firstItem="iFY-tx-rvA" firstAttribute="top" secondItem="2aY-hr-kaQ" secondAttribute="bottom" constant="6" symbolic="YES" id="udz-9u-VVz"/>
                 <constraint firstItem="C4i-ru-bbH" firstAttribute="leading" secondItem="HgR-x9-E4q" secondAttribute="leading" id="v4l-o6-6W0"/>
-                <constraint firstItem="e3K-bU-U5r" firstAttribute="top" secondItem="iFY-tx-rvA" secondAttribute="bottom" constant="8" symbolic="YES" id="xLh-U3-SN8"/>
+                <constraint firstItem="2vy-xd-ooy" firstAttribute="leading" secondItem="bE1-UD-oV9" secondAttribute="leading" id="wOY-22-E0E"/>
             </constraints>
-            <point key="canvasLocation" x="126.5" y="754"/>
+            <point key="canvasLocation" x="126.5" y="762.5"/>
         </customView>
     </objects>
     <resources>
