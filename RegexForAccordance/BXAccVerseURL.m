@@ -16,8 +16,8 @@
 - (NSURL *)urlForVerseRef:(NSString *)ref inText:(NSString *)text
 {
     NSString *urlString = [NSString stringWithFormat:@"%@://%@/%@?%@", @"accord", @"read",
-                           [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           [ref stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                           [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ?: @"",
+                           [ref stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ?: @""];
     return [NSURL URLWithString:urlString];
 }
 
@@ -26,7 +26,10 @@
     NSMutableArray *refs = [[NSMutableArray alloc] initWithCapacity:searchResults.count];
     for (BXSearchResult *searchResult in searchResults)
     {
-        [refs addObject:searchResult.verse.ref];
+        if (searchResult.verse.ref != nil)
+        {
+            [refs addObject:searchResult.verse.ref];
+        }
     }
     BXVerseRefConsolidator *consolidator = [[BXVerseRefConsolidator alloc] initWithVerseRefs:refs];
     NSMutableArray *links = [[NSMutableArray alloc] init];
@@ -34,14 +37,15 @@
     BXVerseRef *first = [consolidator currentVerseRef];
     refString = [consolidator buildRefString];
     BXVerseRef *last = [consolidator lastUsedVerseRef];
-    do {
+    while (refString != nil)
+    {
         NSURL *url = [self urlForVerseRef:refString inText:textName];
         BXAccLink *link = [[BXAccLink alloc] initWithURL:url firstVerseRef:first lastVerseRef:last];
         [links addObject:link];
         first = [consolidator currentVerseRef];
         refString = [consolidator buildRefString];
         last = [consolidator lastUsedVerseRef];
-    } while (refString != nil);
+    };
     return links;
 }
 

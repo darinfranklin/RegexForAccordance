@@ -61,7 +61,7 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
         BXGroupRowViewController *vc = [[BXGroupRowViewController alloc] init];
         BXStatisticsGroup *group = [self.statisticsGroups groupAtIndex:[self.statisticsGroups groupIndexForRow:row]];
         vc.groupRowView = (BXGroupRowView *)vc.view;
-        vc.groupRowView.label.stringValue = group.name;
+        vc.groupRowView.label.stringValue = group.name ?: @"(null)";
         vc.groupRowView.badge.stringValue = [NSString stringWithFormat:@"%ld|%ld",
                                              group.statistics.countOfHitKeys,
                                              group.statistics.countOfHits];

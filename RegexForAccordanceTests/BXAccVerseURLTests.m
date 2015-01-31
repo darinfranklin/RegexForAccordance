@@ -44,6 +44,18 @@
                                                  inText:@"KJVS"] absoluteString]);
 }
 
+- (void)testURLWithNilRef
+{
+    XCTAssertEqualObjects(@"accord://read/KJVS?",
+                          [[urlFormatter urlForVerseRef:nil inText:@"KJVS"] absoluteString]);
+}
+
+- (void)testURLWithNilText
+{
+    XCTAssertEqualObjects(@"accord://read/?",
+                          [[urlFormatter urlForVerseRef:nil inText:nil] absoluteString]);
+}
+
 - (void)testLinksForSearchResults
 {
     NSMutableArray *searchResults = [[NSMutableArray alloc] init];
@@ -74,6 +86,30 @@
     XCTAssertEqual(250, link.lastVerseRef.chapter);
     XCTAssertTrue([link.url.absoluteString hasPrefix:@"accord://read/NRSVS?Bob%20239:1-2;%20240:1-2"], @"%@", link.url.absoluteString);
     XCTAssertTrue([link.url.absoluteString hasSuffix:@";%20250:1-2"], @"%@", link.url.absoluteString);
+}
+
+- (void)testLinksForSearchResultsWithNilRef
+{
+    NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+    BXSearchResult *searchResult = [[BXSearchResult alloc] init];
+    searchResult.verse = [[BXVerse alloc] init];
+    [searchResults addObject:searchResult];
+    XCTAssertNil(searchResult.verse.ref);
+    
+    NSArray *links = [urlFormatter linksForSearchResults:searchResults textName:@"NRSVS"];
+    XCTAssertEqual(0, links.count);
+}
+
+- (void)testLinksForSearchResultsWithOneRef
+{
+    NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+    BXSearchResult *searchResult = [[BXSearchResult alloc] init];
+    searchResult.verse = [[BXVerse alloc] init];
+    searchResult.verse.ref = [[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1];
+    [searchResults addObject:searchResult];
+    
+    NSArray *links = [urlFormatter linksForSearchResults:searchResults textName:@"NRSVS"];
+    XCTAssertEqual(1, links.count);
 }
 
 @end
