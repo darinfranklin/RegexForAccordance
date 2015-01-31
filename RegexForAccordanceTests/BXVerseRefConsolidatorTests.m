@@ -184,4 +184,17 @@
     XCTAssertEqualObjects(@"Gen 1:1; Exod 1:2", [vrc buildRefString]);
 }
 
+- (void)testEuropeanFormat
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Gen" chapter:2 verse:2 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Exod" chapter:1 verse:2 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Exod" chapter:1 verse:3 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Exod" chapter:1 verse:5 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Exod" chapter:1 verse:6 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Jude" chapter:0 verse:4 europeanFormat:NO]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Jude" chapter:0 verse:6 europeanFormat:NO]];
+    XCTAssertEqualObjects(@"Gen 1,1; 2,2; Exod 1,2-3.5-6; Jude 4.6", [vrc buildRefString]);
+}
+
 @end

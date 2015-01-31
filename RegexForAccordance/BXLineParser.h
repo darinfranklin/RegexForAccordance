@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BXVerse.h"
 
-/*! Parses a line of text into a BXVerse, which contains a BXVerseRef and the text */
+// Parses a line of text into a BXVerse, which contains a BXVerseRef and the text
 @interface BXLineParser : NSObject
 - (BXVerse *)verseForLine:(NSString *)line;
-- (bool)lineHasVerseReference:(NSString *)line;
+- (BOOL)lineHasVerseReference:(NSString *)line;
 @end

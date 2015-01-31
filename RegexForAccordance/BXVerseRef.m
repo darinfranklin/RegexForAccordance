@@ -25,8 +25,17 @@
 
 - (id)initWithBook:(NSString *)book chapter:(NSInteger)chapter verse:(NSInteger)verse
 {
+    if (self = [self initWithBook:book chapter:chapter verse:verse europeanFormat:NO])
+    {
+    }
+    return self;
+}
+
+- (id)initWithBook:(NSString *)book chapter:(NSInteger)chapter verse:(NSInteger)verse europeanFormat:(BOOL)european
+{
     if (self = [self initWithBook:book chapter:chapter verse:verse stringValue:nil])
     {
+        self.europeanFormat = european;
         _stringValue = [self formatString];
     }
     return self;
@@ -36,12 +45,22 @@
 {
     if (_chapter != 0)
     {
-        return [NSString stringWithFormat:@"%@ %ld:%ld", _book, _chapter, _verse];
+        return [NSString stringWithFormat:@"%@ %ld%@%ld", _book, _chapter, self.chapterDelimiter, _verse];
     }
     else
     {
         return [NSString stringWithFormat:@"%@ %ld", _book, _verse];
     }
+}
+
+- (NSString *)chapterDelimiter
+{
+    return self.europeanFormat ? @"," : @":";
+}
+
+- (NSString *)verseDelimiter
+{
+    return self.europeanFormat ? @"." : @",";
 }
 
 @end

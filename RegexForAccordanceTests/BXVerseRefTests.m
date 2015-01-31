@@ -22,6 +22,12 @@
     XCTAssertEqualObjects(@"Jude 7",   [[BXVerseRef alloc] initWithBook:@"Jude" chapter:0 verse:7].stringValue);
 }
 
+- (void)testEuropeanFormat
+{
+    BXVerseRef *ref = [[BXVerseRef alloc] initWithBook:@"Gen" chapter:1 verse:1 europeanFormat:YES];
+    XCTAssertEqualObjects(@"Gen 1,1", [ref stringValue]);
+}
+
 - (void)testPerformanceFormatVerseRef
 {
     [self measureBlock:^{

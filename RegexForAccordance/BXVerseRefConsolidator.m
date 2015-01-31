@@ -9,7 +9,8 @@
 #import "BXVerseRefConsolidator.h"
 
 @interface BXVerseRefConsolidator ()
-
+@property NSString *chapterDelimiter;
+@property NSString *verseDelimiter;
 @end
 
 @implementation BXVerseRefConsolidator
@@ -24,6 +25,9 @@
     {
         _verseRefs = [[NSMutableArray alloc] init];
         _verseRefIndex = 0;
+        BXVerseRef *tempNonEuropeanFormatVerseRef = [[BXVerseRef alloc] init];
+        self.chapterDelimiter = tempNonEuropeanFormatVerseRef.chapterDelimiter;
+        self.verseDelimiter = tempNonEuropeanFormatVerseRef.verseDelimiter;
         self.maxLength = 1023;
     }
     return self;
@@ -71,6 +75,23 @@
     return [_verseRefs objectAtIndex:_verseRefIndex - 1];
 }
 
+// Use European format if one of the verse refs has that format.
+// If all the verses are from single-chapter books like Obadiah or Jude, then we can't detect which format Accordance wants.
+// The default is non-European format.
+- (void)setDelimiters
+{
+    [_verseRefs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    {
+        BXVerseRef *ref = obj;
+        if (ref.europeanFormat)
+        {
+            self.chapterDelimiter = ref.chapterDelimiter;
+            self.verseDelimiter = ref.verseDelimiter;
+            *stop = YES;
+        }
+    }];
+}
+
 - (NSString *)buildRefString
 {
     NSMutableString *str = [[NSMutableString alloc] init];
@@ -78,6 +99,7 @@
     NSInteger verse = -1; // some chapters have verse 0
     NSInteger chapter = 0;
     NSString *book = nil;
+    [self setDelimiters];
     while (_verseRefIndex < _verseRefs.count)
     {
         BXVerseRef *ref = [_verseRefs objectAtIndex:_verseRefIndex++];
@@ -122,7 +144,7 @@
                         pending = nil;
                     }
                     verse = ref.verse;
-                    [nextPart appendString:[NSString stringWithFormat:@",%ld", verse]];
+                    [nextPart appendString:[NSString stringWithFormat:@"%@%ld", self.verseDelimiter, verse]];
                 }
             }
             else // same book, different chapter
@@ -134,7 +156,7 @@
                 }
                 verse = ref.verse;
                 chapter = ref.chapter;
-                [nextPart appendString:[NSString stringWithFormat:@"; %ld:%ld", ref.chapter, ref.verse]];
+                [nextPart appendString:[NSString stringWithFormat:@"; %ld%@%ld", ref.chapter, self.chapterDelimiter, ref.verse]];
             }
         }
         else // different book

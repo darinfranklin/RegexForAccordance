@@ -21,6 +21,7 @@ NSUInteger const MaxLinesPerFetch = 500;
 @property NSString *refRangeEnd;
 @property BXLineParser *lineParser;
 @property BXLineSplitter *lineSplitter;
+@property BOOL europeanFormat;
 @end
 
 @implementation BXAccVerseFetcher
@@ -50,6 +51,7 @@ NSUInteger const MaxLinesPerFetch = 500;
     self.lineSplitter = nil;
     self.firstVerse = nil;
     self.lastVerse = nil;
+    self.europeanFormat = NO;
 }
 
 - (NSArray *)availableTexts
@@ -202,6 +204,7 @@ NSUInteger const MaxLinesPerFetch = 500;
         verse = [self.lineParser verseForLine:line];
         self.lineNumber += 1;
         verse.lineNumber = self.lineNumber;
+        [self inferEuropeanFormat:verse.ref];
         self.indexInCurrentFetch += 1;
         self.refRangeStart = verse.ref.stringValue ?: @"NULL";
         if (self.firstVerse == nil)
@@ -222,6 +225,18 @@ NSUInteger const MaxLinesPerFetch = 500;
         verse.text = [verse.text stringByAppendingString:nextLine];
     }
     return verse;
+}
+
+- (void)inferEuropeanFormat:(BXVerseRef *)ref
+{
+    if (ref.europeanFormat && !self.europeanFormat)
+    {
+        self.europeanFormat = YES;
+    }
+    else if (!ref.europeanFormat && self.europeanFormat)
+    {
+        ref.europeanFormat = YES;
+    }
 }
 
 - (NSString *)peekAtNextLine

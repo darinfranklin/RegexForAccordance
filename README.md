@@ -13,3 +13,11 @@ RegexForAccordance gets the text from Accordance through its AppleScript interfa
 
 The regex matching is provided by Apple’s implementation of [ICU Regular Expression](http://userguide.icu-project.org/strings/regexp) syntax.
 
+Developer Notes
+---------------
+
+Use these Accordance preferences when running the unit tests.
+
+- Appearance > Use European verse notation: FALSE
+- Appearance > Use SBL standard abbreviations: TRUE
+- Citation > Suppress poetry: TRUE

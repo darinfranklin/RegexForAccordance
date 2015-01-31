@@ -24,7 +24,7 @@
         // Non-SBL: 1Cor. 2:3; Gen. 1:23; Jude 9; 3John 1
         // SBL Euro: 1 Cor 2,3; Gen 1,23; Jude 9; 3 John 1
         // Non-SBL Euro: 1Cor. 2,3; Gen. 1,23; Jude 9; 3John 1
-        NSString *verseRefPattern = @"^(.*?)\\s(?:(\\d+)\\S)?(\\d+)";
+        NSString *verseRefPattern = @"^(.*?)\\s(?:(\\d+)[:,])?(\\d+)";
         NSError *error;
         _verseRefRegex = [NSRegularExpression regularExpressionWithPattern:verseRefPattern
                                                                        options:NSRegularExpressionCaseInsensitive
@@ -34,7 +34,7 @@
     
 }
 
-- (bool)lineHasVerseReference:(NSString *)line
+- (BOOL)lineHasVerseReference:(NSString *)line
 {
     if (line == nil)
     {
@@ -67,7 +67,8 @@
         }
         verseNumber = [[line substringWithRange:verseRange] integerValue];
         verseRefStringValue = [line substringWithRange:result.range];
-        verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber];
+        BOOL isEuropeanFormat = [verseRefStringValue containsString:@","];
+        verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber europeanFormat:isEuropeanFormat];
     }
     else
     {
