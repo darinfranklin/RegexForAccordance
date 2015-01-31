@@ -34,6 +34,16 @@
     
 }
 
+- (bool)lineHasVerseReference:(NSString *)line
+{
+    if (line == nil)
+    {
+        return NO;
+    }
+    NSArray *textCheckingResults = [_verseRefRegex matchesInString:line options:0 range:NSMakeRange(0, [line length])];
+    return textCheckingResults.count > 0;
+}
+
 - (BXVerse *)verseForLine:(NSString *)line
 {
     NSArray *textCheckingResults = [_verseRefRegex matchesInString:line options:0 range:NSMakeRange(0, [line length])];

@@ -84,6 +84,7 @@
 		93D1573A19984C2B0020CB14 /* BXTransliterateFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1573919984C2A0020CB14 /* BXTransliterateFilterTests.m */; };
 		93D1573E1998751D0020CB14 /* BXFilterCFStringTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1573D1998751D0020CB14 /* BXFilterCFStringTransform.m */; };
 		93D207C319A2FB3500885079 /* BXFilterHebrewDirectionalMarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D207C219A2FB3500885079 /* BXFilterHebrewDirectionalMarks.m */; };
+		93D4A8271A7D447B007FBC4C /* BXTestAccVerseFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D4A8261A7D447B007FBC4C /* BXTestAccVerseFetcher.m */; };
 		93E667A919B05B1800D8E08D /* BXStatisticsGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E667A819B05B1800D8E08D /* BXStatisticsGroup.m */; };
 		93E667AB19B05F4700D8E08D /* BXStatisticsGroupsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E667AA19B05F4700D8E08D /* BXStatisticsGroupsTests.m */; };
 		93FDF845199DAAF600BF3576 /* BXTextLanguageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF844199DAAF600BF3576 /* BXTextLanguageTests.m */; };
@@ -232,6 +233,8 @@
 		93D207C219A2FB3500885079 /* BXFilterHebrewDirectionalMarks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewDirectionalMarks.m; sourceTree = "<group>"; };
 		93D461311A1C5B6E001DDABA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		93D461321A1C5B6E001DDABA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93D4A8251A7D447B007FBC4C /* BXTestAccVerseFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXTestAccVerseFetcher.h; sourceTree = "<group>"; };
+		93D4A8261A7D447B007FBC4C /* BXTestAccVerseFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXTestAccVerseFetcher.m; sourceTree = "<group>"; };
 		93DBC54F1A0F274F008ABE0A /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
 		93E667A719B05B1700D8E08D /* BXStatisticsGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXStatisticsGroup.h; sourceTree = "<group>"; };
 		93E667A819B05B1800D8E08D /* BXStatisticsGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXStatisticsGroup.m; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 				930CA723199889D100711558 /* Supporting Files */,
 				93B66DCF1A2D74CB009F5D13 /* BXDocumentTests.m */,
 				9308FC0419945B9C00AB090C /* BXAccVerseFetcherTests.m */,
+				93D4A8251A7D447B007FBC4C /* BXTestAccVerseFetcher.h */,
+				93D4A8261A7D447B007FBC4C /* BXTestAccVerseFetcher.m */,
 				9308FC0519945B9C00AB090C /* BXAccVerseURLTests.m */,
 				934E574D19A955F8006172AC /* BXFontSelectorTests.m */,
 				931A27BB1994A3E000DC3C27 /* BXLineParserTests.m */,
@@ -755,6 +760,7 @@
 				93475AAF19A0162E00882A88 /* BXStatisticsTests.m in Sources */,
 				93B66DD01A2D74CB009F5D13 /* BXDocumentTests.m in Sources */,
 				934E574E19A955F8006172AC /* BXFontSelectorTests.m in Sources */,
+				93D4A8271A7D447B007FBC4C /* BXTestAccVerseFetcher.m in Sources */,
 				9313263519BCDAD400974229 /* BXVerseRefTests.m in Sources */,
 				931A27A019945F1D00DC3C27 /* BXLineSplitterTests.m in Sources */,
 				9323356D19B033EA00FFADCF /* BXSearchFieldFormatterTests.m in Sources */,

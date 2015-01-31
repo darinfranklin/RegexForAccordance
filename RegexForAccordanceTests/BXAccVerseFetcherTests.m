@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "BXAccVerseFetcher.h"
+#import "BXTestAccVerseFetcher.h"
 
 @interface BXAccVerseFetcherTests : XCTestCase
 
@@ -42,6 +43,22 @@
     XCTAssertEqual(150, lastVerse.ref.chapter);
     XCTAssertEqual(6, lastVerse.ref.verse);
     XCTAssertEqual(2577, lastVerse.lineNumber);
+}
+
+- (void)testVersesWithLineBreaks
+{
+    NSString *verse1 = @"Ps 1:1 ¶ \tHappy the man\r"
+    "\twho did not walk by the counsel of the impious,\r"
+    "\tand in the way of sinners did not stand,\r"
+    "\tand on the seat of pestiferous people did not sit down. ";
+    NSString *verse2 = @"Ps 1:2 \tRather, his will is in the law of the Lord,\r"
+    "\tand on his law he will meditate day and night. ";
+    NSString *lines = [NSString stringWithFormat:@"%@\r%@", verse1, verse2];
+    BXTestAccVerseFetcher *fetcher = [[BXTestAccVerseFetcher alloc] initWithLines:lines];
+    [fetcher setTextName:@"NETS"];
+    [fetcher setVerseRange:@"Ps 1:1-2"];
+    BXVerse *verse = [fetcher nextVerse];
+    XCTAssertEqualObjects(verse.text, [[verse1 substringFromIndex:7] stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"]);
 }
 
 @end

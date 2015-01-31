@@ -210,6 +210,17 @@ NSUInteger const MaxLinesPerFetch = 500;
         }
         self.lastVerse = verse;
     }
+    // Some verses have additional lines when "Citation > Suppress Poetry" is turned off.
+    while (![self.lineParser lineHasVerseReference:[self.lineSplitter peekAtNextLine]])
+    {
+        NSString *nextLine = [self.lineSplitter nextLine];
+        if (nextLine == nil || nextLine.length == 0)
+        {
+            break;
+        }
+        verse.text = [verse.text stringByAppendingString:@"\n"];
+        verse.text = [verse.text stringByAppendingString:nextLine];
+    }
     return verse;
 }
 

@@ -192,4 +192,13 @@
     XCTAssertEqualObjects(@"(null) It was a dark and stormy night.", verse.referenceAndText);
 }
 
+- (void)testHasVerseReference
+{
+    BXLineParser *lineParser = [[BXLineParser alloc] init];
+    XCTAssertTrue([lineParser lineHasVerseReference:@"Ps 1:1 ¶ \tHappy the man"]);
+    XCTAssertFalse([lineParser lineHasVerseReference:@"\twho did not walk by the counsel of the impious,"]);
+    XCTAssertFalse([lineParser lineHasVerseReference:nil]);
+}
+
+
 @end
