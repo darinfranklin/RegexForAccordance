@@ -11,4 +11,6 @@
 @interface BXAppDelegate : NSObject <NSApplicationDelegate>
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)reportIssues:(id)sender;
+- (IBAction)checkForUpdates:(id)sender;
+- (IBAction)visitHomePage:(id)sender;
 @end

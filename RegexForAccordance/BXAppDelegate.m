@@ -43,4 +43,14 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/darinfranklin/RegexForAccordance/issues"]];
 }
 
+- (IBAction)checkForUpdates:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/darinfranklin/RegexForAccordance/releases"]];
+}
+
+- (IBAction)visitHomePage:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://darinfranklin.github.io/RegexForAccordance/"]];
+}
+
 @end

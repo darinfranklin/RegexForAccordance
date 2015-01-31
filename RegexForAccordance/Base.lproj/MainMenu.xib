@@ -26,6 +26,12 @@
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Check for Updates" id="N5a-oh-IhB">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="VbM-eg-vQt"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                 <connections>
@@ -291,10 +297,16 @@
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Issues, Comments, Questions…" id="N5a-oh-IhB">
+                            <menuItem title="RegexForAccordance Home Page" id="12K-n2-kUT">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="reportIssues:" target="Voe-Tx-rLC" id="Xi6-PF-0q0"/>
+                                    <action selector="visitHomePage:" target="Voe-Tx-rLC" id="cpP-M8-Uv8"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Issues, Comments, Questions…" id="PDx-Gb-U9X">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reportIssues:" target="Voe-Tx-rLC" id="wUv-7x-xsj"/>
                                 </connections>
                             </menuItem>
                         </items>
