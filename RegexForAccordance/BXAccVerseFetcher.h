@@ -24,6 +24,5 @@ typedef NS_OPTIONS(NSInteger, BXErrorCodes) {
 - (BXVerse *)nextVerse;
 - (void)reset;
 - (NSString *)peekAtNextLine;
-- (NSUInteger)lineCount;
 - (NSArray *)availableTexts;
 @end

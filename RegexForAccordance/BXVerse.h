@@ -13,7 +13,6 @@
 
 @property NSString *text;
 @property BXVerseRef *ref;
-@property NSUInteger lineNumber;
 - (NSString *)textIncludingReference:(BOOL)includeReference;
 - (NSString *)referenceAndText;
 @end

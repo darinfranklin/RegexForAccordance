@@ -34,15 +34,60 @@
     XCTAssertTrue([verse.ref.book hasPrefix:@"Ps"]);
     XCTAssertEqual(1, verse.ref.chapter);
     XCTAssertEqual(1, verse.ref.verse);
-    XCTAssertEqual(1, verse.lineNumber);
+    NSUInteger count = 1;
     while (nil != (verse = [acc nextVerse]))
     {
         lastVerse = verse;
+        count++;
     }
     XCTAssertTrue([lastVerse.ref.book hasPrefix:@"Ps"]);
     XCTAssertEqual(150, lastVerse.ref.chapter);
     XCTAssertEqual(6, lastVerse.ref.verse);
-    XCTAssertEqual(2577, lastVerse.lineNumber);
+    XCTAssertEqual(2577, count);
+}
+
+- (void)testFetchFullRangeHebrew
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"HMT-W4"];
+    [acc setVerseRange:@"Gen-Deut"];
+    BXVerse *verse, *lastVerse;
+    verse = [acc nextVerse];
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Gen"]);
+    XCTAssertEqual(1, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+    NSUInteger count = 1;
+    while (nil != (verse = [acc nextVerse]))
+    {
+        lastVerse = verse;
+        count++;
+    }
+    XCTAssertTrue([lastVerse.ref.book hasPrefix:@"Deut"]);
+    XCTAssertEqual(34, lastVerse.ref.chapter);
+    XCTAssertEqual(12, lastVerse.ref.verse);
+    XCTAssertEqual(5853, count);
+}
+
+- (void)testFetchFullRangeGreek
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"GNT-TR"];
+    [acc setVerseRange:@"Matt-John"];
+    BXVerse *verse, *lastVerse;
+    verse = [acc nextVerse];
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Mat"]);
+    XCTAssertEqual(1, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+    NSUInteger count = 1;
+    while (nil != (verse = [acc nextVerse]))
+    {
+        lastVerse = verse;
+        count++;
+    }
+    XCTAssertTrue([lastVerse.ref.book hasPrefix:@"John"]);
+    XCTAssertEqual(21, lastVerse.ref.chapter);
+    XCTAssertEqual(25, lastVerse.ref.verse);
+    XCTAssertEqual(3779, count);
 }
 
 - (void)testVersesWithLineBreaks
@@ -59,6 +104,23 @@
     [fetcher setVerseRange:@"Ps 1:1-2"];
     BXVerse *verse = [fetcher nextVerse];
     XCTAssertEqualObjects(verse.text, [[verse1 substringFromIndex:7] stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"]);
+}
+
+- (void)testVersesWithLineBreaksAndBlankLine
+{
+    NSString *verse1 = @"Ps 2:12 kiss his feet,\r"
+    "\tor he will be angry, and you will perish in the way;\r"
+    "\tfor his wrath is quickly kindled.\r"
+    "\r"
+    "\t\r"
+    "\t¶ Happy are all who take refuge in him.\r"
+    " ";
+    NSString *lines = verse1;
+    BXTestAccVerseFetcher *fetcher = [[BXTestAccVerseFetcher alloc] initWithLines:lines];
+    [fetcher setTextName:@"NRSVS"];
+    [fetcher setVerseRange:@"Ps 2:12"];
+    BXVerse *verse = [fetcher nextVerse];
+    XCTAssertEqualObjects(verse.text, [[verse1 substringFromIndex:8] stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"]);
 }
 
 @end

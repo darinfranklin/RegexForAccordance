@@ -16,7 +16,6 @@ NSUInteger const MaxLinesPerFetch = 500;
 
 @interface BXAccVerseFetcher()
 @property NSUInteger indexInCurrentFetch;
-@property NSUInteger lineNumber;
 @property NSString *refRangeStart;
 @property NSString *refRangeEnd;
 @property BXLineParser *lineParser;
@@ -45,7 +44,6 @@ NSUInteger const MaxLinesPerFetch = 500;
     self.refRangeStart = nil;
     self.refRangeEnd = nil;
     self.indexInCurrentFetch = 0;
-    self.lineNumber = 0;
     _error = nil;
     _appleScriptError = nil;
     self.lineSplitter = nil;
@@ -188,8 +186,9 @@ NSUInteger const MaxLinesPerFetch = 500;
         if (self.refRangeEnd != nil)
         {
             [self fetch];
-            // Line 1 is a repeat of line 500 in previous fetch.
+            // Verse 1 is a repeat of verse 500 in the previous fetch.
             [self.lineSplitter nextLine];
+            [self remainingLinesInVerse];
             self.indexInCurrentFetch = 1;
         }
         else
@@ -202,8 +201,6 @@ NSUInteger const MaxLinesPerFetch = 500;
     if (line != nil)
     {
         verse = [self.lineParser verseForLine:line];
-        self.lineNumber += 1;
-        verse.lineNumber = self.lineNumber;
         [self inferEuropeanFormat:verse.ref];
         self.indexInCurrentFetch += 1;
         self.refRangeStart = verse.ref.stringValue ?: @"NULL";
@@ -213,18 +210,37 @@ NSUInteger const MaxLinesPerFetch = 500;
         }
         self.lastVerse = verse;
     }
-    // Some verses have additional lines when "Citation > Suppress Poetry" is turned off.
+    NSString *remainingLines = [self remainingLinesInVerse];
+    if (remainingLines != nil)
+    {
+        verse.text = [verse.text stringByAppendingString:@"\n"];
+        verse.text = [verse.text stringByAppendingString:remainingLines];
+    }
+    return verse;
+}
+
+// Some verses have additional lines when "Citation > Suppress Poetry" is turned off.
+- (NSString *)remainingLinesInVerse
+{
+    NSString *lines = nil;
     while (![self.lineParser lineHasVerseReference:[self.lineSplitter peekAtNextLine]])
     {
         NSString *nextLine = [self.lineSplitter nextLine];
-        if (nextLine == nil || nextLine.length == 0)
+        if (nextLine == nil)
         {
             break;
         }
-        verse.text = [verse.text stringByAppendingString:@"\n"];
-        verse.text = [verse.text stringByAppendingString:nextLine];
+        if (lines == nil)
+        {
+            lines = @"";
+        }
+        if (lines.length > 0)
+        {
+            lines = [lines stringByAppendingString:@"\n"];
+        }
+        lines = [lines stringByAppendingString:nextLine];
     }
-    return verse;
+    return lines;
 }
 
 - (void)inferEuropeanFormat:(BXVerseRef *)ref
@@ -251,11 +267,6 @@ NSUInteger const MaxLinesPerFetch = 500;
     }
     NSString *line = [self.lineSplitter peekAtNextLine];
     return line;
-}
-
-- (NSUInteger)lineCount
-{
-    return self.lineNumber;
 }
 
 #pragma mark Errors
