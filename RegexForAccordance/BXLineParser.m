@@ -67,7 +67,7 @@
         }
         verseNumber = [[line substringWithRange:verseRange] integerValue];
         verseRefStringValue = [line substringWithRange:result.range];
-        BOOL isEuropeanFormat = [verseRefStringValue containsString:@","];
+        BOOL isEuropeanFormat = !NSEqualRanges(NSMakeRange(NSNotFound, 0), [verseRefStringValue rangeOfString:@","]);
         verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber europeanFormat:isEuropeanFormat];
     }
     else
