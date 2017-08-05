@@ -59,10 +59,10 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -84,17 +84,21 @@
             ReferencedContainer = "container:RegexForAccordance.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "93984F6519873CA70034CB53"
@@ -107,12 +111,13 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "93984F6519873CA70034CB53"
@@ -133,7 +138,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "#printenv &gt; /tmp/env.txt&#10;APP_PATH=&quot;${ARCHIVE_PRODUCTS_PATH}/Applications/$FULL_PRODUCT_NAME&quot;&#10;PLIST_PATH=&quot;${ARCHIVE_PRODUCTS_PATH}/Applications/${INFOPLIST_PATH}&quot;&#10;VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleShortVersionString&quot; &quot;$PLIST_PATH&quot;)&#10;hdiutil create &quot;$ARCHIVE_PRODUCTS_PATH/$PROJECT_NAME-$VERSION_NUMBER.dmg&quot; -srcfolder &quot;$APP_PATH&quot; -ov&#10;open &quot;$ARCHIVE_PRODUCTS_PATH&quot;&#10;">
+               scriptText = "APP_PATH=&quot;${ARCHIVE_PRODUCTS_PATH}/Applications&quot;&#10;PLIST_PATH=&quot;${APP_PATH}/${INFOPLIST_PATH}&quot;&#10;VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleShortVersionString&quot; &quot;${PLIST_PATH}&quot;)&#10;DMG_NAME=&quot;${PROJECT_NAME}-${VERSION_NUMBER}&quot;&#10;ln -s /Applications &quot;${APP_PATH}&quot;&#10;hdiutil create &quot;${ARCHIVE_PRODUCTS_PATH}/${DMG_NAME}.dmg&quot; -volname &quot;${DMG_NAME}&quot; -srcfolder &quot;${APP_PATH}&quot; -ov&#10;rm &quot;${APP_PATH}/Applications&quot;&#10;open &quot;${ARCHIVE_PRODUCTS_PATH}&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
