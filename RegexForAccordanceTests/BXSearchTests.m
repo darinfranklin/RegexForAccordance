@@ -38,7 +38,7 @@
     result = [searcher nextSearchResult];
     XCTAssertEqualObjects(@"Job 41:1", [result.verse.ref stringValue]);
     XCTAssertEqualObjects(@"¶ Canst thou draw out leviathan with an hook?"
-                          " or his tongue with a cord which thou lettest down? ",
+                          " or his tongue with a cord which thou lettest down?",
                           [[result verse] text]);
 
     result = [searcher nextSearchResult];
@@ -46,14 +46,14 @@
     XCTAssertEqual(74, result.verse.ref.chapter);
     XCTAssertEqual(14, result.verse.ref.verse);
     XCTAssertEqualObjects(@"Thou brakest the heads of leviathan in pieces,"
-                          " and gavest him to be meat to the people inhabiting the wilderness. ",
+                          " and gavest him to be meat to the people inhabiting the wilderness.",
                           [[result verse] text]);
     
     result = [searcher nextSearchResult];
     XCTAssertTrue([result.verse.ref.book hasPrefix:@"Ps"]);
     XCTAssertEqual(104, result.verse.ref.chapter);
     XCTAssertEqual(26, result.verse.ref.verse);
-    XCTAssertEqualObjects(@"There go the ships: there is that leviathan, whom thou hast made to play therein. ",
+    XCTAssertEqualObjects(@"There go the ships: there is that leviathan, whom thou hast made to play therein.",
                           [[result verse] text]);
     
     result = [searcher nextSearchResult];
@@ -63,7 +63,7 @@
     XCTAssertEqualObjects(@"¶ In that day the Lord with his sore and great and strong sword"
                           " shall punish leviathan the piercing serpent,"
                           " even leviathan that crooked serpent;"
-                          " and he shall slay the dragon that is in the sea. ",
+                          " and he shall slay the dragon that is in the sea.",
                           [[result verse] text]);
 
     result = [searcher nextSearchResult];
