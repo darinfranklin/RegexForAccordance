@@ -76,7 +76,13 @@ NSUInteger const MaxLinesPerFetch = 500;
                 NSAppleEventDescriptor *item = [event descriptorAtIndex:i];
                 if (item.descriptorType == typeUnicodeText)
                 {
-                    NSString *name = [[item stringValue] substringFromIndex:1]; // first char is ''
+                    NSUInteger start = 0;
+                    // Prior to Accordance 12.1.0, the first character was a length byte
+                    if ([[item stringValue] characterAtIndex:start] < 'A')
+                    {
+                        start = 1;
+                    }
+                    NSString *name = [[item stringValue] substringFromIndex:start];
                     [list addObject:name];
                 }
             }

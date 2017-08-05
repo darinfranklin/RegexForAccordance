@@ -22,6 +22,7 @@
     NSArray *names = acc.availableTexts;
     XCTAssertTrue(names.count > 0);
     XCTAssertTrue([names containsObject:@"KJVS"]);
+    XCTAssertTrue([names containsObject:@"NKJVS"]); // don't drop first character
 }
 
 - (void)testFetchFullRange
