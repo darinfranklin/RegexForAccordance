@@ -30,7 +30,8 @@
     BXSearchResult *result = [[BXSearchResult alloc] init];
     result.verse = [[[BXLineParser alloc] init] verseForLine:verseLine];
     NSRange hitRange = NSMakeRange(3, 3);
-    NSTextCheckingResult *tcr = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&hitRange count:1 regularExpression:nil];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".*" options:0 error:nil];
+    NSTextCheckingResult *tcr = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&hitRange count:1 regularExpression:regex];
     result.hits = [NSArray arrayWithObjects:tcr, nil];
     [fontSelector setCurrentFontsForLanguageScriptTag:@"Latn"];
     NSAttributedString *decoratedLine = [formatter formatSearchResult:result];
@@ -90,7 +91,8 @@
     result.verse = [[[BXLineParser alloc] init] verseForLine:verseLine];
     NSString *hitWord = @"בָּרָ֣א";
     NSRange hitWordRange = [verseLine rangeOfString:hitWord]; // second word
-    NSTextCheckingResult *tcr = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&hitWordRange count:1 regularExpression:nil];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".*" options:0 error:nil];
+    NSTextCheckingResult *tcr = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&hitWordRange count:1 regularExpression:regex];
     result.hits = [NSArray arrayWithObjects:tcr, nil];
     [fontSelector setCurrentFontsForLanguageScriptTag:@"Hebr"];
     NSAttributedString *decoratedLine = [formatter formatSearchResult:result];

@@ -37,10 +37,7 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
     return self;
 }
 
-#pragma mark NSTableViewDelegate
-
-// NSTableViewDelegate
-- (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
+- (BOOL)isGroupRow:(NSInteger)row
 {
     if (self.groupByBook)
     {
@@ -50,6 +47,14 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
     {
         return NO;
     }
+}
+
+#pragma mark NSTableViewDelegate
+
+// NSTableViewDelegate
+- (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
+{
+    return [self isGroupRow:row];
 }
 
 // NSTableViewDelegate
@@ -234,7 +239,7 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
 
 - (NSString *)keyForRow:(NSUInteger)row
 {
-    if ([self tableView:nil isGroupRow:row])
+    if ([self isGroupRow:row])
     {
         return nil;
     }

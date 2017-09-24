@@ -31,9 +31,10 @@
     result.verse.text = text;
     result.verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:1 verse:1];
     NSRange range = NSMakeRange(0, 3);
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^.{3}" options:0 error:nil];
     NSTextCheckingResult *hit = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&range
                                                                                           count:1
-                                                                              regularExpression:nil];
+                                                                              regularExpression:regex];
     result.hits = [NSArray arrayWithObjects:hit, nil];
     return result;
 }
@@ -62,9 +63,10 @@
     result.verse.text = @"abc";
     result.verse.ref = [[BXVerseRef alloc] initWithBook:@"A" chapter:1 verse:1];
     NSRange range = NSMakeRange(0, 3);
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^.{3}" options:0 error:nil];
     NSTextCheckingResult *hit = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&range
                                                                                           count:1
-                                                                              regularExpression:nil];
+                                                                              regularExpression:regex];
     result.hits = [NSArray arrayWithObjects:hit, nil];
     [stats addSearchResult:result];
     XCTAssertEqual(1, stats.countOfSearchResults);

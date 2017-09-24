@@ -18,7 +18,8 @@
         self.verse.text = text;
         self.verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapter verse:verse];
         NSRange hitRange = NSMakeRange(0, text.length);
-        NSTextCheckingResult *hit = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&hitRange count:1 regularExpression:nil];
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".*" options:0 error:nil];
+        NSTextCheckingResult *hit = [NSTextCheckingResult regularExpressionCheckingResultWithRanges:&hitRange count:1 regularExpression:regex];
         self.hits = [NSArray arrayWithObject:hit];
     }
     return self;

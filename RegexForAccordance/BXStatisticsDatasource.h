@@ -27,6 +27,7 @@ extern NSString *const BXColumnNameRefs;
 - (NSArray *)searchResultHitsForRow:(NSUInteger)row;
 - (NSString *)keyForRow:(NSUInteger)row;
 - (NSUInteger)incrementIndex:(NSUInteger)index byAmount:(NSInteger)inc forCount:(NSUInteger)count;
+- (BOOL)isGroupRow:(NSInteger)row;
 
 #pragma mark NSTableViewDelegate
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;

@@ -20,7 +20,6 @@
 {
     BXSearchFieldFormatter *formatter = [[BXSearchFieldFormatter alloc] init];
     formatter.leftToRightOverride = YES;
-    XCTAssertEqualObjects(nil, [formatter editingStringForObjectValue:nil]);
     XCTAssertEqualObjects(@LRO, [formatter editingStringForObjectValue:@""]);
     XCTAssertEqualObjects(@LRO @"a", [formatter editingStringForObjectValue:@"a"]);
     XCTAssertEqualObjects(@LRO @"ab", [formatter editingStringForObjectValue:@"ab"]);
@@ -31,7 +30,6 @@
 - (void)testRemoveLRO
 {
     BXSearchFieldFormatter *formatter = [[BXSearchFieldFormatter alloc] init];
-    XCTAssertEqualObjects(nil, [formatter editingStringForObjectValue:nil]);
     XCTAssertEqualObjects(@"", [formatter editingStringForObjectValue:@""]);
     XCTAssertEqualObjects(@"a", [formatter editingStringForObjectValue:@"a"]);
     XCTAssertEqualObjects(@"", [formatter editingStringForObjectValue:@LRO]);

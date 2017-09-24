@@ -52,11 +52,11 @@
     XCTAssertEqual(2, [statisticsGroups groupAtIndex:0].statistics.countOfHits);
     XCTAssertEqual(1, [statisticsGroups groupAtIndex:1].statistics.countOfHits);
     XCTAssertEqual(5, [ds numberOfRowsInTableView:nil]);
-    XCTAssertTrue([ds tableView:nil isGroupRow:0]);
+    XCTAssertTrue([ds isGroupRow:0]);
     XCTAssertEqual(0, [ds.statisticsGroups groupIndexForRow:0]); // group row
     XCTAssertEqual(0, [ds.statisticsGroups groupIndexForRow:1]); // group 0 item 0
     XCTAssertEqual(0, [ds.statisticsGroups groupIndexForRow:2]); // group 0 item 1
-    XCTAssertTrue([ds tableView:nil isGroupRow:3]);
+    XCTAssertTrue([ds isGroupRow:3]);
     XCTAssertEqual(1, [ds.statisticsGroups groupIndexForRow:3]); // group 1 row
     XCTAssertEqual(1, [ds.statisticsGroups groupIndexForRow:4]); // group 1 item 0
 }
