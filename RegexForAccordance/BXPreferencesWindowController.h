@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSToolbar *toolbar;
 @property (weak) IBOutlet NSButton *showUnicodeCheckbox;
+@property (weak) IBOutlet NSButton *noPromptForUnsavedCheckbox;
 
 @property (weak) IBOutlet NSPopUpButton *defaultFontNamePopUp;
 @property (weak) IBOutlet NSPopUpButton *hebrewFontNamePopUp;
@@ -30,6 +31,7 @@
 - (IBAction)selectTab:(id)sender;
 - (IBAction)resetPreferences:(id)sender;
 - (IBAction)showUnicodeIDClicked:(id)sender;
+- (IBAction)noPromptForUnsavedClicked:(id)sender;
 
 - (IBAction)changeFont:(id)sender;
 

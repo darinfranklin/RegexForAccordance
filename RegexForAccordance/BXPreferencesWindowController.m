@@ -14,6 +14,7 @@
 #import "BXTextLanguage.h"
 
 NSString *const ShowUnicodeID = @"ShowUnicodeID";
+NSString *const NoPromptForUnsaved = @"NoPromptForUnsaved";
 NSString *const HitsFontBold = @"HitsFontBold";
 NSString *const VerseRefFontBold = @"VerseRefFontBold";
 NSString *const DefaultFontSize = @"DefaultFontSize";
@@ -138,6 +139,7 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
     [self updateSample:self.greekFontSample withFontNameKey:GreekFontName andFontSizeKey:GreekFontSize];
     self.toolbar.selectedItemIdentifier = @"FontsToolbarItem";
     self.showUnicodeCheckbox.state = [defaults boolForKey:ShowUnicodeID];
+    self.noPromptForUnsavedCheckbox.state = [defaults boolForKey:NoPromptForUnsaved];
     self.boldHitsButton.state = [defaults boolForKey:HitsFontBold];
     self.boldReferencesButton.state = [defaults boolForKey:VerseRefFontBold];
 }
@@ -229,6 +231,13 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL value = self.showUnicodeCheckbox.state == NSOnState;
     [defaults setBool:value forKey:ShowUnicodeID];
+}
+
+- (IBAction)noPromptForUnsavedClicked:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL value = self.noPromptForUnsavedCheckbox.state == NSOnState;
+    [defaults setBool:value forKey:NoPromptForUnsaved];
 }
 
 

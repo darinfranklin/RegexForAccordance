@@ -38,6 +38,18 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     return YES;
 }
 
+- (BOOL)isDocumentEdited
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"NoPromptForUnsaved"])
+    {
+        return NO;
+    }
+    else
+    {
+        return [super isDocumentEdited];
+    }
+}
+
 - (id)init
 {
     if (self = [super init])
