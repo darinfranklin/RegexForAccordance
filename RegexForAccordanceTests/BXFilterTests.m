@@ -138,7 +138,7 @@
 - (void)testRemovePilcrow
 {
     NSString *str = @"¶ α¶ ¶β¶  .";
-    NSString *exp = @"α¶β ."; // "¶ " replaced by ""
+    NSString *exp = @"αβ ."; // "¶ " replaced by ""
     XCTAssertEqualObjects(exp, [[[BXFilterPilcrows alloc] init] filter:str]);
 }
 
