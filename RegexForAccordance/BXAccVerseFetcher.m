@@ -191,6 +191,8 @@ NSUInteger const MaxLinesPerFetch = 500;
     NSUInteger saveLine;
     BOOL scopeOK = YES;
     BOOL isFirstVerse = YES;
+    BXVerseRef *firstVerseRefInScope;
+    BXVerseRef *lastVerseRefInScope;
 
     do
     {
@@ -224,6 +226,7 @@ NSUInteger const MaxLinesPerFetch = 500;
             [self inferEuropeanFormat:verse.ref];
             if (isFirstVerse)
             {
+                firstVerseRefInScope = verse.ref;
                 isFirstVerse = NO;
             }
             else
@@ -232,9 +235,17 @@ NSUInteger const MaxLinesPerFetch = 500;
                 {
                     case SearchScopeChapter:
                         scopeOK = (totalVerse.ref.chapter == verse.ref.chapter);
+                        if (!scopeOK)
+                        {
+                            NSLog(@"scope: %@ - %@", firstVerseRefInScope.stringValue, lastVerseRefInScope.stringValue);
+                        }
                         break;
                     case SearchScopeBook:
                         scopeOK = [totalVerse.ref.book isEqualToString:verse.ref.book];
+                        if (!scopeOK)
+                        {
+                            NSLog(@"scope: %@ - %@", firstVerseRefInScope.stringValue, lastVerseRefInScope.stringValue);
+                        }
                         break;
                     default:
                         scopeOK = NO; // Only do one verse at a time for SearchScopeVerse
@@ -245,6 +256,7 @@ NSUInteger const MaxLinesPerFetch = 500;
 
         if (scopeOK)
         {
+            lastVerseRefInScope = verse.ref;
             self.indexInCurrentFetch += 1;
             self.refRangeStart = verse.ref.stringValue ?: @"NULL";
             if (self.firstVerse == nil)
@@ -275,7 +287,7 @@ NSUInteger const MaxLinesPerFetch = 500;
             [self.lineSplitter setLineNumber:saveLine];
         }
     } while (verse && scopeOK);
-    
+
     if (totalVerse.text == nil)
     {
         totalVerse = nil;
@@ -286,24 +298,16 @@ NSUInteger const MaxLinesPerFetch = 500;
         {
             case SearchScopeChapter:
             {
-                NSInteger verse = 1;
-                if (totalVerse.ref.chapter == self.firstVerse.ref.chapter)
-                {
-                    verse = self.firstVerse.ref.verse;
-                }
-                totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:totalVerse.ref.chapter verse:verse];
+                totalVerse.ref = [[BXVerseRef alloc] initWithBook:firstVerseRefInScope.book
+                                                          chapter:firstVerseRefInScope.chapter
+                                                            verse:firstVerseRefInScope.verse];
                 break;
             }
             case SearchScopeBook:
             {
-                NSInteger verse = 1;
-                NSInteger chapter = 1;
-                if (totalVerse.ref.book == self.firstVerse.ref.book)
-                {
-                    verse = self.firstVerse.ref.verse;
-                    chapter = self.firstVerse.ref.chapter;
-                }
-                totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:chapter verse:verse];
+                totalVerse.ref = [[BXVerseRef alloc] initWithBook:firstVerseRefInScope.book
+                                                          chapter:firstVerseRefInScope.chapter
+                                                            verse:firstVerseRefInScope.verse];
                 break;
             }
             default:
