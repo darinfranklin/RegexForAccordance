@@ -11,6 +11,7 @@
 #import "BXLineSplitter.h"
 #import "BXVerseRangeParser.h"
 #import "BXLineParser.h"
+#import "BXSearchSettings.h"
 
 NSUInteger const MaxLinesPerFetch = 500;
 
@@ -183,46 +184,103 @@ NSUInteger const MaxLinesPerFetch = 500;
 
 - (BXVerse *)nextVerse
 {
-    if (self.lineSplitter == nil)
-    {
-        [self fetch];
-    }
-    else if (self.indexInCurrentFetch != 0 && self.indexInCurrentFetch % MaxLinesPerFetch == 0)
-    {
-        if (self.refRangeEnd != nil)
-        {
-            [self fetch];
-            // Verse 1 is a repeat of verse 500 in the previous fetch.
-            [self.lineSplitter nextLine];
-            [self remainingLinesInVerse];
-            self.indexInCurrentFetch = 1;
-        }
-        else
-        {
-            _error = [self errorForVerseLimit];
-        }
-    }
-    NSString *line = [self.lineSplitter nextLine];
+    BXVerse *totalVerse = [[BXVerse alloc] init];
     BXVerse *verse;
-    if (line != nil)
+    NSString *line;
+    NSString *remainingLines;
+    NSUInteger saveLine;
+    BOOL scopeOK = YES;
+    BOOL isFirstVerse = YES;
+
+    do
     {
-        verse = [self.lineParser verseForLine:line];
-        [self inferEuropeanFormat:verse.ref];
-        self.indexInCurrentFetch += 1;
-        self.refRangeStart = verse.ref.stringValue ?: @"NULL";
-        if (self.firstVerse == nil)
-        {
-            self.firstVerse = verse;
-        }
-        self.lastVerse = verse;
-    }
-    NSString *remainingLines = [self remainingLinesInVerse];
-    if (remainingLines != nil)
-    {
-        verse.text = [verse.text stringByAppendingString:@"\n"];
-        verse.text = [verse.text stringByAppendingString:remainingLines];
-    }
-    return verse;
+		if (self.lineSplitter == nil)
+		{
+			[self fetch];
+		}
+		else if (self.indexInCurrentFetch != 0 && self.indexInCurrentFetch % MaxLinesPerFetch == 0)
+		{
+			if (self.refRangeEnd != nil)
+			{
+				[self fetch];
+				// Verse 1 is a repeat of verse 500 in the previous fetch.
+				[self.lineSplitter nextLine];
+				[self remainingLinesInVerse];
+				self.indexInCurrentFetch = 1;
+			}
+			else
+			{
+				_error = [self errorForVerseLimit];
+			}
+		}
+
+		verse = nil;
+		saveLine = self.lineSplitter.lineNumber;
+		line = [self.lineSplitter nextLine];
+		scopeOK = (line != nil);
+		if (scopeOK)
+		{
+			verse = [self.lineParser verseForLine:line];
+			[self inferEuropeanFormat:verse.ref];
+			if (isFirstVerse)
+				isFirstVerse = NO;
+			else
+				switch (self.searchScope)
+				{
+					case SearchScopeChapter:
+						scopeOK = (totalVerse.ref.chapter == verse.ref.chapter);
+						break;
+					case SearchScopeBook:
+						scopeOK = [totalVerse.ref.book isEqualToString:verse.ref.book];
+						break;
+					default:
+						scopeOK = NO; // Only do one verse at a time for SearchScopeVerse
+						break;
+				}
+		}
+
+		if (scopeOK)
+		{
+			self.indexInCurrentFetch += 1;
+			self.refRangeStart = verse.ref.stringValue ?: @"NULL";
+			if (self.firstVerse == nil)
+			{
+				self.firstVerse = verse;
+			}
+			self.lastVerse = verse;
+
+			remainingLines = [self remainingLinesInVerse];
+			if (remainingLines != nil)
+			{
+				verse.text = [verse.text stringByAppendingString:@"\n"];
+				verse.text = [verse.text stringByAppendingString:remainingLines];
+			}
+			if (totalVerse.text)
+				totalVerse.text = [totalVerse.text stringByAppendingString:verse.text];
+			else
+				totalVerse.text = verse.text;
+			totalVerse.ref = verse.ref;
+		}
+		else
+			[self.lineSplitter setLineNumber:saveLine];
+	} while (verse && scopeOK);
+	
+	if (totalVerse.text == nil)
+		totalVerse = nil;
+	else
+		switch (self.searchScope)
+		{
+			case SearchScopeChapter:
+				totalVerse.ref = totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:totalVerse.ref.chapter verse:0];
+				break;
+			case SearchScopeBook:
+				totalVerse.ref = totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:0 verse:0];
+				break;
+			default:
+				break;
+		}
+
+    return totalVerse;
 }
 
 // Some verses have additional lines when "Citation > Suppress Poetry" is turned off.

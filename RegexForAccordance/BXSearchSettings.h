@@ -10,12 +10,19 @@
 
 NSCellStateValue cellStateValueForBool(BOOL b);
 
+typedef NS_ENUM(NSInteger, SearchScopeOptions) {
+        SearchScopeVerse,
+        SearchScopeChapter,
+        SearchScopeBook
+};
+
 @interface BXSearchSettings : NSObject
 @property BOOL ignoreCase;
 @property BOOL includeReference;
 @property BOOL groupByBook;
 @property NSString *textName;
 @property NSString *verseRange;
+@property NSInteger searchScope;
 @property BOOL leftToRightOverride;
 @property NSString *searchPattern;
 @property NSString *searchFieldFont;
@@ -29,5 +36,8 @@ NSCellStateValue cellStateValueForBool(BOOL b);
 @property BOOL hebrewRemovePunctuation;
 @property BOOL greekRemoveDiacritics;
 @property BOOL greekRemovePunctuation;
+
+- (NSString *)searchScopeString;
+- (void)setSearchScopeString:(NSString *)scopeString;
 
 @end

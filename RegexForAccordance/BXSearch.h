@@ -22,6 +22,7 @@
 @property BOOL ignoreCase;
 @property BOOL includeReference;
 @property NSString *languageScriptTag;
+@property NSInteger searchScope;
 
 - (id)initWithFetcher:(BXAccVerseFetcher *)fetcher;
 - (BOOL)prepareSearch:(NSError **)error;

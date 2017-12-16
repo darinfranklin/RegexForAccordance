@@ -43,6 +43,7 @@
     self.document.searchSettings.groupByBook = YES;
     self.document.searchSettings.textName = @"Abc";
     self.document.searchSettings.verseRange = @"Def - Ghi";
+    self.document.searchSettings.searchScope = SearchScopeVerse;
     self.document.searchSettings.leftToRightOverride = YES;
     self.document.searchSettings.searchPattern = @"abc";
     self.document.searchSettings.searchFieldFont = @"Greek";
@@ -63,6 +64,7 @@
     XCTAssertEqual(YES, [[dict objectForKey:@"LeftToRightOverride"] boolValue]);
     XCTAssertEqualObjects(@"Abc", [dict objectForKey:@"TextName"]);
     XCTAssertEqualObjects(@"Def - Ghi", [dict objectForKey:@"VerseRange"]);
+    XCTAssertEqualObjects(@"Verse", [dict objectForKey:@"SearchScope"]);
     XCTAssertEqualObjects(@"abc", [dict objectForKey:@"SearchPattern"]);
     XCTAssertEqualObjects(@"Greek", [dict objectForKey:@"SearchFieldFont"]);
 }
@@ -85,6 +87,7 @@
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"LeftToRightOverride"];
     [dict setObject:@"Abc" forKey:@"TextName"];
     [dict setObject:@"Def - Ghi" forKey:@"VerseRange"];
+    [dict setObject:@"Verse" forKey:@"SearchScope"];
     [dict setObject:@"abc" forKey:@"SearchPattern"];
     [dict setObject:@"Hebrew" forKey:@"SearchFieldFont"];
 
@@ -104,6 +107,7 @@
     XCTAssertEqual(YES, self.document.searchSettings.groupByBook);
     XCTAssertEqualObjects(@"Abc", self.document.searchSettings.textName);
     XCTAssertEqualObjects(@"Def - Ghi", self.document.searchSettings.verseRange);
+    XCTAssertEqualObjects(@"Verse", self.document.searchSettings.searchScopeString);
     XCTAssertEqual(YES, self.document.searchSettings.leftToRightOverride);
     XCTAssertEqualObjects(@"abc", self.document.searchSettings.searchPattern);
     XCTAssertEqualObjects(@"Hebrew", self.document.searchSettings.searchFieldFont);

@@ -32,6 +32,7 @@
 @property IBOutlet BXFilterPopoverViewController *filterPopoverViewController;
 @property (weak) IBOutlet NSButton *ignoreCase;
 @property (weak) IBOutlet NSButton *includeReference;
+@property (weak) IBOutlet NSPopUpButton *searchScopePopup;
 @property (weak) IBOutlet NSButton *lroButton;
 
 - (IBAction)openLinkFromTableView:(id)sender;

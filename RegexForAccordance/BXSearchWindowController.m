@@ -228,6 +228,11 @@ NSString *makeBlankIfNil(NSString *str)
         self.document.searchSettings.textName = self.textNamePopup.selectedItem.title;
         [self.document updateChangeCount:NSChangeDone];
     }
+    else if (sender == self.searchScopePopup)
+    {
+		[self.document.searchSettings setSearchScopeString:self.searchScopePopup.selectedItem.title];
+        [self.document updateChangeCount:NSChangeDone];
+    }
     else if (sender == self.lroButton)
     {
         self.document.searchSettings.leftToRightOverride = ([sender state] == NSOnState);
@@ -249,6 +254,7 @@ NSString *makeBlankIfNil(NSString *str)
     {
         self.document.searchSettings.textName = self.textNamePopup.selectedItem.title;
     }
+	[self.searchScopePopup selectItemWithTitle:self.document.searchSettings.searchScopeString];
     self.verseReferenceField.stringValue = makeBlankIfNil(self.document.searchSettings.verseRange);
     self.lroButton.state = cellStateValueForBool(self.document.searchSettings.leftToRightOverride);
     self.searchField.stringValue = makeBlankIfNil(self.document.searchSettings.searchPattern);
@@ -301,6 +307,8 @@ NSString *makeBlankIfNil(NSString *str)
     self.searcher.fetcher.textName = self.document.searchSettings.textName;
     self.searcher.ignoreCase = self.document.searchSettings.ignoreCase;
     self.searcher.includeReference = self.document.searchSettings.includeReference;
+    self.searcher.searchScope = self.document.searchSettings.searchScope;
+    self.searcher.fetcher.searchScope = self.document.searchSettings.searchScope;
     self.searcher.pattern = self.document.searchSettings.searchPattern;
     [self.filterPopoverViewController setFiltersInSearcher:self.searcher];
     
@@ -466,10 +474,25 @@ NSString *makeBlankIfNil(NSString *str)
 
 - (void)updateSearchStatus
 {
+	NSString* scopeText;
+	switch (self.document.searchSettings.searchScope)
+	{
+		case SearchScopeChapter:
+			scopeText = @"chapter";
+			break;
+		case SearchScopeBook:
+			scopeText = @"book";
+			break;
+		default:
+			scopeText = @"verse";
+			break;
+	}
+
+    NSString* formatText = [NSString stringWithFormat:@"%%ld %@%%@", scopeText];
     self.statusLabel.stringValue
     = [NSString stringWithFormat:@"%@ | %@",
        formatNumberWithPlural(@"%ld hit%@", self.searcher.statisticsGroups.combinedStatistics.countOfHits),
-       formatNumberWithPlural(@"%ld verse%@", self.searcher.statisticsGroups.combinedStatistics.countOfSearchResults)
+       formatNumberWithPlural(formatText, self.searcher.statisticsGroups.combinedStatistics.countOfSearchResults)
        ];
 
     self.statisticsLabel.stringValue

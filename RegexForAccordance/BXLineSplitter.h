@@ -10,6 +10,8 @@
 
 @interface BXLineSplitter : NSObject
 
+@property NSUInteger lineNumber;
+
 - (id)initWithString:(NSString *)text delimiter:(NSString *)lineDelimiter;
 - (NSString *)peekAtNextLine;
 - (NSString *)nextLine;

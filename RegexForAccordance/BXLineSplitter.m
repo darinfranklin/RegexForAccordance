@@ -10,7 +10,6 @@
 
 @implementation BXLineSplitter
 {
-    NSUInteger _index;
     NSArray *_lines;
 }
 
@@ -25,9 +24,9 @@
 
 - (NSString *)peekAtNextLine
 {
-    if (_index < _lines.count)
+    if (_lineNumber < _lines.count)
     {
-        return [_lines objectAtIndex:_index];
+        return [_lines objectAtIndex:_lineNumber];
     }
     return nil;
 }
@@ -37,7 +36,7 @@
     NSString *line = [self peekAtNextLine];
     if (line != nil)
     {
-        _index++;
+        _lineNumber++;
     }
     return line;
 }

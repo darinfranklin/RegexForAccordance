@@ -19,6 +19,7 @@ typedef NS_OPTIONS(NSInteger, BXErrorCodes) {
 @property (readonly) NSError *error;
 @property BXVerse *firstVerse;
 @property BXVerse *lastVerse;
+@property NSInteger searchScope;
 @property BOOL hasGarbage;
 
 - (BXVerse *)nextVerse;

@@ -11,6 +11,7 @@
 
 extern NSString *const IgnoreCase;
 extern NSString *const IncludeReference;
+extern NSString *const SearchScope;
 extern NSString *const LeftToRightOverride;
 extern NSString *const GroupByBook;
 extern NSString *const SearchPattern;

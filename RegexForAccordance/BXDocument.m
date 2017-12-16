@@ -11,6 +11,7 @@
 
 NSString *const IgnoreCase = @"IgnoreCase";
 NSString *const IncludeReference = @"IncludeReference";
+NSString *const SearchScope = @"SearchScope";
 NSString *const LeftToRightOverride = @"LeftToRightOverride";
 NSString *const GroupByBook = @"GroupByBook";
 NSString *const SearchPattern = @"SearchPattern";
@@ -71,6 +72,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.searchSettings.ignoreCase = [defaults boolForKey:IgnoreCase];
     self.searchSettings.includeReference = [defaults boolForKey:IncludeReference];
+    [self.searchSettings setSearchScopeString:[defaults stringForKey:SearchScope]];
     self.searchSettings.leftToRightOverride = [defaults boolForKey:LeftToRightOverride];
 
     self.searchSettings.removeSpaces = [defaults boolForKey:RemoveSpaces];
@@ -114,6 +116,10 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
         if (nil != (string = [documentContents objectForKey:VerseRange]))
         {
             self.searchSettings.verseRange = string;
+        }
+        if (nil != (string = [documentContents objectForKey:SearchScope]))
+        {
+    		[self.searchSettings setSearchScopeString:string];
         }
         if (nil != (string = [documentContents objectForKey:SearchPattern]))
         {
@@ -185,6 +191,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     [self setObject:self.searchSettings.verseRange forKey:VerseRange inDictionary:dict];
     [self setObject:self.searchSettings.textName forKey:TextName inDictionary:dict];
     [self setObject:self.searchSettings.searchFieldFont forKey:SearchFieldFont inDictionary:dict];
+    [self setObject:self.searchSettings.searchScopeString forKey:SearchScope inDictionary:dict];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeSpaces] forKey:RemoveSpaces];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removeTrailingSpaces] forKey:RemoveTrailingSpaces];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.removePilcrows] forKey:RemovePilcrows];
