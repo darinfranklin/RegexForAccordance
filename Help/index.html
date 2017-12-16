@@ -24,8 +24,8 @@
         
         <p>Choose a text module name and enter a verse Range, like "Gen-Mal". Set the search options and the filter options. In the search field, enter a regular expression, and then press return to start searching.</p>
         
-        <p>The text is searched line-by-line, one verse per line.  Matches do not span verses. </p>
-        
+        <p>If scope is set to Verse, the text is searched line-by-line, one verse per line, and the matches do not span verses. If scope is set to Chapter or Book, the verses are combined into a whole chapter or book before searching, and the matches may span multiple verses. </p>
+
         <p>The regular expression matching uses <a href="http://userguide.icu-project.org/strings/regexp">ICU Regular Expression</a> syntax, provided by Apple.<p>
         
         <h2>Combining Marks and Composite Characters</h2>
@@ -54,13 +54,20 @@
         
         <h3>Search Options</h3>
         
-        <p>If Ignore Case is selected, the search will not be case-sensitive. If Include References is selected, then the verse reference will be part of the search string.</p>
+        <p>If <b>Ignore Case</b> is selected, the search will not be case-sensitive. If Include References is selected, then the verse reference will be part of the search string.</p>
         
-        <p>With Include References turned off, the search string for Gen 1:1 is "¶ In the beginning God created the heaven and the earth. ".
+        <p>With <b>Include References</b> turned off, the search string for Gen 1:1 is "¶ In the beginning God created the heaven and the earth. ".
         <br/>With Include References turned on, the search string for Gen 1:1 is "Gen 1:1 ¶ In the beginning God created the heaven and the earth. ".</p>
         
         <p>In either case, the verse reference will be shown in the search results.</p>
-        
+
+        <p><b>Scope</b> affects how the verses are combined before searching.</p>
+        <ul>
+            <li><b>Verse:</b> The verses are searched one at a time. Matches do not span verses.</li>
+            <li><b>Chapter:</b> All verses in a chapter are combined into one line. Matches may span verses, but do not span chapters.</li>
+            <li><b>Book:</b> All verses in a book are combined into one line. Matches may span verses and chapters.</li>
+        </ul>
+
         <h3>Left-to-Right Override</h3>
         
         <p>Mixing right-to-left Hebrew characters with regular expression syntax can be confusing.  Use Left-to-Right Override to show the Hebrew letters in reverse order so that you can see their logical relationship with the rest of the regular expression. Although the characters are displayed in reverse order, they will still match the text in their normal right-to-left order.</p>
