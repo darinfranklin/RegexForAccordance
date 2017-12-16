@@ -194,92 +194,124 @@ NSUInteger const MaxLinesPerFetch = 500;
 
     do
     {
-		if (self.lineSplitter == nil)
-		{
-			[self fetch];
-		}
-		else if (self.indexInCurrentFetch != 0 && self.indexInCurrentFetch % MaxLinesPerFetch == 0)
-		{
-			if (self.refRangeEnd != nil)
-			{
-				[self fetch];
-				// Verse 1 is a repeat of verse 500 in the previous fetch.
-				[self.lineSplitter nextLine];
-				[self remainingLinesInVerse];
-				self.indexInCurrentFetch = 1;
-			}
-			else
-			{
-				_error = [self errorForVerseLimit];
-			}
-		}
+        if (self.lineSplitter == nil)
+        {
+            [self fetch];
+        }
+        else if (self.indexInCurrentFetch != 0 && self.indexInCurrentFetch % MaxLinesPerFetch == 0)
+        {
+            if (self.refRangeEnd != nil)
+            {
+                [self fetch];
+                // Verse 1 is a repeat of verse 500 in the previous fetch.
+                [self.lineSplitter nextLine];
+                [self remainingLinesInVerse];
+                self.indexInCurrentFetch = 1;
+            }
+            else
+            {
+                _error = [self errorForVerseLimit];
+            }
+        }
 
-		verse = nil;
-		saveLine = self.lineSplitter.lineNumber;
-		line = [self.lineSplitter nextLine];
-		scopeOK = (line != nil);
-		if (scopeOK)
-		{
-			verse = [self.lineParser verseForLine:line];
-			[self inferEuropeanFormat:verse.ref];
-			if (isFirstVerse)
-				isFirstVerse = NO;
-			else
-				switch (self.searchScope)
-				{
-					case SearchScopeChapter:
-						scopeOK = (totalVerse.ref.chapter == verse.ref.chapter);
-						break;
-					case SearchScopeBook:
-						scopeOK = [totalVerse.ref.book isEqualToString:verse.ref.book];
-						break;
-					default:
-						scopeOK = NO; // Only do one verse at a time for SearchScopeVerse
-						break;
-				}
-		}
+        verse = nil;
+        saveLine = self.lineSplitter.lineNumber;
+        line = [self.lineSplitter nextLine];
+        scopeOK = (line != nil);
+        if (scopeOK)
+        {
+            verse = [self.lineParser verseForLine:line];
+            [self inferEuropeanFormat:verse.ref];
+            if (isFirstVerse)
+            {
+                isFirstVerse = NO;
+            }
+            else
+            {
+                switch (self.searchScope)
+                {
+                    case SearchScopeChapter:
+                        scopeOK = (totalVerse.ref.chapter == verse.ref.chapter);
+                        break;
+                    case SearchScopeBook:
+                        scopeOK = [totalVerse.ref.book isEqualToString:verse.ref.book];
+                        break;
+                    default:
+                        scopeOK = NO; // Only do one verse at a time for SearchScopeVerse
+                        break;
+                }
+            }
+        }
 
-		if (scopeOK)
-		{
-			self.indexInCurrentFetch += 1;
-			self.refRangeStart = verse.ref.stringValue ?: @"NULL";
-			if (self.firstVerse == nil)
-			{
-				self.firstVerse = verse;
-			}
-			self.lastVerse = verse;
+        if (scopeOK)
+        {
+            self.indexInCurrentFetch += 1;
+            self.refRangeStart = verse.ref.stringValue ?: @"NULL";
+            if (self.firstVerse == nil)
+            {
+                self.firstVerse = verse;
+            }
+            self.lastVerse = verse;
 
-			remainingLines = [self remainingLinesInVerse];
-			if (remainingLines != nil)
-			{
-				verse.text = [verse.text stringByAppendingString:@"\n"];
-				verse.text = [verse.text stringByAppendingString:remainingLines];
-			}
-			if (totalVerse.text)
-				totalVerse.text = [totalVerse.text stringByAppendingString:verse.text];
-			else
-				totalVerse.text = verse.text;
-			totalVerse.ref = verse.ref;
-		}
-		else
-			[self.lineSplitter setLineNumber:saveLine];
-	} while (verse && scopeOK);
-	
-	if (totalVerse.text == nil)
-		totalVerse = nil;
-	else
-		switch (self.searchScope)
-		{
-			case SearchScopeChapter:
-				totalVerse.ref = totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:totalVerse.ref.chapter verse:0];
-				break;
-			case SearchScopeBook:
-				totalVerse.ref = totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:0 verse:0];
-				break;
-			default:
-				break;
-		}
-
+            remainingLines = [self remainingLinesInVerse];
+            if (remainingLines != nil)
+            {
+                verse.text = [verse.text stringByAppendingString:@"\n"];
+                verse.text = [verse.text stringByAppendingString:remainingLines];
+            }
+            if (totalVerse.text)
+            {
+                totalVerse.text = [totalVerse.text stringByAppendingString:@" "];
+                totalVerse.text = [totalVerse.text stringByAppendingString:verse.text];
+            }
+            else
+            {
+                totalVerse.text = verse.text;
+            }
+            totalVerse.ref = verse.ref;
+        }
+        else
+        {
+            [self.lineSplitter setLineNumber:saveLine];
+        }
+    } while (verse && scopeOK);
+    
+    if (totalVerse.text == nil)
+    {
+        totalVerse = nil;
+    }
+    else
+    {
+        switch (self.searchScope)
+        {
+            case SearchScopeChapter:
+            {
+                NSInteger verse = 1;
+                if (totalVerse.ref.chapter == self.firstVerse.ref.chapter)
+                {
+                    verse = self.firstVerse.ref.verse;
+                }
+                totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:totalVerse.ref.chapter verse:verse];
+                break;
+            }
+            case SearchScopeBook:
+            {
+                NSInteger verse = 1;
+                NSInteger chapter = 1;
+                if (totalVerse.ref.book == self.firstVerse.ref.book)
+                {
+                    verse = self.firstVerse.ref.verse;
+                    chapter = self.firstVerse.ref.chapter;
+                }
+                totalVerse.ref = [[BXVerseRef alloc] initWithBook:totalVerse.ref.book chapter:chapter verse:verse];
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+    }
     return totalVerse;
 }
 

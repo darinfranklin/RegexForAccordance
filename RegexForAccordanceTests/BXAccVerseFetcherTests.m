@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "BXAccVerseFetcher.h"
 #import "BXTestAccVerseFetcher.h"
+#import "BXSearchSettings.h"
 
 @interface BXAccVerseFetcherTests : XCTestCase
 
@@ -122,6 +123,88 @@
     [fetcher setVerseRange:@"Ps 2:12"];
     BXVerse *verse = [fetcher nextVerse];
     XCTAssertEqualObjects(verse.text, [[verse1 substringFromIndex:8] stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"]);
+}
+
+- (void)testChapterScopePutsSpaceBetweenVersesAndRefUsesFirstVerseOfRange
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"KJVS"];
+    [acc setVerseRange:@"Gen 1"];
+    [acc setSearchScope:SearchScopeChapter];
+    BXVerse *verse, *lastVerse;
+    verse = [acc nextVerse];
+    lastVerse = verse;
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Gen"]);
+    XCTAssertEqual(1, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+    NSUInteger count = 1;
+    while (nil != (verse = [acc nextVerse]))
+    {
+        lastVerse = verse;
+        count++;
+    }
+    NSLog(@"length %ld", lastVerse.text.length);
+    XCTAssertTrue([lastVerse.text containsString:@"heaven and the earth. And the earth was"],
+                  @"%@", [lastVerse.text substringWithRange:NSMakeRange(50, 80)]);
+    XCTAssertTrue([lastVerse.text containsString:@"shall be for meat. And to every beast"],
+                  @"%@", [lastVerse.text substringWithRange:NSMakeRange(3900, 77)]);
+    XCTAssertTrue([lastVerse.text hasSuffix:@"And the evening and the morning were the sixth day."],
+                  @"%@", [lastVerse.text substringWithRange:NSMakeRange(lastVerse.text.length - 50, 50)]);
+    XCTAssertTrue([lastVerse.ref.book hasPrefix:@"Gen"]);
+    XCTAssertEqual(1, lastVerse.ref.chapter);
+    XCTAssertEqual(1, lastVerse.ref.verse);
+    XCTAssertEqual(1, count);
+}
+
+- (void)testChapterScopeUsesFirstVerseOfChapterAsRef
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"KJVS"];
+    [acc setVerseRange:@"Gen 9:3 - Exod 2:7"];
+    [acc setSearchScope:SearchScopeChapter];
+    BXVerse *verse, *lastVerse;
+    verse = [acc nextVerse];
+    lastVerse = verse;
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Gen"]);
+    XCTAssertEqual(9, verse.ref.chapter);
+    XCTAssertEqual(3, verse.ref.verse);
+    NSUInteger count = 1;
+    while (nil != (verse = [acc nextVerse]))
+    {
+        lastVerse = verse;
+        XCTAssertEqual(1, verse.ref.verse);
+        count++;
+    }
+    XCTAssertTrue([lastVerse.ref.book hasPrefix:@"Exo"]);
+    XCTAssertEqual(2, lastVerse.ref.chapter);
+    XCTAssertEqual(1, lastVerse.ref.verse);
+    XCTAssertEqual(44, count);
+}
+
+- (void)testBookScopeUsesFirstVerseOfBookAsRef
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"KJVS"];
+    [acc setVerseRange:@"1Jn 2:7 - 3Jn 8"];
+    [acc setSearchScope:SearchScopeBook];
+    BXVerse *verse, *lastVerse;
+    verse = [acc nextVerse];
+    lastVerse = verse;
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(2, verse.ref.chapter);
+    XCTAssertEqual(7, verse.ref.verse);
+    NSUInteger count = 1;
+    while (nil != (verse = [acc nextVerse]))
+    {
+        lastVerse = verse;
+        XCTAssertEqual(1, verse.ref.chapter);
+        XCTAssertEqual(1, verse.ref.verse);
+        count++;
+    }
+    XCTAssertTrue([lastVerse.ref.book hasPrefix:@"3 John"]);
+    XCTAssertEqual(1, lastVerse.ref.chapter);
+    XCTAssertEqual(1, lastVerse.ref.verse);
+    XCTAssertEqual(3, count);
 }
 
 @end
