@@ -303,6 +303,7 @@
                                     <constraint firstItem="cQu-Ys-mcE" firstAttribute="leading" secondItem="Y8P-Qt-NDv" secondAttribute="trailing" constant="8" id="suD-4e-y6l"/>
                                     <constraint firstAttribute="bottom" secondItem="LTN-4w-7az" secondAttribute="bottom" id="t9O-1b-ypB"/>
                                     <constraint firstItem="su0-QX-Xdb" firstAttribute="leading" secondItem="SgQ-D0-ex1" secondAttribute="trailing" constant="8" symbolic="YES" id="tLA-7e-FLn"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YZE-7g-8qZ" secondAttribute="trailing" constant="16" id="uJV-xn-Zbo"/>
                                     <constraint firstItem="t3k-1v-DkA" firstAttribute="leading" secondItem="akE-M3-LDc" secondAttribute="trailing" constant="7" id="umy-e8-zNy"/>
                                     <constraint firstAttribute="trailing" secondItem="k2K-3B-dFM" secondAttribute="trailing" constant="16" id="wkS-E4-bvj"/>
                                 </constraints>
