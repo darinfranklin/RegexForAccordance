@@ -10,6 +10,7 @@
 #import "BXSearchResult.h"
 #import "BXVerseRefConsolidator.h"
 #import "BXAccLink.h"
+#import "BXSearchSettings.h"
 
 @implementation BXAccVerseURL
 
@@ -23,6 +24,11 @@
 
 - (NSArray *)linksForSearchResults:(NSArray *)searchResults textName:(NSString *)textName
 {
+    return [self linksForSearchResults:searchResults textName:textName searchScope:SearchScopeVerse];
+}
+
+- (NSArray *)linksForSearchResults:(NSArray *)searchResults textName:(NSString *)textName searchScope:(SearchScopeOptions)searchScope
+{
     NSMutableArray *refs = [[NSMutableArray alloc] initWithCapacity:searchResults.count];
     for (BXSearchResult *searchResult in searchResults)
     {
@@ -32,6 +38,7 @@
         }
     }
     BXVerseRefConsolidator *consolidator = [[BXVerseRefConsolidator alloc] initWithVerseRefs:refs];
+    consolidator.searchScope = searchScope;
     NSMutableArray *links = [[NSMutableArray alloc] init];
     NSString *refString;
     BXVerseRef *first = [consolidator currentVerseRef];

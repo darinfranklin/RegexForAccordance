@@ -94,6 +94,111 @@
 
 - (NSString *)buildRefString
 {
+    if (self.searchScope == SearchScopeChapter)
+    {
+        return [self buildRefStringChapterScope];
+    }
+    else if (self.searchScope == SearchScopeBook)
+    {
+        return [self buildRefStringBookScope];
+    }
+    else
+    {
+        return [self buildRefStringVerseScope];
+    }
+}
+
+// Gen 1-3, 5; Exod 3
+- (NSString *)buildRefStringChapterScope
+{
+    NSMutableString *str = [[NSMutableString alloc] init];
+    NSString *pending = nil;
+    NSInteger chapter = 0;
+    NSString *book = nil;
+    [self setDelimiters];
+    while (_verseRefIndex < _verseRefs.count)
+    {
+        BXVerseRef *ref = [_verseRefs objectAtIndex:_verseRefIndex++];
+        NSMutableString *nextPart = [[NSMutableString alloc] init];
+        if (![ref.book isEqualToString:book]) // new book or first book
+        {
+            if (pending != nil)
+            {
+                [str appendString:pending];
+                pending = nil;
+            }
+            if (book != nil)
+            {
+                [nextPart appendString:@"; "];
+            }
+            [nextPart appendString:ref.stringValue]; // Gen 1
+            book = ref.book;
+            chapter = ref.chapter;
+        }
+        else // same book
+        {
+            if (ref.chapter == chapter + 1) // next chapter
+            {
+                pending = [NSString stringWithFormat:@"-%ld", ref.chapter];
+            }
+            else // skipped chapters
+            {
+                if (pending != nil)
+                {
+                    [str appendString:pending];
+                    pending = nil;
+                }
+                [nextPart appendString:[NSString stringWithFormat:@"; %ld", ref.chapter]];
+            }
+            chapter = ref.chapter;
+        }
+        if (str.length + nextPart.length > self.maxLength)
+        {
+            _verseRefIndex--;
+            break;
+        }
+        [str appendString:nextPart];
+    }
+    if (pending != nil)
+    {
+        [str appendString:pending];
+    }
+    if (str.length == 0)
+    {
+        str = nil;
+    }
+    return str;
+}
+
+// Gen; Exod; Rev
+- (NSString *)buildRefStringBookScope
+{
+    NSMutableString *str = [[NSMutableString alloc] init];
+    NSString *book = nil;
+    [self setDelimiters];
+    while (_verseRefIndex < _verseRefs.count)
+    {
+        BXVerseRef *ref = [_verseRefs objectAtIndex:_verseRefIndex++];
+        if (![ref.book isEqualToString:book]) // new book or first book
+        {
+            if (book != nil)
+            {
+                [str appendString:@"; "];
+            }
+            [str appendString:ref.stringValue]; // Gen
+            book = ref.book;
+        }
+    }
+    if (str.length == 0)
+    {
+        str = nil;
+    }
+    return str;
+}
+
+
+- (NSString *)buildRefStringVerseScope
+{
     NSMutableString *str = [[NSMutableString alloc] init];
     NSString *pending = nil;
     NSInteger verse = -1; // some chapters have verse 0

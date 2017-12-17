@@ -291,4 +291,100 @@
     XCTAssertNil(verse);
 }
 
+- (void)testSmallBooksInBookScope
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"KJVS"];
+    [acc setVerseRange:@"1Jn - Jude"]; // 158 verses; 4 books
+    [acc setSearchScope:SearchScopeBook];
+    BXVerse *verse;
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(1, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"2 John"], @"%@", verse.ref.book);
+    XCTAssertEqual(0, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"3 John"], @"%@", verse.ref.book);
+    XCTAssertEqual(0, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Jude"], @"%@", verse.ref.book);
+    XCTAssertEqual(0, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNil(verse);
+}
+
+- (void)testSmallBooksInChapterScope
+{
+    BXAccVerseFetcher *acc = [[BXAccVerseFetcher alloc] init];
+    [acc setTextName:@"KJVS"];
+    [acc setVerseRange:@"1Jn - Jude"]; // 158 verses; 4 books
+    [acc setSearchScope:SearchScopeChapter];
+    BXVerse *verse;
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(1, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(2, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(3, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(4, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"1 John"]);
+    XCTAssertEqual(5, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"2 John"], @"%@", verse.ref.book);
+    XCTAssertEqual(0, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"3 John"], @"%@", verse.ref.book);
+    XCTAssertEqual(0, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNotNil(verse);
+    XCTAssertTrue([verse.ref.book hasPrefix:@"Jude"], @"%@", verse.ref.book);
+    XCTAssertEqual(0, verse.ref.chapter);
+    XCTAssertEqual(1, verse.ref.verse);
+
+    verse = [acc nextVerse];
+    XCTAssertNil(verse);
+}
+
 @end

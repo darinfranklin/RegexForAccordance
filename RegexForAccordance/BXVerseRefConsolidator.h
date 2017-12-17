@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "BXVerseRef.h"
+#import "BXSearchSettings.h"
 
 /* Combines a sequence of verse refs into contiguous ranges. */
 @interface BXVerseRefConsolidator : NSObject
 @property NSUInteger maxLength;
+@property SearchScopeOptions searchScope;
+
 - (id)init;
 - (id)initWithVerseRefs:(NSArray *)refs;
 - (void) addVerseRef:(BXVerseRef *)ref;

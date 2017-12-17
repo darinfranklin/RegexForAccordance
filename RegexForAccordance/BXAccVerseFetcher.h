@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BXVerse.h"
+#import "BXSearchSettings.h"
 
 typedef NS_OPTIONS(NSInteger, BXErrorCodes) {
     BXFetchLimitError = 500
@@ -19,7 +20,7 @@ typedef NS_OPTIONS(NSInteger, BXErrorCodes) {
 @property (readonly) NSError *error;
 @property BXVerse *firstVerse;
 @property BXVerse *lastVerse;
-@property NSInteger searchScope;
+@property SearchScopeOptions searchScope;
 @property BOOL hasGarbage;
 
 - (BXVerse *)nextVerse;

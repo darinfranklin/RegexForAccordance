@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "BXVerseRefConsolidator.h"
+#import "BXVerseRangeRef.h"
 
 
 @interface BXVerseRefConsolidatorTests : XCTestCase
@@ -195,6 +196,126 @@
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Jude" chapter:0 verse:4 europeanFormat:NO]];
     [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Jude" chapter:0 verse:6 europeanFormat:NO]];
     XCTAssertEqualObjects(@"Gen 1,1; 2,2; Exod 1,2-3.5-6; Jude 4.6", [vrc buildRefString]);
+}
+
+- (void)testSearchScopeChapterOneChapter
+{
+    SearchScopeOptions scope = SearchScopeChapter;
+    vrc.searchScope = scope;
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:25]
+                                                   searchScope:scope]];
+    XCTAssertEqualObjects(@"Matt 1", [vrc buildRefString]);
+}
+
+- (void)testSearchScopeChapter
+{
+    SearchScopeOptions scope = SearchScopeChapter;
+    vrc.searchScope = scope;
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:25]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:23]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:17]
+                                                   searchScope:scope]];
+    XCTAssertEqualObjects(@"Matt 1-3", [vrc buildRefString]);
+}
+
+- (void)testSearchScopeChapterNonContiguous
+{
+    SearchScopeOptions scope = SearchScopeChapter;
+    vrc.searchScope = scope;
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:25]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:23]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:17]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:5 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:5 verse:48]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:3 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:3 verse:38]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:5 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:5 verse:39]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:6 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:6 verse:49]
+                                                   searchScope:scope]];
+    XCTAssertEqualObjects(@"Matt 1-3; 5; Luke 3; 5-6", [vrc buildRefString]);
+}
+
+- (void)testSearchScopeChapterEuropeanNotation
+{
+    SearchScopeOptions scope = SearchScopeChapter;
+    vrc.searchScope = scope;
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:25 europeanFormat:YES]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:23 europeanFormat:YES]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:17 europeanFormat:YES]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:5 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:5 verse:48 europeanFormat:YES]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:3 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:3 verse:38 europeanFormat:YES]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:5 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:5 verse:39 europeanFormat:YES]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:6 verse:1 europeanFormat:YES]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:6 verse:49 europeanFormat:YES]
+                                                   searchScope:scope]];
+    XCTAssertEqualObjects(@"Matt 1-3; 5; Luke 3; 5-6", [vrc buildRefString]);
+}
+
+- (void)testSearchScopeBook
+{
+    SearchScopeOptions scope = SearchScopeBook;
+    vrc.searchScope = scope;
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:25]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:2 verse:23]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:3 verse:17]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:5 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:5 verse:48]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:3 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:3 verse:38]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:5 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:5 verse:39]
+                                                   searchScope:scope]];
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:6 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Luke" chapter:6 verse:49]
+                                                   searchScope:scope]];
+    XCTAssertEqualObjects(@"Matt; Luke", [vrc buildRefString]);
+}
+
+- (void)testSearchScopeBookOneBook
+{
+    SearchScopeOptions scope = SearchScopeBook;
+    vrc.searchScope = scope;
+    [vrc addVerseRef:[[BXVerseRangeRef alloc] initWithFirstRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:1 verse:1]
+                                                       lastRef:[[BXVerseRef alloc] initWithBook:@"Matt" chapter:28 verse:20]
+                                                   searchScope:scope]];
+    XCTAssertEqualObjects(@"Matt", [vrc buildRefString]);
 }
 
 @end

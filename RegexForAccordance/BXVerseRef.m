@@ -36,9 +36,14 @@
     if (self = [self initWithBook:book chapter:chapter verse:verse stringValue:nil])
     {
         self.europeanFormat = european;
-        _stringValue = [self formatString];
+        [self updateStringValue];
     }
     return self;
+}
+
+- (void)updateStringValue
+{
+    _stringValue = [self formatString];
 }
 
 - (NSString *)formatString

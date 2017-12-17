@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BXStatisticsGroups.h"
 #import "BXSearchWindowController.h"
+#import "BXSearchSettings.h"
 
 extern NSString *const BXColumnNameKey;
 extern NSString *const BXColumnNameHitCount;
@@ -22,6 +23,7 @@ extern NSString *const BXColumnNameRefs;
 @property (nonatomic) BOOL groupByBook;
 @property BXSearchWindowController *searchWindowController;
 @property (weak) IBOutlet NSView *groupRowView;
+@property SearchScopeOptions searchScope;
 
 - (id) initWithStatisticsGroups:(BXStatisticsGroups *)statisticsGroups;
 - (NSArray *)searchResultHitsForRow:(NSUInteger)row;

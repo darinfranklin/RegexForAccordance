@@ -8,8 +8,6 @@
 
 # Feature Ideas
 
-* Option to span lines. Search an entire chapter or book as one string.
-
 * The last column header (tableView.cornerView) can be a selector button, showing popup for show/hide column.
 
 * Highlight or filter the search results when selecting a row in statistics.

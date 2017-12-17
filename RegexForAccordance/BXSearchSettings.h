@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, SearchScopeOptions) {
 @property BOOL groupByBook;
 @property NSString *textName;
 @property NSString *verseRange;
-@property NSInteger searchScope;
+@property SearchScopeOptions searchScope;
 @property BOOL leftToRightOverride;
 @property NSString *searchPattern;
 @property NSString *searchFieldFont;

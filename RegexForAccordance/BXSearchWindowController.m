@@ -353,6 +353,7 @@ NSString *makeBlankIfNil(NSString *str)
     self.statisticsTableView.rowHeight = lineHeight + 6.0;
     self.statisticsDatasource.alignment = self.searchResultsTextView.alignment;
     self.statisticsDatasource.groupByBook = self.document.searchSettings.groupByBook;
+    self.statisticsDatasource.searchScope = self.document.searchSettings.searchScope;
 }
 
 - (void)startStatusUpdateTimer
@@ -461,7 +462,7 @@ NSString *makeBlankIfNil(NSString *str)
 {
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Links"];
     BXAccVerseURL *acc = [[BXAccVerseURL alloc] init];
-    NSArray *links = [acc linksForSearchResults:searchResults textName:self.document.searchSettings.textName];
+    NSArray *links = [acc linksForSearchResults:searchResults textName:self.document.searchSettings.textName searchScope:self.document.searchSettings.searchScope];
     for (BXAccLink *link in links)
     {
         NSString *menuItemTitle = [NSString stringWithFormat:@"%@ … %@", link.firstVerseRef.stringValue, link.lastVerseRef.stringValue];

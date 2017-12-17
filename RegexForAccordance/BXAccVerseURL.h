@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BXSearchSettings.h"
 
 @interface BXAccVerseURL : NSObject
 
@@ -16,5 +17,6 @@
 /* Formats searchResults into one or more "accord://" URL's. Because Accordance crashes if the URL is too long, we divide it into several URL's.
  Returns NSArray of BXAccLink objects, which contain the url and the first and last verse in the range. */
 - (NSArray *)linksForSearchResults:(NSArray *)searchResults textName:(NSString *)textName;
+- (NSArray *)linksForSearchResults:(NSArray *)searchResults textName:(NSString *)textName searchScope:(SearchScopeOptions)searchScope;
 
 @end

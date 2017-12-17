@@ -12,6 +12,7 @@
 #import "BXVerseRangeParser.h"
 #import "BXLineParser.h"
 #import "BXSearchSettings.h"
+#import "BXVerseRangeRef.h"
 
 NSUInteger const MaxLinesPerFetch = 500;
 
@@ -234,17 +235,17 @@ NSUInteger const MaxLinesPerFetch = 500;
                 switch (self.searchScope)
                 {
                     case SearchScopeChapter:
-                        scopeOK = (totalVerse.ref.chapter == verse.ref.chapter);
+                        scopeOK = (totalVerse.ref.chapter == verse.ref.chapter && [totalVerse.ref.book isEqualToString:verse.ref.book]);
                         if (!scopeOK)
                         {
-                            NSLog(@"scope: %@ - %@", firstVerseRefInScope.stringValue, lastVerseRefInScope.stringValue);
+                            NSLog(@"chapter scope: %@ - %@", firstVerseRefInScope.stringValue, lastVerseRefInScope.stringValue);
                         }
                         break;
                     case SearchScopeBook:
                         scopeOK = [totalVerse.ref.book isEqualToString:verse.ref.book];
                         if (!scopeOK)
                         {
-                            NSLog(@"scope: %@ - %@", firstVerseRefInScope.stringValue, lastVerseRefInScope.stringValue);
+                            NSLog(@"book scope: %@ - %@", firstVerseRefInScope.stringValue, lastVerseRefInScope.stringValue);
                         }
                         break;
                     default:
@@ -298,16 +299,16 @@ NSUInteger const MaxLinesPerFetch = 500;
         {
             case SearchScopeChapter:
             {
-                totalVerse.ref = [[BXVerseRef alloc] initWithBook:firstVerseRefInScope.book
-                                                          chapter:firstVerseRefInScope.chapter
-                                                            verse:firstVerseRefInScope.verse];
+                totalVerse.ref = [[BXVerseRangeRef alloc] initWithFirstRef:firstVerseRefInScope
+                                                                   lastRef:lastVerseRefInScope
+                                                               searchScope:self.searchScope];
                 break;
             }
             case SearchScopeBook:
             {
-                totalVerse.ref = [[BXVerseRef alloc] initWithBook:firstVerseRefInScope.book
-                                                          chapter:firstVerseRefInScope.chapter
-                                                            verse:firstVerseRefInScope.verse];
+                totalVerse.ref = [[BXVerseRangeRef alloc] initWithFirstRef:firstVerseRefInScope
+                                                                   lastRef:lastVerseRefInScope
+                                                               searchScope:self.searchScope];
                 break;
             }
             default:

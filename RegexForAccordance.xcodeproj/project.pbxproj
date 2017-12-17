@@ -91,6 +91,8 @@
 		93FDF84B199DC75F00BF3576 /* BXFilterHebrewCantillation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF84A199DC75F00BF3576 /* BXFilterHebrewCantillation.m */; };
 		93FDF851199DC93C00BF3576 /* BXFilterHebrewPunctuation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */; };
 		93FDF854199DCB0900BF3576 /* BXFilterDecomposeCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */; };
+		A3EDA6D01FE5CF1700BD897A /* BXVerseRangeRef.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EDA6CF1FE5CF1700BD897A /* BXVerseRangeRef.m */; };
+		A3EDA6D21FE5D3E200BD897A /* BXVerseRangeRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EDA6D11FE5D3E200BD897A /* BXVerseRangeRefTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +248,9 @@
 		93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewPunctuation.m; sourceTree = "<group>"; };
 		93FDF852199DCB0900BF3576 /* BXFilterDecomposeCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterDecomposeCharacters.h; sourceTree = "<group>"; };
 		93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterDecomposeCharacters.m; sourceTree = "<group>"; };
+		A3EDA6CE1FE5CF1700BD897A /* BXVerseRangeRef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXVerseRangeRef.h; sourceTree = "<group>"; };
+		A3EDA6CF1FE5CF1700BD897A /* BXVerseRangeRef.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXVerseRangeRef.m; sourceTree = "<group>"; };
+		A3EDA6D11FE5D3E200BD897A /* BXVerseRangeRefTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXVerseRangeRefTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +306,7 @@
 				93D1573919984C2A0020CB14 /* BXTransliterateFilterTests.m */,
 				931A27AC1994706300DC3C27 /* BXVerseRangeParserTests.m */,
 				9313263419BCDAD400974229 /* BXVerseRefTests.m */,
+				A3EDA6D11FE5D3E200BD897A /* BXVerseRangeRefTests.m */,
 				93404DAF1A2ABBB9007927A2 /* BXVerseTests.m */,
 				93B5D5571A22575C008D22FD /* BXVerseRefConsolidatorTests.m */,
 				93475AAE19A0162E00882A88 /* BXStatisticsTests.m */,
@@ -517,6 +523,8 @@
 				931A27B119948DA400DC3C27 /* BXVerseRef.m */,
 				9308FBF219945B9C00AB090C /* BXSearchResult.h */,
 				9308FBF319945B9C00AB090C /* BXSearchResult.m */,
+				A3EDA6CE1FE5CF1700BD897A /* BXVerseRangeRef.h */,
+				A3EDA6CF1FE5CF1700BD897A /* BXVerseRangeRef.m */,
 			);
 			name = "Search Result Components";
 			sourceTree = "<group>";
@@ -721,6 +729,7 @@
 				93AF6A9619AE8359006A8328 /* BXSearchResultHit.m in Sources */,
 				93D1573219983D720020CB14 /* BXFilterReplace.m in Sources */,
 				936CA3351A26D96F00C27A7F /* BXFilter.m in Sources */,
+				A3EDA6D01FE5CF1700BD897A /* BXVerseRangeRef.m in Sources */,
 				9308FC1219945B9C00AB090C /* BXFontSelector.m in Sources */,
 				9308FC1419945B9C00AB090C /* BXSearch.m in Sources */,
 				9317B2BA19A570EF00186A77 /* BXFilterGreekDiacritics.m in Sources */,
@@ -751,6 +760,7 @@
 				93B5D5581A22575C008D22FD /* BXVerseRefConsolidatorTests.m in Sources */,
 				931A27A31994607600DC3C27 /* BXSearchResultFormatterTests.m in Sources */,
 				9387CA8F19B1910800129B96 /* BXTestSearchResult.m in Sources */,
+				A3EDA6D21FE5D3E200BD897A /* BXVerseRangeRefTests.m in Sources */,
 				931A27BC1994A3E000DC3C27 /* BXLineParserTests.m in Sources */,
 				931A27A119945F1D00DC3C27 /* BXSearchTests.m in Sources */,
 				93475AAF19A0162E00882A88 /* BXStatisticsTests.m in Sources */,

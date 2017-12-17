@@ -324,6 +324,7 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
 {
     NSArray *searchResultHits = [self searchResultHitsForRow:row];
     BXVerseRefConsolidator *vrc = [[BXVerseRefConsolidator alloc] init];
+    vrc.searchScope = self.searchScope;
     [searchResultHits enumerateObjectsUsingBlock:^(id searchResultHit, NSUInteger idx, BOOL *stop)
      {
          [vrc addVerseRef:[searchResultHit searchResult].verse.ref];

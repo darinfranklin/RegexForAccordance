@@ -21,5 +21,7 @@
 - (id)initWithBook:(NSString *)book chapter:(NSInteger)chapter verse:(NSInteger)verse europeanFormat:(BOOL)european;
 - (NSString *)chapterDelimiter;
 - (NSString *)verseDelimiter;
+- (NSString *)formatString;
+- (void)updateStringValue;
 
 @end
