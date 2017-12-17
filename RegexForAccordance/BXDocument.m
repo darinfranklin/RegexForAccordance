@@ -40,7 +40,8 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
 
 - (BOOL)isDocumentEdited
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"NoPromptForUnsaved"])
+    if ([self.displayName hasPrefix:@"Untitled"]
+        && [[NSUserDefaults standardUserDefaults] boolForKey:@"NoPromptForUnsaved"])
     {
         return NO;
     }
