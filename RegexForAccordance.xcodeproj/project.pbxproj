@@ -23,7 +23,6 @@
 		9308FC1919945B9C00AB090C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9308FBFB19945B9C00AB090C /* InfoPlist.strings */; };
 		9308FC1A19945B9C00AB090C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9308FBFD19945B9C00AB090C /* Images.xcassets */; };
 		9308FC1B19945B9C00AB090C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9308FBFE19945B9C00AB090C /* main.m */; };
-		9308FC2419945B9C00AB090C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9308FC0919945B9C00AB090C /* InfoPlist.strings */; };
 		9308FC2519945B9C00AB090C /* RegexForAccordanceTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9308FC0B19945B9C00AB090C /* RegexForAccordanceTests-Info.plist */; };
 		9313263519BCDAD400974229 /* BXVerseRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9313263419BCDAD400974229 /* BXVerseRefTests.m */; };
 		9317B2BA19A570EF00186A77 /* BXFilterGreekDiacritics.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317B2B919A570EF00186A77 /* BXFilterGreekDiacritics.m */; };
@@ -142,7 +141,6 @@
 		9308FC0519945B9C00AB090C /* BXAccVerseURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXAccVerseURLTests.m; sourceTree = "<group>"; };
 		9308FC0619945B9C00AB090C /* BXLineSplitterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXLineSplitterTests.m; sourceTree = "<group>"; };
 		9308FC0719945B9C00AB090C /* BXSearchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXSearchTests.m; sourceTree = "<group>"; };
-		9308FC0A19945B9C00AB090C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9308FC0B19945B9C00AB090C /* RegexForAccordanceTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RegexForAccordanceTests-Info.plist"; sourceTree = "<group>"; };
 		9313263419BCDAD400974229 /* BXVerseRefTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXVerseRefTests.m; sourceTree = "<group>"; };
 		9317B2B819A570EF00186A77 /* BXFilterGreekDiacritics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterGreekDiacritics.h; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 		930CA723199889D100711558 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9308FC0919945B9C00AB090C /* InfoPlist.strings */,
 				9308FC0B19945B9C00AB090C /* RegexForAccordanceTests-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -633,7 +630,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BX;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Darin Franklin";
 				TargetAttributes = {
 					93984F6519873CA70034CB53 = {
@@ -650,7 +647,7 @@
 			};
 			buildConfigurationList = 93984F6119873CA70034CB53 /* Build configuration list for PBXProject "RegexForAccordance" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -675,7 +672,6 @@
 				93B5D5561A2254FB008D22FD /* MainMenu.xib in Resources */,
 				93080E7A199741D100BA9685 /* BXSearchWindow.xib in Resources */,
 				9308FC1A19945B9C00AB090C /* Images.xcassets in Resources */,
-				9308FC2419945B9C00AB090C /* InfoPlist.strings in Resources */,
 				9308FC2519945B9C00AB090C /* RegexForAccordanceTests-Info.plist in Resources */,
 				9308FC1919945B9C00AB090C /* InfoPlist.strings in Resources */,
 				9317B75E19B41017001B3F0D /* BXPreferencesWindow.xib in Resources */,
@@ -817,14 +813,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9308FC0919945B9C00AB090C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9308FC0A19945B9C00AB090C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -832,6 +820,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -840,12 +829,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -924,6 +915,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -932,12 +924,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -975,6 +969,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -983,12 +978,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
