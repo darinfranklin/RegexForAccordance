@@ -397,6 +397,7 @@ NSString *makeBlankIfNil(NSString *str)
 {
 #ifdef DEBUG
     NSDate *t0 = [NSDate date];
+    LogDebug(@"Search start");
 #endif
     BXSearchResult *searchResult;
     NSUInteger offset = 0;

@@ -18,6 +18,7 @@
     if (self = [super init])
     {
         _lines = [text componentsSeparatedByString:endOfLine];
+        LogDebug(@"Line count: %lu", _lines.count);
     }
     return self;
 }

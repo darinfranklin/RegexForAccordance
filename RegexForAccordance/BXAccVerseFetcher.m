@@ -14,8 +14,6 @@
 #import "BXSearchSettings.h"
 #import "BXVerseRangeRef.h"
 
-NSUInteger const MaxLinesPerFetch = 500;
-
 @interface BXAccVerseFetcher()
 @property NSUInteger indexInCurrentFetch;
 @property NSString *refRangeStart;
@@ -109,7 +107,13 @@ NSUInteger const MaxLinesPerFetch = 500;
         LogDebug(@"%@", src);
         NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:src];
         NSDictionary *appleScriptError;
+#ifdef DEBUG
+        NSDate *t0 = [NSDate date];
+#endif
         NSAppleEventDescriptor *event = [appleScript executeAndReturnError:&appleScriptError];
+#ifdef DEBUG
+        LogDebug(@"Fetch time: %f sec", [t0 timeIntervalSinceNow] * -1);
+#endif
         if (appleScriptError != nil)
         {
             [self logError:appleScriptError];
@@ -173,6 +177,7 @@ NSUInteger const MaxLinesPerFetch = 500;
             }
         }
         NSString *lines = [self fetchVersesFromText:self.textName withVerseRange:refs];
+        LogDebug(@"Char count: %lu", lines.length);
         if (_error == nil)
         {
             // BXLineSplitter holds a NSArray of 500 lines, plus the original block of text obtained from AppleScript.  Every time we fetch a new batch of lines, we need to release the previous batch.
@@ -201,18 +206,27 @@ NSUInteger const MaxLinesPerFetch = 500;
         {
             [self fetch];
         }
-        else if (self.indexInCurrentFetch != 0 && self.indexInCurrentFetch % MaxLinesPerFetch == 0)
+        else if (self.indexInCurrentFetch != 0 && [self peekAtNextLine] == nil)
         {
             if (self.refRangeEnd != nil)
             {
+                // Accordance 13.0.5 and earlier has a 500 verse limit.
+                // Keep reading the current result set until we run out of verses (peekAtNextLine is null).
+                // Then, with refRangeStart set to the last verse of the previous fetch, get the next result set.
                 [self fetch];
-                // Verse 1 is a repeat of verse 500 in the previous fetch.
+                // The first verse is a repeat of the last verse in the previous fetch, so discard it.
                 [self.lineSplitter nextLine];
                 [self remainingLinesInVerse];
                 self.indexInCurrentFetch = 1;
             }
-            else
+            else if (self.indexInCurrentFetch == 500)
             {
+                // refRangeEnd is nil when the requested range has commas instead of a contiguous start - end.
+                // When we get exactly 500 verses, give a warning that not all verses were searched,
+                // because it was probably due to the 500 verse limit in Accordance.
+                // Accordance 13.1.2 doesn't have a limit of exactly 500 verses,
+                // but it also doesn't return all of the verses when more than 500 are requested,
+                // so we can't tell in that case when an incomplete result was received.
                 _error = [self errorForVerseLimit];
             }
         }
