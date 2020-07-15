@@ -1,78 +1,665 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>RegexForAccordance by darinfranklin</title>
-  </head>
 
-  <body>
-    <div id="container">
-      <div class="inner">
+<head>
+   <meta charset="UTF-8">
+   <title>RegexForAccordance - Search Bible Texts in Accordance with Regular Expressions</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-        <header>
-          <h1>RegexForAccordance</h1>
-          <h2>Search Bible Texts in Accordance with Regular Expressions</h2>
-        </header>
+<body>
 
-        <section id="main_content">
-          <a id="regexforaccordance" class="anchor" href="#regexforaccordance" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+   <header>
+      <h1 class="title">RegexForAccordance
+         <h2 class="title">Search Bible Texts in Accordance with Regular Expressions</h2>
+   </header>
 
-          <p><a href="http://accordancebible.com/">Accordance</a> is a popular Bible study program for the Mac (and iOS and Windows too). It is host to many high quality original language manuscripts and Bible translations.  RegexForAccordance allows you to search any of the text modules in Accordance using regular expressions.</p>
 
-        <h3>System Requirements</h3>
-        
-        <ul>
-            <li>Mac OSX 10.9 or later</li>
-            <li><a href="http://www.accordancebible.com">Accordance</a> 10.4.5 or later</li>
-        </ul>
-        
-        <h3>Download</h3>
+   <p><a href="http://accordancebible.com/">Accordance</a> is a Bible study program for macOS produced by OakTree
+      Software. It is host to many different Bible translations and original language manuscripts. RegexForAccordance
+      allows you to search any of the text modules in Accordance using regular expressions. It uses the AppleScript
+      interface of Accordance to get the lines of text, and then
+      it searches those lines with the regular expression.</p>
 
-          <p>Visit the <a href="https://github.com/darinfranklin/RegexForAccordance/releases">Releases</a> page to download the latest version.</p>
+   <h1>System Requirements</h1>
 
-          <p>
-            <a href="images/CapitalGreekExample.png"><img src="images/CapitalGreekExample.png"/></a>
+   <ul>
+      <li>Mac OSX 10.9 or later</li>
+      <li><a href="http://www.accordancebible.com">Accordance</a> 10.4.5 or later</li>
+   </ul>
+
+   <h1>Download</h1>
+
+   <p>Visit the <a href="https://github.com/darinfranklin/RegexForAccordance/releases">Releases</a> page to download the
+      latest version.</p>
+
+
+   <h1>Documentation</h1>
+
+   <p>See the included 
+      <a href="https://htmlpreview.github.io/?https://github.com/darinfranklin/RegexForAccordance/blob/master/Help/index.html">Help</a> 
+      file for features and technical details.</p>
+
+   <p>Have a look at the Accordance forum
+      for <a href="http://www.accordancebible.com/forums/index.php?showtopic=14771">some
+         examples</a> of what you can do.
+   </p>
+
+   <p>RegexForAccordance
+      uses <a href="http://userguide.icu-project.org/strings/regexp">ICU
+         Regular Expression</a> syntax. If you are not familiar with
+      regular expressions at all, just search the web for "regular
+      expression tutorial". You will find plenty of guides to get you
+      started.
+   <p>
+
+      
+   <h1>Examples</h1>
+
+   <ul>
+      <li><a href="#acrostics">Acrostics of the Tetragrammaton</a></li>
+      <li><a href="#counting">Counting Letters and Words</a></li>
+      <li><a href="#palindromes">Palindromes</a></li>
+      <li><a href="#repeated-phrases">Repeated Phrases</a></li>
+      <li><a href="#capitalized-greek-words">Capitalized Greek Words</a></li>
+   </ul>
+
+
+
+
+
+
+
+
+
+
+   <a name="acrostics"/>
+   <h2>Acrostics of the Tetragrammaton</h2>
+
+   There is an interesting article in 
+   <a href="https://www.therain.org/appendixes/app60.html">The Companion Bible, Appendix 60</a>,
+   which shows that the book of Esther contains exactly four acrostics of the name of God,
+   <span lang="he">יהוה</span>.
+   </p>
+
+   <ol>
+      <li>The first acrostic has four consecutive words which begin with those letters.
+         <br/>
+         …<span class="ltr">ה</span> 
+         …<span class="ltr">ו</span>
+         …<span class="ltr">ה</span> 
+         …<span class="ltr">י</span>
+      </li>
+      <li>The second has four words which begin with those letters in reverse order.
+         <br/>
+         …<span class="ltr">י</span>
+         …<span class="ltr">ה</span> 
+         …<span class="ltr">ו</span>
+         …<span class="ltr">ה</span>
+      </li>
+      <li>The third has four words which end with those letters.
+         <br/>
+         <span class="ltr">ה</span>…
+         <span class="ltr">ו</span>…
+         <span class="ltr">ה</span>…
+         <span class="ltr">י</span>…
+      </li>
+      <li>The fourth has four words which end with those letters in reverse order.
+         <br/>
+         <span class="ltr">י</span>…
+         <span class="ltr">ה</span>…
+         <span class="ltr">ו</span>…
+         <span class="ltr">ה</span>…
+          </li>
+   </ol>
+
+   <p>Let's use regular expressions to find these four occurrences. After that, we will search the entire Hebrew text to see if we can find similar cases in other books.
+   </p>
+
+   <p>Open RegexForAccordance and use these settings.</p>
+
+   <ol>
+      <li>Text: HMT-W4</li>
+      <li>Range: Esther</li>
+      <li>Scope: Verse</li>
+   </ol>
+
+
+
+   <h3>Case 1: First Letters, Forward Direction</h3>
+
+   <p>Here is the regular expression. </p>
+
+   <p><code>‭\b(י\w*)\W+(ה\w*)\W+(ו\w*)\W+(ה\w*)</code></p>
+
+   <p>I have added parentheses around each of the four word-matching parts to make it easier to understand.</p>
+
+   <p>The <code>\b</code> at the beginning matches a word boundary, to anchor the first match to the beginning of a word.</p>
+
+   <p>The <code>\W+</code> between the parentheses matches non-word characters, such as whitespace and punctuation.</p>
+
+   <p>The <code>\w*</code> part after each letter matches word characters, i.e., not spaces or punctuation.</p>
+
+   <p>The result is Esther 5:4, which contains <span lang="he">יבוא המלך והמן היום</span>.</p>
+
+   <p>Notice that it matched in right-to-left order, the forward direction for Hebrew,
+      even though we wrote the regular expression left-to-right.</p>
+
+
+
+   <h3>Case 2: First Letters, Reverse Direction</h3>
+
+   <p>This regular expression is the same as the previous one, but we reverse the Hebrew letters.</p>
+
+   <p><code>‭\b(ה\w*)\W+(ו\w*)\W+(ה\w*)\W+(י\w*)</code></p>
+
+   <p>The result is Esther 1:20, which contains <span lang="he">היא וכל־הנשים יתנו</span>.</p>
+
+
+
+   <h3>Case 3: Last Letters, Forward Direction</h3>
+
+   <p>Now, we want to match words which end with the four letters.
+      We just move the <code>\w*</code> part to the other side of the Hebrew letters.
+      We also put <code>\b</code> at the end of the expression
+      so that it only matches the last letter at the end of the last word.</p>
+
+   <p><code>\b(\w*י)\W+(\w*ה)\W+(\w*ו)\W+(\w*ה)\b</code></p>
+
+   <p>The result is Esther 7:7, which contains <span lang="he">כי־כלתה אליו הרעה</span>.</p>
+
+   <h3>Case 4: Last Letters, Reverse Direction</h3>
+
+   <p>The final regex is the same as the previous, but with the Hebrew letters reversed.</p>
+
+   <p><code>\b(\w*ה)\W+(\w*ו)\W+(\w*ה)\W+(\w*י)\b</code></p>
+
+   <p>The result is Esther 5:13, which contains <span lang="he">זה איננו שוה לי</span>.</p>
+
+
+   <h3>Full Hebrew Text Search</h3>
+
+   <p>Expanding the range to search the full Hebrew text, Gen-2Chr (Hebrew book order), 
+      we find quite a few more examples of all four cases.  
+   </p>
+   <p>Note that you will get different results,
+      depending on whether you include or omit the bracketed text. 
+      I included both results here and show the differences in bold.
+      To omit bracketed text in RegexForAccordance, click Filters….  Under "Remove…" select Bracketed Text.</p>
+
+   <a href="images/acrostics-fri.png"><img src="images/acrostics-fri.png" width="800"/></a>
+   
+   <p>Note that Num 1:51 contains two separate results, so it counts twice.</p>
+
+   <table>
+      <caption>Acrostics of the Tetragrammaton</caption>
+      <tr>
+         <th>Position, Direction</th>
+         <th>Bracketed Text</th>
+         <th>Result Count</th>
+         <th>Result List (differences in bold)</th>
+      </tr>
+
+      <tr>
+         <th rowspan="2">First, Forward</th>
+         <th>Include</th>
+         <td>24</td>
+         <td>
+            Gen 19:25; Exod 4:14; Num 13:32; Deut 11:2; 2 Sam 18:4; 1 Kgs 7:12; 8:42; 18:37; 2 Kgs 10:1; Isa 45:18; Ezek 46:1; Ps 96:11; Esth 5:4; 1 Chr 5:12; 8:39; 16:31; 18:8; 22:18; 23:11,19; 26:4; 2 Chr 20:34; 26:11; 27:3
+         </td>
+      </tr>
+      <tr>
+         <th>Omit</th>
+         <td>same</td>
+         <td>
+            same
+         </td>
+      </tr>
+
+      <tr>
+         <th rowspan="2">First, Reverse</th>
+         <th>Include</th>
+         <td>33</td>
+         <td>
+            Gen 11:9; Exod 4:16; Lev 8:15; 9:9; 21:22; Num 1:51; 5:18; 19:12; Deut 10:7; 20:8; Josh 2:15; 11:16; 18:28; 24:18; 2 Sam 18:4; 1 Kgs 18:3; 2 Kgs 7:2; Isa 30:26; 35:2; 45:20; Jer 31:7; 33:20; Ezek 46:1; Zech 1:5; 8:19; Ps 18:8; 96:11; Ruth 1:21; Eccl 3:17; Esth 1:20; Dan 12:1; 1 Chr 27:30; 2 Chr 23:6;
+         </td>
+      </tr>
+      <tr>
+         <th>Omit</th>
+         <td>34</td>
+         <td>
+            Gen 11:9; Exod 4:16; Lev 8:15; 9:9; 21:22; Num 1:51; 5:18; 19:12; Deut 10:7; 20:8; Josh 2:15; 11:16; 18:28; 24:18; 2 Sam 18:4; 1 Kgs 18:3; 2 Kgs 7:2; Isa 30:26; 35:2; 45:20; Jer 31:7; 33:20; Ezek 46:1; Zech 1:5; 8:19; Ps 18:8; 96:11; Ruth 1:21; Eccl 3:17; <b>10:20</b>; Esth 1:20; Dan 12:1; 1 Chr 27:30; 2 Chr 23:6
+         </td>
+      </tr>
+
+      <tr>
+         <th rowspan="2">Last, Forward</th>
+         <th>Include</th>
+         <td>40</td>
+         <td>
+            Gen 12:15; 19:13; 38:7; 43:10; Exod 3:13; 16:22; Num 5:12; Deut 24:5; 30:12; 31:29; Josh 10:18; Judg 16:16; 19:24; 20:18,41; 2 Sam 18:3; 1 Kgs 13:26; 16:7; <b>Isa 16:3</b>; 33:22; Jer 9:11,17; 15:19; 49:19; 51:31; Ezek 23:8; 30:2; 31:15; Hos 11:10; Joel 2:7,17; Zech 9:17; Ps 57:7; 73:15; 107:24; 115:11; <b>Song 2:11</b>; Esth 7:7; <b>1 Chr 7:34</b>; 23:17
+         </td>
+      </tr>
+      <tr>
+         <th>Omit</th>
+         <td>38</td>
+         <td>
+            Gen 12:15; 19:13; 38:7; 43:10; Exod 3:13; 16:22; Num 5:12; Deut 24:5; 30:12; 31:29; Josh 10:18; Judg 16:16; 19:24; 20:18, 41; 2 Sam 18:3; 1 Kgs 13:26; 16:7; Isa 33:22; Jer 9:11, 17; 15:19; 49:19; <b>50:29</b>; 51:31; Ezek 23:8; 30:2; 31:15; Hos 11:10; Joel 2:7, 17; Zech 9:17; Ps 57:7; 73:15; 107:24; 115:11; Esth 7:7; 1 Chr 23:17
+         </td>
+      </tr>
+
+      <tr>
+         <th rowspan="2">Last, Reverse</th>
+         <th>Include</th>
+         <td>26</td>
+         <td>
+            Gen 24:58; <b>49:11</b>,31; Exod 4:3; 16:7; 25:23; 37:10; Lev 8:29; Num 13:30; 24:13; Josh 19:47; 24:27; Judg 14:2; 1 Sam 20:21; 2 Sam 15:14; Isa 16:3; Jer 48:2; 49:19; 50:15,29; Ezek 1:27; Ps 106:1; Lam 3:33; Esth 5:13; Ezra 8:19; 1 Chr 21:17
+         </td>
+      </tr>
+      <tr>
+         <th>Omit</th>
+         <td>28</td>
+         <td>
+            Gen 24:58; 49:31; Exod 4:3; 16:7; 25:23; 37:10; Lev 8:29; Num 13:30; 24:13; Josh 19:47; 24:27; Judg 14:2; <b>1 Sam 20:2</b>, 21; 2 Sam 15:14; Isa 16:3; <b>Jer 2:15</b>; 48:2; 49:19; 50:15, 29; Ezek 1:27; Ps 106:1; Lam 3:33; Esth 5:13; Ezra 8:19; <b>1 Chr 6:11</b>; 21:17
+         </td>
+      </tr>
+      
+   </table>
+
+
+   <p>If the search scope is set to Book instead of Verses, then even more results are found, because the 
+      matches can span verse boundaries. 
+   </p>
+
+   
+   <hr/>
+
+
+   <a name="counting"/>
+   <h2>Counting Letters and Words</h2>
+
+   <h3>Letters Frequency</h3>
+
+   <p>In RegexForAccordance, use the statistics pane to get frequency counts of the matches.
+    Click the Count column header to sort by that value.
+    If the Count column isn't visible, right click and choose it.
+   </p>
+
+    <p>To export the statistics, select all of the rows in the table. Then copy and paste into Excel or Numbers, for example.</p>
+
+    <a href="images/letters-first.png"><img src="images/letters-first.png" width="800"/></a>
+
+    <table>
+       <tr>
+          <td class="column">
+   <h3>Hebrew Letter Frequency<br/>&nbsp;</h3>
+
+   <p>Search: <code>\w</code></p>
+
+   <img src="images/count-hebrew-letters-all.png" align="right" height="600"/>
+
+   <table class="hits">
+      <tr><th>Hit</th><th>Count</th></tr>
+      <tr><td>‮י‬</td><td>138794</td></tr>
+      <tr><td>‮ו‬</td><td>130517</td></tr>
+      <tr><td>‮ה‬</td><td>102346</td></tr>
+      <tr><td>‮א‬</td><td>96045</td></tr>
+      <tr><td>‮ל‬</td><td>88638</td></tr>
+      <tr><td>‮ר‬</td><td>68366</td></tr>
+      <tr><td>‮ב‬</td><td>65525</td></tr>
+      <tr><td>‮ת‬</td><td>63583</td></tr>
+      <tr><td>‮ש‬</td><td>58452</td></tr>
+      <tr><td>‮מ‬</td><td>57894</td></tr>
+      <tr><td>‮ע‬</td><td>45032</td></tr>
+      <tr><td>‮ם‬</td><td>41446</td></tr>
+      <tr><td>‮נ‬</td><td>40101</td></tr>
+      <tr><td>‮כ‬</td><td>33603</td></tr>
+      <tr><td>‮ד‬</td><td>32544</td></tr>
+      <tr><td>‮ח‬</td><td>27743</td></tr>
+      <tr><td>‮פ‬</td><td>16983</td></tr>
+      <tr><td>‮ק‬</td><td>16339</td></tr>
+      <tr><td>‮ן‬</td><td>15310</td></tr>
+      <tr><td>‮ך‬</td><td>14068</td></tr>
+      <tr><td>‮צ‬</td><td>11775</td></tr>
+      <tr><td>‮ג‬</td><td>10139</td></tr>
+      <tr><td>‮ס‬</td><td>9672</td></tr>
+      <tr><td>‮ז‬</td><td>9135</td></tr>
+      <tr><td>‮ט‬</td><td>6352</td></tr>
+      <tr><td>‮ץ‬</td><td>3290</td></tr>
+      <tr><td>‮ף‬</td><td>2561</td></tr>
+   </table>
+</td>
+<td class="column">
+   <h3>Hebrew Letter Frequency<br/> At the Beginning of Words</h3>
+   
+   <p>Search: <code>\b\w</code></p>
+
+   <img src="images/count-hebrew-letters-first.png" align="right" height="600"/>
+
+   <table class="hits">
+      <tr><th>Hit</th><th>Count</th></tr>
+      <tr><td>‮ו‬</td><td>51303</td></tr>
+      <tr><td>‮א‬</td><td>44413</td></tr>
+      <tr><td>‮ה‬</td><td>30910</td></tr>
+      <tr><td>‮ל‬</td><td>25022</td></tr>
+      <tr><td>‮ב‬</td><td>24852</td></tr>
+      <tr><td>‮י‬</td><td>24236</td></tr>
+      <tr><td>‮מ‬</td><td>20236</td></tr>
+      <tr><td>‮ע‬</td><td>16489</td></tr>
+      <tr><td>‮כ‬</td><td>14345</td></tr>
+      <tr><td>‮ש‬</td><td>11071</td></tr>
+      <tr><td>‮נ‬</td><td>6978</td></tr>
+      <tr><td>‮ת‬</td><td>6976</td></tr>
+      <tr><td>‮ח‬</td><td>5466</td></tr>
+      <tr><td>‮פ‬</td><td>4630</td></tr>
+      <tr><td>‮ר‬</td><td>4285</td></tr>
+      <tr><td>‮ד‬</td><td>4274</td></tr>
+      <tr><td>‮ס‬</td><td>3418</td></tr>
+      <tr><td>‮ק‬</td><td>3012</td></tr>
+      <tr><td>‮ג‬</td><td>2958</td></tr>
+      <tr><td>‮צ‬</td><td>2554</td></tr>
+      <tr><td>‮ז‬</td><td>2169</td></tr>
+      <tr><td>‮ט‬</td><td>900</td></tr>
+      <tr><td>‮ן‬</td><td>9</td></tr>
+   </table>   
+</td>
+<td class="column">
+   
+   <h3>Hebrew Letter Frequency<br/> At the End of Words</h3>
+   
+   <p>Search: <code>\w\b</code></p>
+
+   <img src="images/count-hebrew-letters-last.png" align="right" height="600"/>
+
+   <table class="hits">
+      <tr><th>Hit</th><th>Count</th></tr>
+      <tr><td>‮ה‬</td><td>41446</td></tr>
+      <tr><td>‮ם‬</td><td>41446</td></tr>
+      <tr><td>‮י‬</td><td>32990</td></tr>
+      <tr><td>‮ו‬</td><td>30246</td></tr>
+      <tr><td>‮ת‬</td><td>29098</td></tr>
+      <tr><td>‮ל‬</td><td>24905</td></tr>
+      <tr><td>‮ר‬</td><td>23360</td></tr>
+      <tr><td>‮ן‬</td><td>15310</td></tr>
+      <tr><td>‮א‬</td><td>14137</td></tr>
+      <tr><td>‮ך‬</td><td>14068</td></tr>
+      <tr><td>‮ד‬</td><td>8602</td></tr>
+      <tr><td>‮ב‬</td><td>6984</td></tr>
+      <tr><td>‮ש‬</td><td>6176</td></tr>
+      <tr><td>‮ח‬</td><td>3952</td></tr>
+      <tr><td>‮ע‬</td><td>3851</td></tr>
+      <tr><td>‮ץ‬</td><td>3290</td></tr>
+      <tr><td>‮ס‬</td><td>2699</td></tr>
+      <tr><td>‮ף‬</td><td>2561</td></tr>
+      <tr><td>‮ק‬</td><td>1908</td></tr>
+      <tr><td>‮ט‬</td><td>1235</td></tr>
+      <tr><td>‮פ‬</td><td>1181</td></tr>
+      <tr><td>‮ז‬</td><td>587</td></tr>
+      <tr><td>‮ג‬</td><td>430</td></tr>
+      <tr><td>‮מ‬</td><td>25</td></tr>
+      <tr><td>‮כ‬</td><td>19</td></tr>
+   </table>   
+</td>
+</tr>     
+</table>
+
+<p>(The charts were made in <a href="https://www.apple.com/numbers/">Numbers</a>.)</p>
+
+<p>From these results, we find that
+   <span lang="he" class="ltr">י</span>,
+   <span lang="he" class="ltr">ה</span>, and
+   <span lang="he" class="ltr">ו</span>
+   are all very common at the beginning and ending of words.
+   It is easy to see how <a href="#acrostics">acrostics of <span lang="he">יהוה</span></a> could occur randomly,
+   and also how they could be constucted deliberately, since there are so many words which 
+   begin or end with those letters.     
+   </p>
+
+<h3>Word Count</h3>
+
+<p>Count all of the words in the book of Matthew in the Greek New Testament.</p>
+
+<p>Search: <code>\w+</code></p>
+
+<p>This matches strings of one or more "word" characters (not whitespace or punctuation).</p>
+
+<p>The result shows 18,350 hits, which is the total word count. 
+   It also shows that 3,970 different word were found, 
+   and it lists each word with count and length.</p>
+
+<img src="images/count-greek-words-matthew.png" width="800"/>
+
+<hr/>
+      
+<a name="palindromes"><h2>Palindromes</h2></a>
+
+<p>A palindrome is a word or phrase that reads the same in both directions.
+   If there are an odd number of letters, the pattern will be like this: ABCDCBA.
+   If there are an even number of letters, then the central D part is omitted: ABCCBA.
 </p>
 
-        </section>
+<h3>Palindromic Words</h3>
 
-        <h3>Documentation</h3>
+<p>Find whole words which are palindromes.</p>
 
-        <p>See the included Help file for features and technical details.</p>
+<p>There isn't a general solution, but the brute force approach works.
+   Look for words, <code>\b</code>...<code>\b</code>, which have 
+   1, 2, or 3 pairs of letters, 
+   <code>(\w)</code>...<code>\1</code>,
+   and with an optional central letter, <code>\w?</code>.  
+   This can be extended to match more pairs of letters, but the longest match in the Hebrew text is 7 letters.</p>
 
-        <p>Have a look at the Accordance forum
-        for <a href="http://www.accordancebible.com/forums/index.php?showtopic=14771">some
-        examples</a> of what you can do.
-        </p>
+   <p>This makes use of the capturing group feature of regular expressions.  
+      The <code>\1</code>, <code>\2</code>, and <code>\3</code>, refer back to the thing that was matched within the 
+      sets of parentheses.</p>
+   <p>The <code>(?:</code>...<code>)</code> part is for non-capturing parentheses.
+      It groups the three "or" options
+   between the <code>\b</code> word boundaries without creating a capture group.</p>
+<p>Search: <code>\b(?:(\w)\w?\1|(\w)(\w)\w?\3\2|(\w)(\w)(\w)\w?\6\5\4)\b</code></p>
 
-        <p>RegexForAccordance
-        uses <a href="http://userguide.icu-project.org/strings/regexp">ICU
-        Regular Expression</a> syntax.  If you are not familiar with
-        regular expressions at all, just search the web for "regular
-        expression tutorial". You will find plenty of guides to get you
-        started.<p>
+<p>The longest word is <span lang="he">לאיתיאל</span>, which occurs twice in Prov 30:1.</p>
 
-        <hr>
+<a href="images/palindrome-words.png"><img src="images/palindrome-words.png" width="800"/></a>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/darinfranklin/RegexForAccordance" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
 
-        <footer>
-          RegexForAccordance is maintained by <a href="https://github.com/darinfranklin">darinfranklin</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+<h3>Palindromic Phrases</h3>
 
-        
-      </div>
-    </div>
-  </body>
+<p>This is the same as the previous search, but allows spaces and punctuation between the letters:
+     "Madam, I'm Adam" (Genesis something, probably).</p>
+   
+<p>The longest phrase that I can find in Hebrew is Prov 30:1 again, which just repeats the 7 letter palindromic 
+   word.</p>
+
+<p>Search: <code>(?:(\w)\W*(\w)\W*(\w)\W*(\w)\W*(\w)\W*(\w)\W*(\w)\W*\w?\W*\7\W*\6\W*\5\W*\4\W*\3\W*\2\W*\1)</code></p>
+
+<p>More results are found by matching shorter phrases.</p>
+
+<p>Search <code>\b(?:(\w)\W*(\w)\W*(\w)\W*(\w)\W*\w?\W*\4\W*\3\W*\2\W*\1)\b</code></p>
+<p>Result: 
+   <ol>
+      <li>Gen 27:31: <span lang="he">ויבא לאביו</span></li>
+      <li>Gen 37:2: <span lang="he">אביו ויבא</span></li>
+      <li>1 Chr 11:45: <span lang="he">ויחא אחיו</span></li>
+   </ol>
+   </p>
+
+<p>Search <code>\b(?:(\w)\W*(\w)\W*(\w)\W*\w?\W*\3\W*\2\W*\1)\b</code></p>
+<p>Result: 30 hits<br/>
+   Gen 11:16; 50:17; Deut 4:42; 19:6; Josh 8:20; 20:5; 1 Sam 9:26; 16:10; 17:33; 22:5; 2 Sam 3:1; 
+   13:26; 16:9; 19:26,30; 24:3; 1 Kgs 7:23; 13:32; 20:40; 2 Kgs 2:8,14; Isa 55:13; 59:11; Ezek 1:3; 
+   Zeph 3:2; Zech 1:16; Ps 68:26; Prov 30:1; Ruth 4:22
+</p>
+
+
+<a href="images/palindrome-phrase.png"><img src="images/palindrome-phrase.png" width="800"/></a>
+
+
+
+<hr/>
+
+<a name="repeated-phrases"><h2>Repeated Phrases</h2></a>
+
+<p>Search for repeated words or phrases.
+   It consists of any sequence of characters, <code>(.+)</code>, 
+   followed by non-word characters (white space or punctuation), <code>\W+</code>, 
+   followed by the same sequence of characters, <code>\1</code>.
+   It must also be surrounded by word boundaries <code>\b</code>...<code>\b</code>.
+</p>
+
+<p>Search: <code>\b(.+)\W+\1\b</code></p>
+
+<h3>Greek New Testament</h3>
+
+<p>Text: GNT-T<br/>
+   Filter: Remove Greek punctuation and diacritics<br/>
+   Options: Ignore case<br/>
+   </p>
+
+   <a href="images/repeat-greek.png"><img src="images/repeat-greek.png" width="800"/></a>
+
+<p>The longest match is John 10:11: <span lang="el">ο ποιμην ο καλος ο ποιμην ο καλος</span>.</p>
+<p>The most frequent match is <span lang="el">αμην αμην</span>, found 25 times.</p>
+
+<h3>Hebrew Old Testament</h3>
+
+<p>Text: HMT-W4<br/>
+   Filter: Remove Hebrew cantillation, points, and punctuation<br/>
+   </p>
+
+<p>Longest match: Exod 25:35 and Exod 37:21: <span lang="he">וכפתר תחת שני הקנים ממנה וכפתר תחת שני הקנים ממנה</span></p>
+<p>Most frequent: <span lang="he">סביב  סביב</span>, found 27 times.</p>
+
+<h3>Greek Old Testament (LXX)</h3>
+
+<p>Longest: 1 Sam 23:26: <span lang="el">
+   και οι ανδρες αυτου εκ μερους του ορους τουτου και ην Δαυιδ 
+   και οι ανδρες αυτου εκ μερους του ορους τουτου και ην Δαυιδ</span>
+   (This one doesn't make sense because the phrases are not divided properly.)
+</p>
+
+<p>Second Longest: 1 Sam 14:4: <span lang="el">και ακρωτηριον πετρας ενθεν και ακρωτηριον πετρας ενθεν</span>
+</p>
+
+<p>Most frequent: <span lang="el">κυριε κυριε</span>, 16 times.</p>
+
+
+
+
+
+
+
+
+<hr/>
+
+
+
+
+
+
+
+
+<a name="capitalized-greek-words"/>
+<h2>Capitalized Greek Words</h2>
+
+<p>
+   Find all words in the Greek New Testament
+   which are capitalized, but are not at the beginning of a sentence.
+   We expect to find proper nouns mostly.</p>
+
+<p>
+   <a href="images/CapitalGreekExample.png"><img src="images/CapitalGreekExample.png" width="800" /></a>
+</p>
+
+
+<p>Let's build this regular expression step by step. Open a new window of RegexForAccordance.
+<ol>
+   <li>Turn off "Ignore case".</li>
+   <li>Click on Filters. Under "Remove Greek…", turn off Diacritics and Punctuation.</li>
+   <li>Text: GNT-T (or whatever Greek New Testament you have)</li>
+   <li>Range: Matt-Rev</li>
+   <li>Scope: Verse</li>
+</ol>
+
+</p>
+
+<p>First, just search for capital letters.</p>
+
+<p>
+   <code>[Α-Ω]</code>
+</p>
+
+<p>Next, we want only capital letters which are at the beginning of a word.
+   Add <code>\b</code> at the front.
+</p>
+<p>
+   <code>\b[Α-Ω]</code>
+</p>
+
+<p>That gives us all the first letters, but we want to match whole words.
+   Add <code>\w+</code> to the end. This matches matches one or more "word" characters,
+   which includes letters but not whitespace or punctuation.
+</p>
+<p>
+   <code>\b[Α-Ω]\w+</code>
+</p>
+<p>Now it matches all capitalized words, but we want to exclude the words which are at the beginning of a sentence.
+   Let's figure out how to find the beginning
+   of a sentence first.
+</p>
+<p>
+   Search for <code>\. \w</code>. That will match a period, followed by a space, followed by one
+   word character.
+</p>
+<p>
+   What about questions? The Greek question mark is a semicolon, so we will include that
+   also.
+</p>
+<p>
+   <code>[.;] \w</code>
+</p>
+<p>
+   The most common place for a sentence to begin is at the beginning of a verse, which we can match
+   with the beginning-of-line anchor.
+</p>
+<p>
+   <code>^</code>
+</p>
+
+<p>
+   Now, put all of those together into one "or" statement.
+</p>
+<p>
+   <code>(^|[.;] )\w</code>
+</p>
+
+<p>Spot check: notice that Matt 1:6 has two sentences, and this matches the beginning of both.</p>
+
+<p>Finally, we want to exclude the words which are at the beginning of a sentence.
+   We need to turn our beginning-of-sentence matcher into a "negative look-behind assertion".
+   It is "negative" because we are specifying what we want to exclude. It is "look-behind"
+   because we want to look at what precedes the capitalized word.
+</p>
+<p>According to the documentation, a negative look-behind assertion has this form.</p>
+<p><code>(?&lt;! ... )</code></p>
+
+<p>So, this is what we need.</p>
+<p><code>(?&lt;!(^|[.;] ))\b[Α-Ω]\w+</code></p>
+
+<p>That gives us what we want.</p>
+
+</p>
+
+
+
+
+
+<hr/>
+
+
+
+
+
+<p>.</p>
+</body>
+
 </html>

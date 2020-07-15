@@ -1,0 +1,33 @@
+code {
+   font-family: monospace;
+   white-space: pre;
+   background-color: AliceBlue;
+}
+
+table {
+   border-collapse: collapse;
+}
+
+table, th, td {
+   border: 1px solid black;
+}
+
+th, td {
+   padding: 10px;
+   text-align:left;
+}
+
+table.hits th, table.hits td {
+   padding: 1px;
+   text-align:right;
+}
+
+span.ltr {
+   direction: ltr;
+   unicode-bidi: bidi-override;
+}
+
+td.column {
+   vertical-align: top;
+   width: 33%;
+}

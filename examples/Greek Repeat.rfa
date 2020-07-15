@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GreekRemoveDiacritics</key>
+	<true/>
+	<key>GreekRemovePunctuation</key>
+	<true/>
+	<key>GroupByBook</key>
+	<false/>
+	<key>HebrewRemoveCantillation</key>
+	<true/>
+	<key>HebrewRemovePoints</key>
+	<true/>
+	<key>HebrewRemovePunctuation</key>
+	<false/>
+	<key>IgnoreCase</key>
+	<true/>
+	<key>IncludeReference</key>
+	<false/>
+	<key>LeftToRightOverride</key>
+	<false/>
+	<key>RemoveBracketedText</key>
+	<false/>
+	<key>RemovePilcrows</key>
+	<true/>
+	<key>RemoveSpaces</key>
+	<false/>
+	<key>RemoveTrailingSpaces</key>
+	<true/>
+	<key>SearchPattern</key>
+	<string>\b(.+)\W+\1\b</string>
+	<key>SearchScope</key>
+	<string>Verse</string>
+	<key>TextName</key>
+	<string>GNT-T</string>
+	<key>VerseRange</key>
+	<string>Matt-Rev</string>
+</dict>
+</plist>
