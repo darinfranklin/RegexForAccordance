@@ -882,6 +882,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
@@ -1022,6 +1023,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
@@ -1038,6 +1040,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;

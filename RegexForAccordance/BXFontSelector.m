@@ -66,8 +66,7 @@
 
 - (NSColor *)hitTextColor
 {
-    NSColor *darkRed = [NSColor colorWithHue:354.0/360.0 saturation:1.0 brightness:0.83 alpha:1.0];
-    return darkRed;
+    return NSColor.systemRedColor;
 }
 
 - (NSFont *)systemFont

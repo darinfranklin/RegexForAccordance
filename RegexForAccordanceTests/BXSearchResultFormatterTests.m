@@ -56,7 +56,7 @@
     XCTAssertTrue(NSEqualRanges(NSMakeRange(8, 3), effectiveRange), @"actual: %ld, %ld", effectiveRange.location, effectiveRange.length);
     //XCTAssertEqualObjects([NSNumber numberWithInt:0], [attrs objectForKey:NSUnderlineStyleAttributeName]);
     XCTAssertEqualObjects(fontSelector.latinFont, [attrs objectForKey:NSFontAttributeName]);
-    XCTAssertEqual(1, attrs.count);
+    XCTAssertEqual(2, attrs.count);
 
     // Next range is the word "the", and should be red
     attrs = [decoratedLine attributesAtIndex:11 effectiveRange:&effectiveRange];
@@ -72,7 +72,7 @@
     XCTAssertEqualObjects(@" beginning, God created the heavens and the earth.", [decoratedLine.string substringWithRange:effectiveRange]);
     //XCTAssertEqualObjects([NSNumber numberWithInt:0], [attrs objectForKey:NSUnderlineStyleAttributeName]);
     XCTAssertEqualObjects(fontSelector.latinFont, [attrs objectForKey:NSFontAttributeName]);
-    XCTAssertEqual(1, attrs.count);
+    XCTAssertEqual(2, attrs.count);
 }
 
 - (void)testFormatHebrew

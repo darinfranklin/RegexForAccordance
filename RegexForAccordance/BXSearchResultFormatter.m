@@ -67,6 +67,7 @@
     // Verse Text Font
     [decoratedDisplayLine addAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:
                                          self.verseTextFont, NSFontAttributeName,
+                                         NSColor.textColor, NSForegroundColorAttributeName,
                                          nil]
                                   range:NSMakeRange(0 + refFormattedLength + spaceLength,
                                                     decoratedDisplayLine.length - refFormattedLength - spaceLength)];
@@ -90,7 +91,7 @@
                                                      nil]
                                               range:range];
             }
-            
+
             // Hit Color
             [decoratedDisplayLine addAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:
                                                  self.fontSelector.hitTextColor, NSForegroundColorAttributeName,
