@@ -2,5 +2,11 @@
     color: #C70012;
 }
 body {
-    font: normal 14px Helvetica, Arial sans-serif;
 }
+
+code {
+   font-family: monospace;
+   white-space: pre;
+   background-color: AliceBlue;
+}
+

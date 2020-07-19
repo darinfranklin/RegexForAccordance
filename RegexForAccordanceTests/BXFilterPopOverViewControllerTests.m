@@ -35,10 +35,11 @@
     self.vc.document.searchSettings.hebrewRemoveCantillation = YES;
     self.vc.document.searchSettings.hebrewRemovePoints = YES;
     self.vc.document.searchSettings.hebrewRemovePunctuation = YES;
+    self.vc.document.searchSettings.hebrewRemoveSectionMarks = YES;
     self.vc.document.searchSettings.greekRemoveDiacritics = YES;
     self.vc.document.searchSettings.greekRemovePunctuation = YES;
     [self.vc setFiltersInSearcher:self.searcher];
-    XCTAssertEqual(11, self.searcher.filters.count);
+    XCTAssertEqual(12, self.searcher.filters.count);
     self.vc.document.searchSettings.removePilcrows = NO;
     self.vc.document.searchSettings.removeBracketedText = NO;
     self.vc.document.searchSettings.removeSpaces = NO;
@@ -46,6 +47,7 @@
     self.vc.document.searchSettings.hebrewRemoveCantillation = NO;
     self.vc.document.searchSettings.hebrewRemovePoints = NO;
     self.vc.document.searchSettings.hebrewRemovePunctuation = NO;
+    self.vc.document.searchSettings.hebrewRemoveSectionMarks = NO;
     self.vc.document.searchSettings.greekRemoveDiacritics = NO;
     self.vc.document.searchSettings.greekRemovePunctuation = NO;
     [self.vc setFiltersInSearcher:self.searcher];
@@ -96,7 +98,12 @@
     XCTAssertEqual(initialState, self.vc.document.searchSettings.hebrewRemovePunctuation);
     [self toggleState:initialState ofButton:self.vc.hebrewPunctuation = [[NSButton alloc] init]];
     XCTAssertEqual(!initialState, self.vc.document.searchSettings.hebrewRemovePunctuation);
-    
+
+    initialState = NO;
+    XCTAssertEqual(initialState, self.vc.document.searchSettings.hebrewRemoveSectionMarks);
+    [self toggleState:initialState ofButton:self.vc.hebrewSectionMarks = [[NSButton alloc] init]];
+    XCTAssertEqual(!initialState, self.vc.document.searchSettings.hebrewRemoveSectionMarks);
+
     initialState = YES;
     XCTAssertEqual(initialState, self.vc.document.searchSettings.greekRemoveDiacritics);
     [self toggleState:initialState ofButton:self.vc.greekDiacritics = [[NSButton alloc] init]];

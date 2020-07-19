@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, SearchScopeOptions) {
 @property BOOL hebrewRemoveCantillation;
 @property BOOL hebrewRemovePoints;
 @property BOOL hebrewRemovePunctuation;
+@property BOOL hebrewRemoveSectionMarks;
 @property BOOL greekRemoveDiacritics;
 @property BOOL greekRemovePunctuation;
 

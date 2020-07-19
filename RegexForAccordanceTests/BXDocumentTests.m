@@ -36,6 +36,7 @@
     self.document.searchSettings.hebrewRemoveCantillation = YES;
     self.document.searchSettings.hebrewRemovePoints = YES;
     self.document.searchSettings.hebrewRemovePunctuation = YES;
+    self.document.searchSettings.hebrewRemoveSectionMarks = YES;
     self.document.searchSettings.greekRemoveDiacritics = YES;
     self.document.searchSettings.greekRemovePunctuation = YES;
     self.document.searchSettings.ignoreCase = YES;
@@ -56,6 +57,7 @@
     XCTAssertEqual(YES, [[dict objectForKey:@"HebrewRemoveCantillation"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"HebrewRemovePoints"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"HebrewRemovePunctuation"] boolValue]);
+    XCTAssertEqual(YES, [[dict objectForKey:@"HebrewRemoveSectionMarks"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"GreekRemoveDiacritics"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"GreekRemovePunctuation"] boolValue]);
     XCTAssertEqual(YES, [[dict objectForKey:@"IgnoreCase"] boolValue]);
@@ -79,6 +81,7 @@
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"HebrewRemoveCantillation"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"HebrewRemovePoints"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"HebrewRemovePunctuation"];
+    [dict setObject:[NSNumber numberWithBool:YES] forKey:@"HebrewRemoveSectionMarks"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"GreekRemoveDiacritics"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"GreekRemovePunctuation"];
     [dict setObject:[NSNumber numberWithBool:YES] forKey:@"IgnoreCase"];
@@ -100,6 +103,7 @@
     XCTAssertEqual(YES, self.document.searchSettings.hebrewRemoveCantillation);
     XCTAssertEqual(YES, self.document.searchSettings.hebrewRemovePoints);
     XCTAssertEqual(YES, self.document.searchSettings.hebrewRemovePunctuation);
+    XCTAssertEqual(YES, self.document.searchSettings.hebrewRemoveSectionMarks);
     XCTAssertEqual(YES, self.document.searchSettings.greekRemoveDiacritics);
     XCTAssertEqual(YES, self.document.searchSettings.greekRemovePunctuation);
     XCTAssertEqual(YES, self.document.searchSettings.ignoreCase);

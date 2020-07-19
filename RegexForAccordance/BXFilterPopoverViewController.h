@@ -19,6 +19,7 @@
 @property IBOutlet NSButton *hebrewCantillation;
 @property IBOutlet NSButton *hebrewPoints;
 @property IBOutlet NSButton *hebrewPunctuation;
+@property IBOutlet NSButton *hebrewSectionMarks;
 @property IBOutlet NSButton *greekDiacritics;
 @property IBOutlet NSButton *greekPunctuation;
 

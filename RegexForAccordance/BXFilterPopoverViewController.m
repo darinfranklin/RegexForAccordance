@@ -16,6 +16,7 @@
 #import "BXFilterHebrewCantillation.h"
 #import "BXFilterHebrewPoints.h"
 #import "BXFilterHebrewPunctuation.h"
+#import "BXFilterHebrewSectionMarks.h"
 #import "BXFilterGreekDiacritics.h"
 #import "BXFilterGreekPunctuation.h"
 #import "BXFilterBracketedText.h"
@@ -32,6 +33,7 @@
     [self setFilter:[[BXFilterHebrewCantillation alloc] init] inSearcher:searcher enabled:self.document.searchSettings.hebrewRemoveCantillation];
     [self setFilter:[[BXFilterHebrewPoints alloc] init] inSearcher:searcher enabled:self.document.searchSettings.hebrewRemovePoints];
     [self setFilter:[[BXFilterHebrewPunctuation alloc] init] inSearcher:searcher enabled:self.document.searchSettings.hebrewRemovePunctuation];
+    [self setFilter:[[BXFilterHebrewSectionMarks alloc] init] inSearcher:searcher enabled:self.document.searchSettings.hebrewRemoveSectionMarks];
 
     [self setFilter:[[BXFilterGreekDiacritics alloc] init] inSearcher:searcher enabled:self.document.searchSettings.greekRemoveDiacritics];
     [self setFilter:[[BXFilterGreekPunctuation alloc] init] inSearcher:searcher enabled:self.document.searchSettings.greekRemovePunctuation];
@@ -87,6 +89,11 @@
         self.document.searchSettings.hebrewRemovePunctuation = ([sender state] == NSOnState);
         [self.document updateChangeCount:NSChangeDone];
     }
+    else if (sender == self.hebrewSectionMarks)
+    {
+        self.document.searchSettings.hebrewRemoveSectionMarks = ([sender state] == NSOnState);
+        [self.document updateChangeCount:NSChangeDone];
+    }
     else if (sender == self.greekDiacritics)
     {
         self.document.searchSettings.greekRemoveDiacritics = ([sender state] == NSOnState);
@@ -109,7 +116,8 @@
     self.hebrewCantillation.state = cellStateValueForBool(self.document.searchSettings.hebrewRemoveCantillation);
     self.hebrewPoints.state = cellStateValueForBool(self.document.searchSettings.hebrewRemovePoints);
     self.hebrewPunctuation.state = cellStateValueForBool(self.document.searchSettings.hebrewRemovePunctuation);
-    
+    self.hebrewSectionMarks.state = cellStateValueForBool(self.document.searchSettings.hebrewRemoveSectionMarks);
+
     self.greekDiacritics.state = cellStateValueForBool(self.document.searchSettings.greekRemoveDiacritics);
     self.greekPunctuation.state = cellStateValueForBool(self.document.searchSettings.greekRemovePunctuation);
 }

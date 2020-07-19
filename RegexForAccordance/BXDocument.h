@@ -22,6 +22,7 @@ extern NSString *const RemoveTrailingSpaces;
 extern NSString *const HebrewRemoveCantillation;
 extern NSString *const HebrewRemovePoints;
 extern NSString *const HebrewRemovePunctuation;
+extern NSString *const HebrewRemoveSectionMarks;
 extern NSString *const GreekRemoveDiacritics;
 extern NSString *const GreekRemovePunctuation;
 

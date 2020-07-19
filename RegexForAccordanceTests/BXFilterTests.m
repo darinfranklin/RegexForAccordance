@@ -17,6 +17,7 @@
 #import "BXFilterGreekDiacritics.h"
 #import "BXFilterTransliterate.h"
 #import "BXFilterHebrewPunctuation.h"
+#import "BXFilterHebrewSectionMarks.h"
 #import "BXFilterGreekPunctuation.h"
 #import "BXFilterPilcrows.h"
 #import "BXFilterBracketedText.h"
@@ -126,6 +127,13 @@
     NSString *str = @"א\u05BEב\u05C0ג\u05C3ד\u05C4ה\u05C5ו\u05C6ז";
     NSString *exp = @"אבגדהוז";
     XCTAssertEqualObjects(exp, [[[BXFilterHebrewPunctuation alloc] init] filter:str]);
+}
+
+- (void)testHebrewRemoveSectionMarks
+{
+    NSString *str = @"אבג ס א ן פ";
+    NSString *exp = @"אבג א";
+    XCTAssertEqualObjects(exp, [[[BXFilterHebrewSectionMarks alloc] init] filter:str]);
 }
 
 - (void)testGreekRemovePunctuation

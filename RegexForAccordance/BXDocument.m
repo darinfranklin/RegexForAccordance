@@ -25,6 +25,7 @@ NSString *const RemoveBracketedText = @"RemoveBracketedText";
 NSString *const HebrewRemoveCantillation = @"HebrewRemoveCantillation";
 NSString *const HebrewRemovePoints = @"HebrewRemovePoints";
 NSString *const HebrewRemovePunctuation = @"HebrewRemovePunctuation";
+NSString *const HebrewRemoveSectionMarks = @"HebrewRemoveSectionMarks";
 NSString *const GreekRemoveDiacritics = @"GreekRemoveDiacritics";
 NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
 
@@ -95,6 +96,7 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     self.searchSettings.hebrewRemoveCantillation = [defaults boolForKey:HebrewRemoveCantillation];
     self.searchSettings.hebrewRemovePoints = [defaults boolForKey:HebrewRemovePoints];
     self.searchSettings.hebrewRemovePunctuation = [defaults boolForKey:HebrewRemovePunctuation];
+    self.searchSettings.hebrewRemoveSectionMarks = [defaults boolForKey:HebrewRemoveSectionMarks];
     self.searchSettings.greekRemoveDiacritics = [defaults boolForKey:GreekRemoveDiacritics];
     self.searchSettings.greekRemovePunctuation = [defaults boolForKey:GreekRemovePunctuation];
 }
@@ -173,7 +175,11 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
         {
             self.searchSettings.hebrewRemovePunctuation = number.boolValue;
         }
-        
+        if (nil != (number = [documentContents objectForKey:HebrewRemoveSectionMarks]))
+        {
+            self.searchSettings.hebrewRemoveSectionMarks = number.boolValue;
+        }
+
         if (nil != (number = [documentContents objectForKey:GreekRemoveDiacritics]))
         {
             self.searchSettings.greekRemoveDiacritics = number.boolValue;
@@ -213,7 +219,8 @@ NSString *const GreekRemovePunctuation = @"GreekRemovePunctuation";
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.hebrewRemoveCantillation] forKey:HebrewRemoveCantillation];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.hebrewRemovePoints] forKey:HebrewRemovePoints];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.hebrewRemovePunctuation] forKey:HebrewRemovePunctuation];
-    
+    [dict setObject:[NSNumber numberWithBool:self.searchSettings.hebrewRemoveSectionMarks] forKey:HebrewRemoveSectionMarks];
+
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.greekRemoveDiacritics] forKey:GreekRemoveDiacritics];
     [dict setObject:[NSNumber numberWithBool:self.searchSettings.greekRemovePunctuation] forKey:GreekRemovePunctuation];
     return dict;

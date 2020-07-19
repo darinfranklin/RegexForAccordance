@@ -14,6 +14,7 @@
 #import "BXFilterHebrewPoints.h"
 #import "BXFilterHebrewCantillation.h"
 #import "BXFilterHebrewPunctuation.h"
+#import "BXFilterHebrewSectionMarks.h"
 #import "BXFilterDecomposeCharacters.h"
 #import "BXFilter.h"
 
@@ -103,6 +104,7 @@
     [searcher addFilter:[[BXFilterHebrewPoints alloc] init]];
     [searcher addFilter:[[BXFilterHebrewCantillation alloc] init]];
     [searcher addFilter:[[BXFilterHebrewPunctuation alloc] init]];
+    [searcher addFilter:[[BXFilterHebrewSectionMarks alloc] init]];
     [searcher prepareSearch:nil];
     BXSearchResult *result;
     

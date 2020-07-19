@@ -90,6 +90,7 @@
 		93FDF84B199DC75F00BF3576 /* BXFilterHebrewCantillation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF84A199DC75F00BF3576 /* BXFilterHebrewCantillation.m */; };
 		93FDF851199DC93C00BF3576 /* BXFilterHebrewPunctuation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */; };
 		93FDF854199DCB0900BF3576 /* BXFilterDecomposeCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */; };
+		A312F4F924C378F10048911F /* BXFilterHebrewSectionMarks.m in Sources */ = {isa = PBXBuildFile; fileRef = A312F4F824C378F10048911F /* BXFilterHebrewSectionMarks.m */; };
 		A3EDA6D01FE5CF1700BD897A /* BXVerseRangeRef.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EDA6CF1FE5CF1700BD897A /* BXVerseRangeRef.m */; };
 		A3EDA6D21FE5D3E200BD897A /* BXVerseRangeRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EDA6D11FE5D3E200BD897A /* BXVerseRangeRefTests.m */; };
 /* End PBXBuildFile section */
@@ -246,6 +247,8 @@
 		93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewPunctuation.m; sourceTree = "<group>"; };
 		93FDF852199DCB0900BF3576 /* BXFilterDecomposeCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BXFilterDecomposeCharacters.h; sourceTree = "<group>"; };
 		93FDF853199DCB0900BF3576 /* BXFilterDecomposeCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BXFilterDecomposeCharacters.m; sourceTree = "<group>"; };
+		A312F4F824C378F10048911F /* BXFilterHebrewSectionMarks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXFilterHebrewSectionMarks.m; sourceTree = "<group>"; };
+		A312F4FA24C379470048911F /* BXFilterHebrewSectionMarks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXFilterHebrewSectionMarks.h; sourceTree = "<group>"; };
 		A3EDA6CE1FE5CF1700BD897A /* BXVerseRangeRef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXVerseRangeRef.h; sourceTree = "<group>"; };
 		A3EDA6CF1FE5CF1700BD897A /* BXVerseRangeRef.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXVerseRangeRef.m; sourceTree = "<group>"; };
 		A3EDA6D11FE5D3E200BD897A /* BXVerseRangeRefTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXVerseRangeRefTests.m; sourceTree = "<group>"; };
@@ -415,6 +418,8 @@
 				93FDF850199DC93C00BF3576 /* BXFilterHebrewPunctuation.m */,
 				93D207C119A2FB3500885079 /* BXFilterHebrewDirectionalMarks.h */,
 				93D207C219A2FB3500885079 /* BXFilterHebrewDirectionalMarks.m */,
+				A312F4FA24C379470048911F /* BXFilterHebrewSectionMarks.h */,
+				A312F4F824C378F10048911F /* BXFilterHebrewSectionMarks.m */,
 			);
 			name = Hebrew;
 			sourceTree = "<group>";
@@ -720,6 +725,7 @@
 				93BC372F19F363980074B9C8 /* BXFilterPilcrows.m in Sources */,
 				93E667A919B05B1800D8E08D /* BXStatisticsGroup.m in Sources */,
 				9308FC0C19945B9C00AB090C /* BXSearchResultFormatter.m in Sources */,
+				A312F4F924C378F10048911F /* BXFilterHebrewSectionMarks.m in Sources */,
 				9308FC0F19945B9C00AB090C /* BXAccVerseFetcher.m in Sources */,
 				931A27BA1994A36100DC3C27 /* BXLineParser.m in Sources */,
 				93AF6A9619AE8359006A8328 /* BXSearchResultHit.m in Sources */,
@@ -882,7 +888,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.0.10;
+				MARKETING_VERSION = 1.0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
@@ -1023,7 +1029,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.0.10;
+				MARKETING_VERSION = 1.0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
@@ -1040,7 +1046,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.0.10;
+				MARKETING_VERSION = 1.0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
