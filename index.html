@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>RegexForAccordance - Search Bible Texts in Accordance with Regular Expressions</title>
+   <title>RegexForAccordance - Search the Bible with Regular Expressions Using Accordance</title>
    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -11,15 +11,16 @@
 
    <header>
       <h1 class="title">RegexForAccordance
-         <h2 class="title">Search Bible Texts in Accordance with Regular Expressions</h2>
+         <h2 class="title">Search the Bible with Regular Expressions Using Accordance</h2>
    </header>
-
 
    <p><a href="http://accordancebible.com/">Accordance</a> is a Bible study program for macOS produced by OakTree
       Software. It is host to many different Bible translations and original language manuscripts. RegexForAccordance
       allows you to search any of the text modules in Accordance using regular expressions. It uses the AppleScript
       interface of Accordance to get the lines of text, and then
       it searches those lines with the regular expression.</p>
+
+      <a href="images/long-names.png"><img src="images/long-names.png" width="700" align="right"/></a>
 
    <h1>System Requirements</h1>
 
@@ -187,7 +188,7 @@
       I included both results here and show the differences in bold.
       To omit bracketed text in RegexForAccordance, click Filters….  Under "Remove…" select Bracketed Text.</p>
 
-   <a href="images/acrostics-fri.png"><img src="images/acrostics-fri.png" width="800"/></a>
+   <a href="images/acrostics-fri.png"><img src="images/acrostics-fri.png" width="700"/></a>
    
    <p>Note that Num 1:51 contains two separate results, so it counts twice.</p>
 
@@ -287,7 +288,7 @@
 
     <p>To export the statistics, select all of the rows in the table. Then copy and paste into Excel or Numbers, for example.</p>
 
-    <a href="images/letters-first.png"><img src="images/letters-first.png" width="800"/></a>
+    <a href="images/letters-first.png"><img src="images/letters-first.png" width="700"/></a>
 
     <table>
        <tr>
@@ -406,9 +407,9 @@
 <p>(The charts were made in <a href="https://www.apple.com/numbers/">Numbers</a>.)</p>
 
 <p>From these results, we find that
-   <span lang="he" class="ltr">י</span>,
-   <span lang="he" class="ltr">ה</span>, and
-   <span lang="he" class="ltr">ו</span>
+   <span lang="he" class="ltr">ה</span>,
+   <span lang="he" class="ltr">ו</span>, and
+   <span lang="he" class="ltr">י</span>
    are all very common at the beginning and ending of words.
    It is easy to see how <a href="#acrostics">acrostics of <span lang="he">יהוה</span></a> could occur randomly,
    and also how they could be constucted deliberately, since there are so many words which 
@@ -417,7 +418,34 @@
 
 <h3>Word Count</h3>
 
-<p>Count all of the words in the book of Matthew in the Greek New Testament.</p>
+<h4>Hebrew Word Count</h4>
+
+<p>How many different words are in the Hebrew Old Testament?</p>
+
+<p>Search: <code>\w+</code></p>
+<p>Result: 39,928 distinct hits in HMT-W4.</p>
+
+<p>We are defining a "word" as just a sequence of Hebrew characters.  Of course, many of these words are just different forms of the same root word, with different prefixes and suffixes.</p>
+
+
+<p>How many different words begin or end with
+   <span lang="he" class="ltr">ה</span>,
+   <span lang="he" class="ltr">ו</span>, and
+   <span lang="he" class="ltr">י</span>?
+</p>
+
+<p>This table shows the total number of words and the number of distinct words for each case.</p>
+
+<table class="hits">
+   <tr><th><code>regex</code><br/>total<br/>distinct</th><th>Begin</th><th>End</th></tr>
+   <tr><th>ה</th><td><code>\bה\w+</code><br/>30,811<br/>4,095</td><td><code>\w+ה\b</code><br/>41,347<br/>5,370</td></tr>
+   <tr><th>ו</th><td><code>\bו\w+</code><br/>51,023<br/>11,154</td><td><code>\w+ו\b</code><br/>29,966<br/>6,141</td></tr>
+   <tr><th>י</th><td><code>\bי\w+</code><br/>24,232<br/>2,596</td><td><code>\w+י\b</code><br/>32,986<br/>4,265</td></tr>
+</table>
+
+<h4>Greek New Testament Word Count</h4>
+
+<p>How many words are in the book of Matthew in the Greek New Testament?</p>
 
 <p>Search: <code>\w+</code></p>
 
@@ -427,7 +455,7 @@
    It also shows that 3,970 different word were found, 
    and it lists each word with count and length.</p>
 
-<img src="images/count-greek-words-matthew.png" width="800"/>
+<a href="images/count-greek-words-matthew.png"><img src="images/count-greek-words-matthew.png" width="700"/></a>
 
 <hr/>
       
@@ -459,7 +487,7 @@
 
 <p>The longest word is <span lang="he">לאיתיאל</span>, which occurs twice in Prov 30:1.</p>
 
-<a href="images/palindrome-words.png"><img src="images/palindrome-words.png" width="800"/></a>
+<a href="images/palindrome-words.png"><img src="images/palindrome-words.png" width="700"/></a>
 
 
 <h3>Palindromic Phrases</h3>
@@ -491,7 +519,7 @@
 </p>
 
 
-<a href="images/palindrome-phrase.png"><img src="images/palindrome-phrase.png" width="800"/></a>
+<a href="images/palindrome-phrase.png"><img src="images/palindrome-phrase.png" width="700"/></a>
 
 
 
@@ -515,7 +543,7 @@
    Options: Ignore case<br/>
    </p>
 
-   <a href="images/repeat-greek.png"><img src="images/repeat-greek.png" width="800"/></a>
+   <a href="images/repeat-greek.png"><img src="images/repeat-greek.png" width="700"/></a>
 
 <p>The longest match is John 10:11: <span lang="el">ο ποιμην ο καλος ο ποιμην ο καλος</span>.</p>
 <p>The most frequent match is <span lang="el">αμην αμην</span>, found 25 times.</p>
@@ -567,7 +595,7 @@
    We expect to find proper nouns mostly.</p>
 
 <p>
-   <a href="images/CapitalGreekExample.png"><img src="images/CapitalGreekExample.png" width="800" /></a>
+   <a href="images/CapitalGreekExample.png"><img src="images/CapitalGreekExample.png" width="700" /></a>
 </p>
 
 
