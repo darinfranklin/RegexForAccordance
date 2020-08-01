@@ -8,16 +8,24 @@
 
 #import "BXFilterHebrewPunctuation.h"
 #import "BXTextLanguage.h"
+#import "BXFilterReplace.h"
 
 @implementation BXFilterHebrewPunctuation
+BXFilterReplace *_filterMaqaf;
 
 - (id)init
 {
     if (self = [super initWithName:@"Hebrew Remove Punctuation" charactersToRemove:[BXTextLanguage hebrewPunctuationCharacterSet]])
     {
         self.languageScriptTag = @SCRIPT_TAG_HEBREW;
+        _filterMaqaf = [[BXFilterReplace alloc] initWithName:@"Maqaf to Space" searchPattern:@"\u05BE" replacePattern:@" " ignoreCase:false];
     }
     return self;
+}
+
+- (NSString *)filter:(NSString *)text
+{
+    return [super filter:[_filterMaqaf filter:text]];
 }
 
 @end

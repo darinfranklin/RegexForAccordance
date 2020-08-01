@@ -25,8 +25,6 @@
 
 - (void)setFiltersInSearcher:(BXSearch *)searcher
 {
-    [self setFilter:[[BXFilterSpaces alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeSpaces];
-    [self setFilter:[[BXFilterTrailingSpaces alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeTrailingSpaces];
     [self setFilter:[[BXFilterPilcrows alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removePilcrows];
     [self setFilter:[[BXFilterBracketedText alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeBracketedText];
 
@@ -37,6 +35,9 @@
 
     [self setFilter:[[BXFilterGreekDiacritics alloc] init] inSearcher:searcher enabled:self.document.searchSettings.greekRemoveDiacritics];
     [self setFilter:[[BXFilterGreekPunctuation alloc] init] inSearcher:searcher enabled:self.document.searchSettings.greekRemovePunctuation];
+
+    [self setFilter:[[BXFilterSpaces alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeSpaces];
+    [self setFilter:[[BXFilterTrailingSpaces alloc] init] inSearcher:searcher enabled:self.document.searchSettings.removeTrailingSpaces];
 }
 
 

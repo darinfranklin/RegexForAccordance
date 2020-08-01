@@ -124,8 +124,9 @@
 
 - (void)testHebrewRemovePunctuation
 {
+    // 05BE maqaf becomes space
     NSString *str = @"א\u05BEב\u05C0ג\u05C3ד\u05C4ה\u05C5ו\u05C6ז";
-    NSString *exp = @"אבגדהוז";
+    NSString *exp = @"א בגדהוז";
     XCTAssertEqualObjects(exp, [[[BXFilterHebrewPunctuation alloc] init] filter:str]);
 }
 
