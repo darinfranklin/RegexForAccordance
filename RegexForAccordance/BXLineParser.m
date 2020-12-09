@@ -47,6 +47,27 @@
     return textCheckingResults.count > 0;
 }
 
+- (BOOL)string:(NSString *)string contains:(NSString *)substring
+{
+    return [string rangeOfString:substring].location != NSNotFound;
+}
+
+- (BOOL)useEuropeanNotation:(NSString *)verseRefStringValue
+{
+    if ([self string:verseRefStringValue contains:@","])
+    {
+        return YES;
+    }
+    else if ([self string:verseRefStringValue contains:@":"])
+    {
+        return NO;
+    }
+    else
+    {
+        return [[NSUserDefaults standardUserDefaults] boolForKey:@"UseEuropeanNotation"];
+    }
+}
+
 - (BXVerse *)verseForLine:(NSString *)line
 {
     NSArray *textCheckingResults = [_verseRefRegex matchesInString:line options:0 range:NSMakeRange(0, [line length])];
@@ -70,8 +91,8 @@
         }
         verseNumber = [[line substringWithRange:verseRange] integerValue];
         verseRefStringValue = [line substringWithRange:result.range];
-        BOOL isEuropeanFormat = !NSEqualRanges(NSMakeRange(NSNotFound, 0), [verseRefStringValue rangeOfString:@","]);
-        verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber europeanFormat:isEuropeanFormat];
+        BOOL useEuropeanNotation = [self useEuropeanNotation:verseRefStringValue];
+        verse.ref = [[BXVerseRef alloc] initWithBook:book chapter:chapterNumber verse:verseNumber europeanFormat:useEuropeanNotation];
     }
     else
     {

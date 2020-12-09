@@ -198,6 +198,32 @@
     XCTAssertEqualObjects(@"Gen 1,1; 2,2; Exod 1,2-3.5-6; Jude 4.6", [vrc buildRefString]);
 }
 
+- (void)testEuropeanFormatSingleChapterBook
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:3 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:5 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:6 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:7 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:9 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:10 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:11 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:12 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:13 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Obad" chapter:0 verse:14 europeanFormat:YES]];
+    XCTAssertEqualObjects(@"Obad 3.5-7.9-14", [vrc buildRefString]);
+}
+
+- (void)testEuropeanFormatQuranBooks
+{
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Q2" chapter:0 verse:20 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Q2" chapter:0 verse:25 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Q2" chapter:0 verse:72 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Q2" chapter:0 verse:87 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Q3" chapter:0 verse:14 europeanFormat:YES]];
+    [vrc addVerseRef:[[BXVerseRef alloc] initWithBook:@"Q3" chapter:0 verse:17 europeanFormat:YES]];
+    XCTAssertEqualObjects(@"Q2 20.25.72.87; Q3 14.17", [vrc buildRefString]);
+}
+
 - (void)testSearchScopeChapterOneChapter
 {
     SearchScopeOptions scope = SearchScopeChapter;

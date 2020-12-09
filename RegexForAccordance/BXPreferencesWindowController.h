@@ -16,6 +16,7 @@
 @property (weak) IBOutlet NSToolbar *toolbar;
 @property (weak) IBOutlet NSButton *showUnicodeCheckbox;
 @property (weak) IBOutlet NSButton *noPromptForUnsavedCheckbox;
+@property (weak) IBOutlet NSButton *useEuropeanNotation;
 
 @property (weak) IBOutlet NSPopUpButton *defaultFontNamePopUp;
 @property (weak) IBOutlet NSPopUpButton *hebrewFontNamePopUp;
@@ -32,6 +33,7 @@
 - (IBAction)resetPreferences:(id)sender;
 - (IBAction)showUnicodeIDClicked:(id)sender;
 - (IBAction)noPromptForUnsavedClicked:(id)sender;
+- (IBAction)useEuropeanNotation:(id)sender;
 
 - (IBAction)changeFont:(id)sender;
 
