@@ -25,9 +25,23 @@ static NSCharacterSet *greekPunctuationCharacterSet = nil;
 {
     if (self = [super init])
     {
-        NSError *error = [[NSError alloc] init];
+        NSError *error;
+
+        error = nil;
         self.hebRegex = [NSRegularExpression regularExpressionWithPattern:@"[" HEB_LETTERS "]" options:0 error:&error];
+        if (error)
+        {
+            LogError(@"%@ %@ %@ %@", [error localizedFailureReason], [error localizedDescription],
+                     [error localizedRecoveryOptions], [error localizedRecoverySuggestion]);
+        }
+
+        error = nil;
         self.greekRegex = [NSRegularExpression regularExpressionWithPattern:@"[" GRK_LETTERS "]" options:0 error:&error];
+        if (error)
+        {
+            LogError(@"%@ %@ %@ %@", [error localizedFailureReason], [error localizedDescription],
+                     [error localizedRecoveryOptions], [error localizedRecoverySuggestion]);
+        }
     }
     return self;
 }
