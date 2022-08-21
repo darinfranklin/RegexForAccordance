@@ -328,7 +328,7 @@
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="BXStatisticsKey" editable="NO" width="58.36935511363491" minWidth="40" maxWidth="1000" id="Bih-Tf-ET7">
+                                                        <tableColumn identifier="BXStatisticsKey" editable="NO" width="58.5" minWidth="40" maxWidth="1000" id="Bih-Tf-ET7">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Hit">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -342,7 +342,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <textField identifier="BXStatisticsKey" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="aOe-Ht-0VP">
-                                                                    <rect key="frame" x="1" y="0.0" width="63" height="85"/>
+                                                                    <rect key="frame" x="1" y="0.0" width="63" height="26"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="[הַיְצֵ֣א]" allowsEditingTextAttributes="YES" id="aYi-nn-LEQ">
                                                                         <font key="font" metaFont="system" size="22"/>
@@ -366,7 +366,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <textField identifier="BXStatisticsLength" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="TZh-TF-7wA">
-                                                                    <rect key="frame" x="67" y="0.0" width="51" height="85"/>
+                                                                    <rect key="frame" x="67" y="0.0" width="51" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="10" allowsEditingTextAttributes="YES" id="dAT-bl-OfV">
                                                                         <font key="font" metaFont="system"/>
@@ -390,7 +390,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <textField identifier="BXStatisticsHitCount" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" id="1rq-t6-fTE">
-                                                                    <rect key="frame" x="121" y="0.0" width="40" height="85"/>
+                                                                    <rect key="frame" x="121" y="0.0" width="40" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="123" allowsEditingTextAttributes="YES" id="5zu-ap-rdb">
                                                                         <font key="font" metaFont="system"/>
@@ -428,7 +428,7 @@
                                             </subviews>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HLk-xB-AWQ">
-                                            <rect key="frame" x="1" y="351" width="233" height="15"/>
+                                            <rect key="frame" x="1" y="351" width="220" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="3Bh-CB-wHN">
@@ -501,6 +501,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="389" y="32"/>
         </menu>
         <menu id="LW1-Ta-vA7" userLabel="Table Menu">
             <items>
@@ -514,6 +515,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="362" y="-117"/>
         </menu>
         <viewController title="Text Filters" nibName="BXSearchWindow" id="ril-Rg-obf" userLabel="Popover View Controller" customClass="BXFilterPopoverViewController">
             <connections>
