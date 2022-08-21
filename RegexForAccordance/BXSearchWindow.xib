@@ -39,17 +39,17 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="163" y="199" width="730" height="400"/>
+            <rect key="contentRect" x="163" y="199" width="771" height="400"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" id="Sz1-ZU-W2L">
-                <rect key="frame" x="0.0" y="0.0" width="730" height="400"/>
+                <rect key="frame" x="0.0" y="0.0" width="771" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoa-KM-2ss">
-                        <rect key="frame" x="0.0" y="0.0" width="730" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="771" height="400"/>
                         <subviews>
-                            <customView identifier="SearchResults" misplaced="YES" id="tKd-L3-AZr">
-                                <rect key="frame" x="0.0" y="0.0" width="494" height="400"/>
+                            <customView identifier="SearchResults" id="tKd-L3-AZr">
+                                <rect key="frame" x="0.0" y="0.0" width="507" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textField identifier="VerseReference" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k2K-3B-dFM">
@@ -303,8 +303,8 @@
                                     <constraint firstAttribute="trailing" secondItem="k2K-3B-dFM" secondAttribute="trailing" constant="16" id="wkS-E4-bvj"/>
                                 </constraints>
                             </customView>
-                            <customView identifier="Statistics" misplaced="YES" id="xuT-Im-fq8">
-                                <rect key="frame" x="495" y="0.0" width="235" height="400"/>
+                            <customView identifier="Statistics" id="xuT-Im-fq8">
+                                <rect key="frame" x="508" y="0.0" width="263" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MaA-Gb-Mno">
@@ -316,19 +316,19 @@
                                         </textFieldCell>
                                     </textField>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fao-eJ-1Gr">
-                                        <rect key="frame" x="0.0" y="0.0" width="222" height="367"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="367"/>
                                         <clipView key="contentView" id="ThF-af-idl">
-                                            <rect key="frame" x="1" y="1" width="220" height="365"/>
+                                            <rect key="frame" x="1" y="1" width="261" height="365"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" autosaveName="StatisticsTable" rowHeight="22" headerView="pq7-l7-mMz" viewBased="YES" id="dQC-Gq-8gT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="342"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="261" height="342"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="0.0"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="BXStatisticsKey" editable="NO" width="58.5" minWidth="40" maxWidth="1000" id="Bih-Tf-ET7">
+                                                        <tableColumn identifier="BXStatisticsKey" editable="NO" width="99.5" minWidth="40" maxWidth="1000" id="Bih-Tf-ET7">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Hit">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -342,7 +342,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <textField identifier="BXStatisticsKey" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="aOe-Ht-0VP">
-                                                                    <rect key="frame" x="1" y="0.0" width="63" height="26"/>
+                                                                    <rect key="frame" x="1" y="0.0" width="104" height="26"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="[הַיְצֵ֣א]" allowsEditingTextAttributes="YES" id="aYi-nn-LEQ">
                                                                         <font key="font" metaFont="system" size="22"/>
@@ -366,7 +366,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <textField identifier="BXStatisticsLength" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="TZh-TF-7wA">
-                                                                    <rect key="frame" x="67" y="0.0" width="51" height="16"/>
+                                                                    <rect key="frame" x="108.5" y="0.0" width="51" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="10" allowsEditingTextAttributes="YES" id="dAT-bl-OfV">
                                                                         <font key="font" metaFont="system"/>
@@ -390,7 +390,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <textField identifier="BXStatisticsHitCount" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" id="1rq-t6-fTE">
-                                                                    <rect key="frame" x="121" y="0.0" width="40" height="16"/>
+                                                                    <rect key="frame" x="162" y="0.0" width="40" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="123" allowsEditingTextAttributes="YES" id="5zu-ap-rdb">
                                                                         <font key="font" metaFont="system"/>
@@ -414,7 +414,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <button identifier="BXStatisticsRefs" id="jLp-Y0-YHs">
-                                                                    <rect key="frame" x="164" y="0.0" width="54" height="31"/>
+                                                                    <rect key="frame" x="205" y="0.0" width="54" height="31"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="circular" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2qi-gX-FUQ">
                                                                         <behavior key="behavior" lightByContents="YES"/>
@@ -435,7 +435,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" wantsLayer="YES" id="pq7-l7-mMz">
-                                            <rect key="frame" x="0.0" y="0.0" width="220" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="261" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <connections>
                                                 <outlet property="menu" destination="LW1-Ta-vA7" id="wWE-bM-jTY"/>
@@ -443,7 +443,7 @@
                                         </tableHeaderView>
                                     </scrollView>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="qs8-cM-0hn">
-                                        <rect key="frame" x="103" y="374" width="99" height="16"/>
+                                        <rect key="frame" x="144" y="374" width="99" height="16"/>
                                         <buttonCell key="cell" type="check" title="Group by Book" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="0Gg-NB-qvs">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -486,7 +486,7 @@
             <connections>
                 <outlet property="initialFirstResponder" destination="t3k-1v-DkA" id="gCR-az-lHY"/>
             </connections>
-            <point key="canvasLocation" x="416" y="371"/>
+            <point key="canvasLocation" x="436.5" y="371"/>
         </window>
         <menu autoenablesItems="NO" id="Dam-zV-a7X" userLabel="SearchField Menu">
             <items>
