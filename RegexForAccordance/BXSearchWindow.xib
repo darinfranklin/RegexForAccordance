@@ -53,7 +53,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textField identifier="VerseReference" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k2K-3B-dFM">
-                                        <rect key="frame" x="258" y="358" width="233" height="21"/>
+                                        <rect key="frame" x="263" y="358" width="228" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="JzD-AJ-cVx"/>
                                         </constraints>
@@ -128,7 +128,7 @@
                                         </connections>
                                     </searchField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-eL-J2r">
-                                        <rect key="frame" x="205" y="361" width="47" height="16"/>
+                                        <rect key="frame" x="210" y="361" width="47" height="16"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Range:" id="rdr-fJ-JVf">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -208,9 +208,9 @@
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EvD-ow-aNt">
-                                        <rect key="frame" x="103" y="354" width="100" height="25"/>
+                                        <rect key="frame" x="103" y="354" width="105" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="93" id="wy6-87-JlG"/>
+                                            <constraint firstAttribute="width" constant="98" id="wy6-87-JlG"/>
                                         </constraints>
                                         <popUpButtonCell key="cell" type="push" title="Item" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" state="on" borderStyle="borderAndBezel" focusRingType="none" imageScaling="proportionallyDown" inset="2" selectedItem="PK4-JR-VR0" id="K4e-dH-ty5">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
