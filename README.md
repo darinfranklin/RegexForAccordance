@@ -27,8 +27,6 @@ In recent years, Apple has added some restrictions which require additional setu
 
 You may get an error saying that RegexForAccordance.app can't be opened.  
 
-![RegexForAccordance.app Not Opened](images/SS01-not-opened.png)
-
 Click Done or Cancel.
 
 To fix it, run this command in Terminal.
@@ -53,8 +51,6 @@ Click **Open Anyway**.
 **Error: Not authorized to send Apple events**
 
 You may get another error which says, "Not authorized to send Apple events to Accordance."
-
-![Not authorized to send Apple events](images/SS03-not-authorized.png)
 
 Go to System Settings > Privacy & Security.
 
