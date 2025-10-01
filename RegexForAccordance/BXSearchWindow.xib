@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -52,7 +52,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="507" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <textField identifier="VerseReference" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k2K-3B-dFM">
+                                    <textField identifier="VerseReference" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k2K-3B-dFM">
                                         <rect key="frame" x="263" y="358" width="228" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="JzD-AJ-cVx"/>
@@ -100,7 +100,7 @@
                                             <outlet property="nextKeyView" destination="k2K-3B-dFM" id="CRj-cr-stl"/>
                                         </connections>
                                     </scrollView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y8P-Qt-NDv">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y8P-Qt-NDv">
                                         <rect key="frame" x="380" y="282" width="87" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="0 hits | 0 verses" placeholderString="" id="7oO-ve-Yba">
                                             <font key="font" metaFont="smallSystem"/>
@@ -108,7 +108,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <searchField wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="t3k-1v-DkA">
+                                    <searchField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="t3k-1v-DkA">
                                         <rect key="frame" x="62" y="300" width="429" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Nxy-JE-e7p"/>
@@ -127,7 +127,7 @@
                                             <outlet property="searchMenuTemplate" destination="Dam-zV-a7X" id="tVu-9z-pf7"/>
                                         </connections>
                                     </searchField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-eL-J2r">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-eL-J2r">
                                         <rect key="frame" x="210" y="361" width="47" height="16"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Range:" id="rdr-fJ-JVf">
                                             <font key="font" metaFont="system"/>
@@ -165,7 +165,7 @@
                                             <action selector="searchOptionsChanged:" target="-2" id="O0F-FW-Uf8"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AKe-Oa-gCK">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AKe-Oa-gCK">
                                         <rect key="frame" x="18" y="361" width="82" height="16"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text Module:" id="mm5-I8-62O">
                                             <font key="font" metaFont="system"/>
@@ -188,18 +188,18 @@
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g1T-v5-db5">
                                         <rect key="frame" x="20" y="329" width="72" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="5r6-5m-24L"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="smallSquare" title="Filters…" bezelStyle="smallSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SbJ-aS-0ap">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="72" id="5r6-5m-24L"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="showFiltersPopover:" target="-2" id="1GZ-fr-EW5"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YNq-iz-0xq">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YNq-iz-0xq">
                                         <rect key="frame" x="38" y="282" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="2 Chr" id="OoQ-nu-s1I">
                                             <font key="font" metaFont="smallSystem"/>
@@ -209,9 +209,6 @@
                                     </textField>
                                     <popUpButton focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EvD-ow-aNt">
                                         <rect key="frame" x="103" y="354" width="105" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="98" id="wy6-87-JlG"/>
-                                        </constraints>
                                         <popUpButtonCell key="cell" type="push" title="Item" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" state="on" borderStyle="borderAndBezel" focusRingType="none" imageScaling="proportionallyDown" inset="2" selectedItem="PK4-JR-VR0" id="K4e-dH-ty5">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
@@ -223,11 +220,14 @@
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="98" id="wy6-87-JlG"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="searchOptionsChanged:" target="-2" id="pq9-Gy-Z8a"/>
                                         </connections>
                                     </popUpButton>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2TY-Vz-v6y" userLabel="Scope:">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2TY-Vz-v6y" userLabel="Scope:">
                                         <rect key="frame" x="345" y="332" width="47" height="16"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Scope:" id="SOj-K7-bDI">
                                             <font key="font" metaFont="system"/>
@@ -237,9 +237,6 @@
                                     </textField>
                                     <popUpButton focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-7g-8qZ" userLabel="Verse">
                                         <rect key="frame" x="395" y="326" width="100" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="93" id="Jzu-Bd-QtH"/>
-                                        </constraints>
                                         <popUpButtonCell key="cell" type="push" title="Verse" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" state="on" borderStyle="borderAndBezel" focusRingType="none" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="qsZ-Da-p6W" id="UIm-mP-Qb4">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
@@ -257,6 +254,9 @@
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="93" id="Jzu-Bd-QtH"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="searchOptionsChanged:" target="-2" id="woG-G6-Mnl"/>
                                         </connections>
@@ -307,7 +307,7 @@
                                 <rect key="frame" x="508" y="0.0" width="263" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MaA-Gb-Mno">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MaA-Gb-Mno">
                                         <rect key="frame" x="12" y="375" width="76" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0 distinct hits" id="No7-ns-ff0">
                                             <font key="font" metaFont="smallSystem"/>
@@ -328,7 +328,7 @@
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="BXStatisticsKey" editable="NO" width="99.5" minWidth="40" maxWidth="1000" id="Bih-Tf-ET7">
+                                                        <tableColumn identifier="BXStatisticsKey" editable="NO" width="70.5" minWidth="40" maxWidth="1000" id="Bih-Tf-ET7">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Hit">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -341,8 +341,8 @@
                                                             <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="BXStatisticsKey"/>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <textField identifier="BXStatisticsKey" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="aOe-Ht-0VP">
-                                                                    <rect key="frame" x="1" y="0.0" width="104" height="26"/>
+                                                                <textField identifier="BXStatisticsKey" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="aOe-Ht-0VP">
+                                                                    <rect key="frame" x="1" y="0.0" width="75" height="26"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="[הַיְצֵ֣א]" allowsEditingTextAttributes="YES" id="aYi-nn-LEQ">
                                                                         <font key="font" metaFont="system" size="22"/>
@@ -352,7 +352,7 @@
                                                                 </textField>
                                                             </prototypeCellViews>
                                                         </tableColumn>
-                                                        <tableColumn identifier="BXStatisticsLength" editable="NO" width="50.578125" minWidth="10" maxWidth="3.4028234663852886e+38" id="2nm-Wo-QmU">
+                                                        <tableColumn identifier="BXStatisticsLength" editable="NO" width="50.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="2nm-Wo-QmU">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Length">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -365,8 +365,8 @@
                                                             <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="BXStatisticsLength" ascending="NO"/>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <textField identifier="BXStatisticsLength" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="TZh-TF-7wA">
-                                                                    <rect key="frame" x="108.5" y="0.0" width="51" height="16"/>
+                                                                <textField identifier="BXStatisticsLength" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="TZh-TF-7wA">
+                                                                    <rect key="frame" x="79.5" y="0.0" width="51" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="10" allowsEditingTextAttributes="YES" id="dAT-bl-OfV">
                                                                         <font key="font" metaFont="system"/>
@@ -389,8 +389,8 @@
                                                             <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="BXStatisticsHitCount" ascending="NO"/>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <textField identifier="BXStatisticsHitCount" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" id="1rq-t6-fTE">
-                                                                    <rect key="frame" x="162" y="0.0" width="40" height="16"/>
+                                                                <textField identifier="BXStatisticsHitCount" focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" id="1rq-t6-fTE">
+                                                                    <rect key="frame" x="133" y="0.0" width="40" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="123" allowsEditingTextAttributes="YES" id="5zu-ap-rdb">
                                                                         <font key="font" metaFont="system"/>
@@ -414,7 +414,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <button identifier="BXStatisticsRefs" id="jLp-Y0-YHs">
-                                                                    <rect key="frame" x="205" y="0.0" width="54" height="31"/>
+                                                                    <rect key="frame" x="176" y="0.0" width="54" height="31"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="circular" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2qi-gX-FUQ">
                                                                         <behavior key="behavior" lightByContents="YES"/>
@@ -591,7 +591,7 @@
                         <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="Cqp-6r-gmY"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vy-xd-ooy">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vy-xd-ooy">
                     <rect key="frame" x="18" y="304" width="68" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove…" id="WA6-yC-nCa">
                         <font key="font" metaFont="systemBold"/>
@@ -619,7 +619,7 @@
                         <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="Rvm-KZ-hiY"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-bU-U5r">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-bU-U5r">
                     <rect key="frame" x="18" y="190" width="121" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Hebrew…" id="SqD-n7-ne7">
                         <font key="font" metaFont="systemBold"/>
@@ -637,7 +637,7 @@
                         <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="Ex0-3u-t4V"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ejm-2y-fX8">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ejm-2y-fX8">
                     <rect key="frame" x="128" y="100" width="35" height="15"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title=" ן ס פ" id="PXB-K0-vV2">
                         <font key="font" size="13" name="HelveticaNeue"/>
@@ -665,7 +665,7 @@
                         <action selector="searchOptionsChanged:" target="ril-Rg-obf" id="5Yr-5v-6fQ"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-ru-bbH">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C4i-ru-bbH">
                     <rect key="frame" x="18" y="76" width="110" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remove Greek…" id="mpD-dp-ITn">
                         <font key="font" metaFont="systemBold"/>
@@ -709,6 +709,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSFollowLinkFreestandingTemplate" width="15" height="15"/>
+        <image name="NSFollowLinkFreestandingTemplate" width="20" height="20"/>
     </resources>
 </document>
