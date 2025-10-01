@@ -123,7 +123,7 @@ NSString *makeBlankIfNil(NSString *str)
     for (NSUInteger i = 0; i < [self.textNamePopup.menu itemArray].count && i < 10; i++)
     {
         [[self.textNamePopup.menu itemAtIndex:i] setKeyEquivalent:[NSString stringWithFormat:@"%ld", (i + 1) % 10]];
-        [[self.textNamePopup.menu itemAtIndex:i] setKeyEquivalentModifierMask:NSControlKeyMask];
+        [[self.textNamePopup.menu itemAtIndex:i] setKeyEquivalentModifierMask:NSEventModifierFlagControl];
     }
     [self.textNamePopup selectItemAtIndex:0];
 }
@@ -209,17 +209,17 @@ NSString *makeBlankIfNil(NSString *str)
     LogDebug(@"searchOptionsChanged “%@” %ld", [sender title], [sender state]);
     if (sender == self.ignoreCase)
     {
-        self.document.searchSettings.ignoreCase = ([sender state] == NSOnState);
+        self.document.searchSettings.ignoreCase = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.includeReference)
     {
-        self.document.searchSettings.includeReference = ([sender state] == NSOnState);
+        self.document.searchSettings.includeReference = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.groupByBook)
     {
-        self.document.searchSettings.groupByBook = ([sender state] == NSOnState);
+        self.document.searchSettings.groupByBook = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
         [self reloadStatistics];
     }
@@ -235,7 +235,7 @@ NSString *makeBlankIfNil(NSString *str)
     }
     else if (sender == self.lroButton)
     {
-        self.document.searchSettings.leftToRightOverride = ([sender state] == NSOnState);
+        self.document.searchSettings.leftToRightOverride = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
         [self updateSearchFieldLRO];
     }
@@ -342,7 +342,7 @@ NSString *makeBlankIfNil(NSString *str)
 
 - (NSTextAlignment)textAlignmentForWritingDirection:(NSWritingDirection)dir
 {
-    return dir == NSWritingDirectionRightToLeft ? NSRightTextAlignment : NSLeftTextAlignment;
+    return dir == NSWritingDirectionRightToLeft ? NSTextAlignmentRight : NSTextAlignmentLeft;
 }
 
 - (void)prepareStatisticsTableView

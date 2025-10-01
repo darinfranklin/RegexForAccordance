@@ -11,7 +11,7 @@
 #import "BXSearchFieldFormatter.h"
 #import "BXFilterPopoverViewController.h"
 
-@interface BXSearchWindowController : NSWindowController<NSSplitViewDelegate,NSTextFieldDelegate>
+@interface BXSearchWindowController : NSWindowController<NSSplitViewDelegate,NSTextFieldDelegate,NSMenuItemValidation>
 @property BXSearch *searcher;
 @property (weak) IBOutlet NSTextField *verseReferenceField;
 @property (weak) IBOutlet NSPopUpButton *textNamePopup;

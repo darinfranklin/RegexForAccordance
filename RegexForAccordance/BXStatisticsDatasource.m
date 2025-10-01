@@ -409,7 +409,7 @@ NSString *const BXColumnNameRefs = @"BXStatisticsRefs";
                          val = [self tableView:tableView objectValueForTableColumnIdentifier:column.identifier row:row];
                      }
                      if ([column.identifier isEqualTo:BXColumnNameKey] &&
-                         self.alignment == NSRightTextAlignment)
+                         self.alignment == NSTextAlignmentRight)
                      {
                          val = [NSString stringWithFormat:@RLO "%@" PDF, val];
                      }

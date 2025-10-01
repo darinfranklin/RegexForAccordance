@@ -8,9 +8,9 @@
 
 #import "BXSearchSettings.h"
 
-NSCellStateValue cellStateValueForBool(BOOL b)
+NSControlStateValue cellStateValueForBool(BOOL b)
 {
-    return b ? NSOnState : NSOffState;
+    return b ? NSControlStateValueOn : NSControlStateValueOff;
 }
 
 @implementation BXSearchSettings

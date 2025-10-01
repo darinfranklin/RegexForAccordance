@@ -873,7 +873,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -889,7 +889,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.14;
+				MARKETING_VERSION = 1.0.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
@@ -968,7 +968,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -1017,7 +1017,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1032,7 +1032,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.14;
+				MARKETING_VERSION = 1.0.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;
@@ -1049,7 +1049,7 @@
 				GCC_PREFIX_HEADER = "RegexForAccordance/RegexForAccordance-Prefix.pch";
 				INFOPLIST_FILE = "RegexForAccordance/RegexForAccordance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.14;
+				MARKETING_VERSION = 1.0.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "dfranklin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RegexForAccordance;
 				WRAPPER_EXTENSION = app;

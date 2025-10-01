@@ -57,52 +57,52 @@
 {
     if (sender == self.spaces)
     {
-        self.document.searchSettings.removeSpaces = ([sender state] == NSOnState);
+        self.document.searchSettings.removeSpaces = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.trailingSpaces)
     {
-        self.document.searchSettings.removeTrailingSpaces = ([sender state] == NSOnState);
+        self.document.searchSettings.removeTrailingSpaces = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.pilcrows)
     {
-        self.document.searchSettings.removePilcrows = ([sender state] == NSOnState);
+        self.document.searchSettings.removePilcrows = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.bracketedText)
     {
-        self.document.searchSettings.removeBracketedText = ([sender state] == NSOnState);
+        self.document.searchSettings.removeBracketedText = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.hebrewCantillation)
     {
-        self.document.searchSettings.hebrewRemoveCantillation = ([sender state] == NSOnState);
+        self.document.searchSettings.hebrewRemoveCantillation = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.hebrewPoints)
     {
-        self.document.searchSettings.hebrewRemovePoints = ([sender state] == NSOnState);
+        self.document.searchSettings.hebrewRemovePoints = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.hebrewPunctuation)
     {
-        self.document.searchSettings.hebrewRemovePunctuation = ([sender state] == NSOnState);
+        self.document.searchSettings.hebrewRemovePunctuation = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.hebrewSectionMarks)
     {
-        self.document.searchSettings.hebrewRemoveSectionMarks = ([sender state] == NSOnState);
+        self.document.searchSettings.hebrewRemoveSectionMarks = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.greekDiacritics)
     {
-        self.document.searchSettings.greekRemoveDiacritics = ([sender state] == NSOnState);
+        self.document.searchSettings.greekRemoveDiacritics = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
     else if (sender == self.greekPunctuation)
     {
-        self.document.searchSettings.greekRemovePunctuation = ([sender state] == NSOnState);
+        self.document.searchSettings.greekRemovePunctuation = ([sender state] == NSControlStateValueOn);
         [self.document updateChangeCount:NSChangeDone];
     }
 }

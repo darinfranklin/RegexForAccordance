@@ -53,7 +53,7 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
 
 - (void)awakeFromNib
 {
-    self.hebrewFontSample.alignment = NSRightTextAlignment;
+    self.hebrewFontSample.alignment = NSTextAlignmentRight;
 
     [self.defaultFontSample setEditable:NO];
     [self.defaultFontSample setSelectable:NO];
@@ -214,8 +214,8 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
     {
         [defaults setObject:[NSNumber numberWithInteger:[fontSize integerValue]] forKey:fontSizeKey];
     }
-    [defaults setBool:(self.boldHitsButton.state == NSOnState) forKey:HitsFontBold];
-    [defaults setBool:(self.boldReferencesButton.state == NSOnState) forKey:VerseRefFontBold];
+    [defaults setBool:(self.boldHitsButton.state == NSControlStateValueOn) forKey:HitsFontBold];
+    [defaults setBool:(self.boldReferencesButton.state == NSControlStateValueOn) forKey:VerseRefFontBold];
     if (sampleText != nil)
     {
         [self formatSampleText:sampleText withLanguageScriptTag:languageScriptTag inTextView:sampleView];
@@ -231,21 +231,21 @@ NSString *const VerseRefFontSize = @"VerseRefFontSize";
 - (IBAction)showUnicodeIDClicked:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL value = self.showUnicodeCheckbox.state == NSOnState;
+    BOOL value = self.showUnicodeCheckbox.state == NSControlStateValueOn;
     [defaults setBool:value forKey:ShowUnicodeID];
 }
 
 - (IBAction)noPromptForUnsavedClicked:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL value = self.noPromptForUnsavedCheckbox.state == NSOnState;
+    BOOL value = self.noPromptForUnsavedCheckbox.state == NSControlStateValueOn;
     [defaults setBool:value forKey:NoPromptForUnsaved];
 }
 
 - (IBAction)useEuropeanNotation:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL value = self.useEuropeanNotation.state == NSOnState;
+    BOOL value = self.useEuropeanNotation.state == NSControlStateValueOn;
     [defaults setBool:value forKey:UseEuropeanNotation];
 }
 

@@ -17,8 +17,8 @@
 - (NSURL *)urlForVerseRef:(NSString *)ref inText:(NSString *)text
 {
     NSString *urlString = [NSString stringWithFormat:@"accord://read/%@?%@",
-                           [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ?: @"",
-                           [ref stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ?: @""];
+                           [text stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLPathAllowedCharacterSet] ?: @"",
+                           [ref stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet] ?: @""];
     return [NSURL URLWithString:urlString];
 }
 

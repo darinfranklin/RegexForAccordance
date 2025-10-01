@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-NSCellStateValue cellStateValueForBool(BOOL b);
+NSControlStateValue cellStateValueForBool(BOOL b);
 
 typedef NS_ENUM(NSInteger, SearchScopeOptions) {
         SearchScopeVerse,
